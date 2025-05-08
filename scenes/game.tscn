@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://da7dh21qrk5ix"]
 
-[ext_resource type="PackedScene" uid="uid://8naski7dhvnm" path="res://scenes/main_screen.tscn" id="1_m26ab"]
+[ext_resource type="PackedScene" uid="uid://o6oh0ffkpi2x" path="res://scenes/background_things.tscn" id="1_dsoq3"]
 [ext_resource type="PackedScene" uid="uid://t8pxjpohp3yi" path="res://scenes/screens.tscn" id="2_rnqqm"]
 
 [node name="Game" type="Node"]
 
-[node name="MainScreen" parent="." instance=ExtResource("1_m26ab")]
+[node name="background_things" parent="." instance=ExtResource("1_dsoq3")]
 
 [node name="SCREENS" parent="." instance=ExtResource("2_rnqqm")]

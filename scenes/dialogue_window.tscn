@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2wfcuapvsfy"]
 
-[ext_resource type="Script" path="res://scenes/dialogue_window.gd" id="1_bt3gf"]
+[ext_resource type="Script" path="res://scripts/dialogue_window.gd" id="1_fh0my"]
 [ext_resource type="Texture2D" uid="uid://mu3wi2q14n1u" path="res://assets/test/clipart4779265.png" id="1_kbgcw"]
 
 [node name="dialogue_window" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bt3gf")
+script = ExtResource("1_fh0my")
 
 [node name="dialogue_box" type="TextureRect" parent="."]
 layout_mode = 1
