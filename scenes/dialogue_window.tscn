@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2wfcuapvsfy"]
+[gd_scene load_steps=3 format=3 uid="uid://d2wfcuapvsfy"]
 
+[ext_resource type="Script" path="res://scenes/dialogue_window.gd" id="1_bt3gf"]
 [ext_resource type="Texture2D" uid="uid://mu3wi2q14n1u" path="res://assets/test/clipart4779265.png" id="1_kbgcw"]
 
 [node name="dialogue_window" type="Control"]
@@ -9,8 +10,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bt3gf")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="dialogue_box" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -24,3 +26,15 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_kbgcw")
 expand_mode = 1
+
+[node name="dialogue" type="Label" parent="dialogue_box"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 45.0
+offset_right = 563.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(0.898039, 0.12549, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+horizontal_alignment = 1
+autowrap_mode = 2

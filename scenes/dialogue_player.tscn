@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://0k0k60spe7c0"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_player.gd" id="1_gc8xu"]
+[ext_resource type="Texture2D" uid="uid://dso0wayh2ft6l" path="res://assets/test/IMG_6336.PNG" id="2_bevmb"]
+[ext_resource type="PackedScene" uid="uid://d2wfcuapvsfy" path="res://scenes/dialogue_window.tscn" id="2_dpqs6"]
+
+[node name="dialogue_player" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gc8xu")
+
+[node name="sprite" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -679.0
+offset_right = 20.0
+offset_bottom = -639.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="sprite"]
+position = Vector2(-65, 302)
+scale = Vector2(0.629485, 0.621379)
+texture = ExtResource("2_bevmb")
+region_enabled = true
+region_rect = Rect2(761, 569.625, 641.25, 725.625)
+
+[node name="dialogue_window" parent="." instance=ExtResource("2_dpqs6")]
+layout_mode = 1
+
+[node name="FurtherDialogueButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="FurtherDialogueButton" to="." method="_on_further_dialogue_button_pressed"]
