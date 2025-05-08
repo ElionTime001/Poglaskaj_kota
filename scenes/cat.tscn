@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4doai0buhwl4"]
+
+[ext_resource type="Texture2D" uid="uid://dso0wayh2ft6l" path="res://assets/test/IMG_6336.PNG" id="1_g0v48"]
+
+[node name="cat" type="Node2D"]
+
+[node name="cat_sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.564006, 0.564006)
+texture = ExtResource("1_g0v48")
+region_enabled = true
+region_rect = Rect2(78.7501, 583.375, 664.875, 752.625)

@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="Magisterka"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=590
+window/size/viewport_height=960
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
 
 [rendering]
 
