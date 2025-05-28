@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=4 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
+[ext_resource type="PackedScene" uid="uid://dorq6s10qvfmn" path="res://scenes/interface.tscn" id="3_2ma7d"]
 
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
+
+[node name="interface" parent="." instance=ExtResource("3_2ma7d")]
 
 [node name="dialogue_player" parent="." instance=ExtResource("1_uhk0v")]
 visible = false

@@ -1,0 +1,254 @@
+[gd_scene load_steps=18 format=3 uid="uid://dorq6s10qvfmn"]
+
+[ext_resource type="Texture2D" uid="uid://bh2t2rx2n6cju" path="res://assets/test/buttons/paid_currency.PNG" id="1_hwjkg"]
+[ext_resource type="Texture2D" uid="uid://c66s472lp85r5" path="res://assets/test/buttons/free_currency.PNG" id="2_4b5es"]
+[ext_resource type="Texture2D" uid="uid://ca3gvbqrwq6d2" path="res://assets/test/buttons/energy.PNG" id="3_srpw1"]
+[ext_resource type="Texture2D" uid="uid://fmb5cad1gj4q" path="res://assets/test/buttons/battle_pass.PNG" id="4_da6p2"]
+[ext_resource type="Texture2D" uid="uid://dao8wvdo45gbn" path="res://assets/test/buttons/gatcha.PNG" id="4_gepen"]
+[ext_resource type="Texture2D" uid="uid://db11qn4xaerdg" path="res://assets/test/buttons/shop.PNG" id="5_41n7c"]
+[ext_resource type="Texture2D" uid="uid://bpkr8li3tsc4b" path="res://assets/test/buttons/online.PNG" id="5_h6x57"]
+[ext_resource type="Texture2D" uid="uid://dtlc6twu4wnfx" path="res://assets/test/buttons/special_offer.PNG" id="6_250mt"]
+[ext_resource type="Texture2D" uid="uid://cruumc2s2a01h" path="res://assets/test/buttons/shop_ad.PNG" id="6_o00v3"]
+[ext_resource type="Texture2D" uid="uid://nyclrqrtp5uk" path="res://assets/test/buttons/pig.PNG" id="7_0xqs4"]
+[ext_resource type="Texture2D" uid="uid://bk871tjsymftl" path="res://assets/test/buttons/edit_animal_skin.PNG" id="7_7kpe4"]
+[ext_resource type="Texture2D" uid="uid://1oe3j6d6o8fa" path="res://assets/test/buttons/achievements.PNG" id="8_axe4h"]
+[ext_resource type="Texture2D" uid="uid://mu3wi2q14n1u" path="res://assets/test/clipart4779265.png" id="8_kmsy3"]
+[ext_resource type="Texture2D" uid="uid://c175iktgwbdeb" path="res://assets/test/buttons/collection.PNG" id="9_ou73q"]
+[ext_resource type="Texture2D" uid="uid://c06vh8ephayp8" path="res://assets/test/buttons/Login.PNG" id="10_clk1v"]
+[ext_resource type="Texture2D" uid="uid://cw0bkrdg58w0h" path="res://assets/test/buttons/Dailies.PNG" id="11_nl7io"]
+[ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="17_iil4f"]
+
+[node name="interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="paidCurrency" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -47.0
+offset_top = 20.0
+offset_right = 110.0
+offset_bottom = 96.0
+texture_normal = ExtResource("1_hwjkg")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="freeCurrency" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -166.0
+offset_top = 22.0
+offset_right = -45.0
+offset_bottom = 98.0
+texture_normal = ExtResource("2_4b5es")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="energy" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 28.0
+offset_right = 272.0
+offset_bottom = 104.0
+texture_normal = ExtResource("3_srpw1")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="down" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="gatcha" type="TextureButton" parent="down" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -127.0
+offset_top = -103.0
+offset_right = 80.0
+offset_bottom = 29.0
+texture_normal = ExtResource("4_gepen")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="shop" type="TextureButton" parent="down" groups=["mainscreenbutton"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -173.0
+offset_right = 272.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("5_41n7c")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="right" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="gatchaAd" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -146.0
+offset_top = 134.0
+offset_right = 27.0
+offset_bottom = 290.0
+texture_normal = ExtResource("6_o00v3")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="pig" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -85.0
+offset_top = 6.0
+offset_right = 24.0
+offset_bottom = 137.0
+texture_normal = ExtResource("7_0xqs4")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="achievements" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -83.0
+offset_top = -104.0
+offset_right = 43.0
+offset_bottom = -5.0
+texture_normal = ExtResource("8_axe4h")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="login" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -92.0
+offset_top = -219.0
+offset_right = 11.0
+offset_bottom = -126.0
+texture_normal = ExtResource("10_clk1v")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="dailies" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -92.0
+offset_top = -331.0
+offset_right = 17.0
+offset_bottom = -229.0
+texture_normal = ExtResource("11_nl7io")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="left" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="battlePass" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -318.0
+offset_right = 150.0
+offset_bottom = -175.0
+texture_normal = ExtResource("4_da6p2")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="onlineLeaderboard" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = 27.0
+offset_top = -176.0
+offset_right = 146.0
+offset_bottom = -64.0
+texture_normal = ExtResource("5_h6x57")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="specialOffer" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -67.0
+offset_right = 151.0
+offset_bottom = 76.0
+texture_normal = ExtResource("6_250mt")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="skinCollection" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 138.0
+offset_right = 156.0
+offset_bottom = 281.0
+texture_normal = ExtResource("7_7kpe4")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="catCollection" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 62.0
+offset_right = 119.0
+offset_bottom = 135.0
+texture_normal = ExtResource("9_ou73q")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="MainMenuButton" type="TextureButton" parent="." groups=["mainscreenbutton"]]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 102.0
+offset_bottom = 110.0
+texture_normal = ExtResource("8_kmsy3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AddElementButton" type="TextureButton" parent="." groups=["mainscreenbutton"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -154.0
+offset_right = 125.0
+offset_bottom = -44.0
+grow_vertical = 0
+texture_normal = ExtResource("17_iil4f")
+ignore_texture_size = true
+stretch_mode = 0
