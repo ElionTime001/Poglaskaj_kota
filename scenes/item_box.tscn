@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://beiya5qlnu5b1"]
+[gd_scene load_steps=19 format=3 uid="uid://beiya5qlnu5b1"]
 
 [ext_resource type="Texture2D" uid="uid://bh2t2rx2n6cju" path="res://assets/test/buttons/paid_currency.PNG" id="1_cayo1"]
 [ext_resource type="Script" path="res://scripts/item_box.gd" id="1_pxvih"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dtlc6twu4wnfx" path="res://assets/test/buttons/special_offer.PNG" id="13_bms2s"]
 [ext_resource type="Texture2D" uid="uid://bk871tjsymftl" path="res://assets/test/buttons/edit_animal_skin.PNG" id="14_eiu0n"]
 [ext_resource type="Texture2D" uid="uid://c175iktgwbdeb" path="res://assets/test/buttons/collection.PNG" id="15_holpe"]
+[ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="18_oe84w"]
 
 [node name="item_box" type="Control"]
 layout_mode = 3
@@ -272,6 +273,25 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "TITLE"
 
+[node name="CloseItemBox" type="TextureButton" parent="."]
+modulate = Color(1, 0.189276, 0.947632, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -256.0
+offset_right = 38.0
+offset_bottom = -187.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.864777
+texture_normal = ExtResource("18_oe84w")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="button_down" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_button_down"]
 [connection signal="pressed" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_pressed"]
 [connection signal="button_down" from="MarginContainer/Control/freeCurrency" to="MarginContainer/Control/freeCurrency" method="_on_button_down"]
@@ -291,3 +311,4 @@ text = "TITLE"
 [connection signal="pressed" from="MarginContainer/Control/specialOffer" to="MarginContainer/Control/specialOffer" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/skinCollection" to="MarginContainer/Control/skinCollection" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/catCollection" to="MarginContainer/Control/catCollection" method="_on_pressed"]
+[connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]

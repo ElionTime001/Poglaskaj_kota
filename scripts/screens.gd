@@ -1,8 +1,63 @@
 extends CanvasLayer
 
 var dialogue_player : Control
+var item_box: Control
+var drag_preview 
+var current_button_held : TextureButton
+var interface: Control
 
 func _ready():
 	dialogue_player = $dialogue_player
-	dialogue_player.play_dialogue("test_dialogue")
+	item_box = $item_box
+	interface = $interface
+	
+	interface.button_clicked.connect(interface_change)
+	
+	item_box.visible = false
+	item_box.item_picked.connect(_create_drag_preview)
+	#dialogue_player.play_dialogue("test_dialogue")
+	
+func _process(delta):
+	if drag_preview:
+		drag_preview.global_position = get_viewport().get_mouse_position()
+		if !drag_preview.visible:
+			drag_preview.visible = true
+			await get_tree().create_timer(1).timeout
+			item_box.visible = false
+	
+func _create_drag_preview(button):
+	current_button_held = button
+	
+	if drag_preview:
+		drag_preview.queue_free()
 
+	drag_preview = TextureRect.new()
+	drag_preview.texture = button.texture_normal
+	drag_preview.mouse_filter = Control.MOUSE_FILTER_IGNORE  # So it doesn't block input
+	drag_preview.z_index = 1000  # Make sure it's on top
+	drag_preview.scale = Vector2(0.5, 0.5)  # Optional: shrink if needed
+	drag_preview.visible = false  # Optional: shrink if needed
+	
+	add_child(drag_preview)
+
+func _remove_drag_preview():
+	if drag_preview:
+		var item_name = drag_preview.name
+		drag_preview.queue_free()
+		drag_preview = null
+		button_dropped(current_button_held)
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+		_remove_drag_preview()
+
+func button_dropped(button):
+	interface.make_button_visible(button)
+	print("Dropped button c: | " + button.name)
+	
+func interface_change(button):
+	match button.name:
+		"MainMenuButton":
+			pass
+		"AddElementButton":
+			item_box.visible = true
