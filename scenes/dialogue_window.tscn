@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2wfcuapvsfy"]
+[gd_scene load_steps=4 format=3 uid="uid://d2wfcuapvsfy"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_window.gd" id="1_fh0my"]
-[ext_resource type="Texture2D" uid="uid://mu3wi2q14n1u" path="res://assets/test/clipart4779265.png" id="1_kbgcw"]
+[ext_resource type="Texture2D" uid="uid://bct4vm5cjchie" path="res://assets/IMG_6393.PNG" id="2_b5u83"]
+[ext_resource type="FontFile" uid="uid://b4jlqjq86n648" path="res://assets/digistrip.ttf" id="3_y02h7"]
 
 [node name="dialogue_window" type="Control"]
 layout_mode = 3
@@ -24,16 +25,17 @@ offset_top = -231.0
 offset_right = 296.5
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_kbgcw")
+texture = ExtResource("2_b5u83")
 expand_mode = 1
 
 [node name="dialogue" type="Label" parent="dialogue_box"]
 layout_mode = 0
 offset_left = 31.0
-offset_top = 45.0
-offset_right = 563.0
+offset_top = 39.0
+offset_right = 564.0
 offset_bottom = 189.0
-theme_override_colors/font_color = Color(0.898039, 0.12549, 0, 1)
+theme_override_colors/font_color = Color(0.874475, 0.718377, 0.769706, 1)
+theme_override_fonts/font = ExtResource("3_y02h7")
 theme_override_font_sizes/font_size = 22
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 horizontal_alignment = 1

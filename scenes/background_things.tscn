@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://o6oh0ffkpi2x"]
 
-[ext_resource type="Texture2D" uid="uid://ssjhkttepu4" path="res://assets/test/cartoon-style-illustration-of-house-interior-entrance-open-door-with-stairs-and-rustic-vintage-furniture-and-wooden-floor-vector.jpg" id="1_ccc3b"]
+[ext_resource type="Texture2D" uid="uid://c1pjaqdsoejtm" path="res://assets/IMG_6395.PNG" id="1_47hlh"]
 [ext_resource type="PackedScene" uid="uid://b4doai0buhwl4" path="res://scenes/cat.tscn" id="2_7d8by"]
 [ext_resource type="Texture2D" uid="uid://bqnnjcp4q15yq" path="res://assets/test/buttons/timer.PNG" id="3_fnmyk"]
 
@@ -18,11 +18,14 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -838.0
-offset_right = 838.0
+offset_left = -323.0
+offset_top = -186.0
+offset_right = 323.0
+offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ccc3b")
+texture = ExtResource("1_47hlh")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="pattable_cat" type="Control" parent="."]
@@ -40,8 +43,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="cat" parent="pattable_cat" instance=ExtResource("2_7d8by")]
+position = Vector2(-30, 48)
+scale = Vector2(0.719999, 0.719999)
 
 [node name="timer" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

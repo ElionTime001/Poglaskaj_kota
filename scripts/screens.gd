@@ -15,7 +15,7 @@ func _ready():
 	
 	item_box.visible = false
 	item_box.item_picked.connect(_create_drag_preview)
-	#dialogue_player.play_dialogue("test_dialogue")
+	dialogue_player.play_dialogue("test_dialogue")
 	
 func _process(delta):
 	if drag_preview:

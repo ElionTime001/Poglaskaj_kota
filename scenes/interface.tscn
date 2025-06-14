@@ -13,10 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://nyclrqrtp5uk" path="res://assets/test/buttons/pig.PNG" id="7_0xqs4"]
 [ext_resource type="Texture2D" uid="uid://bk871tjsymftl" path="res://assets/test/buttons/edit_animal_skin.PNG" id="7_7kpe4"]
 [ext_resource type="Texture2D" uid="uid://1oe3j6d6o8fa" path="res://assets/test/buttons/achievements.PNG" id="8_axe4h"]
-[ext_resource type="Texture2D" uid="uid://mu3wi2q14n1u" path="res://assets/test/clipart4779265.png" id="8_kmsy3"]
 [ext_resource type="Texture2D" uid="uid://c175iktgwbdeb" path="res://assets/test/buttons/collection.PNG" id="9_ou73q"]
 [ext_resource type="Texture2D" uid="uid://c06vh8ephayp8" path="res://assets/test/buttons/Login.PNG" id="10_clk1v"]
 [ext_resource type="Texture2D" uid="uid://cw0bkrdg58w0h" path="res://assets/test/buttons/Dailies.PNG" id="11_nl7io"]
+[ext_resource type="Texture2D" uid="uid://f0a4rjw1qeg7" path="res://assets/test/buttons/menu.png" id="17_1om6d"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="17_iil4f"]
 
 [node name="interface" type="Control"]
@@ -40,30 +40,30 @@ grow_horizontal = 2
 
 [node name="paidCurrency" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = -47.0
-offset_top = 20.0
-offset_right = 110.0
-offset_bottom = 96.0
+offset_left = -19.0
+offset_top = 36.0
+offset_right = 143.0
+offset_bottom = 114.0
 texture_normal = ExtResource("1_hwjkg")
 ignore_texture_size = true
 stretch_mode = 4
 
 [node name="freeCurrency" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = -166.0
-offset_top = 22.0
-offset_right = -45.0
-offset_bottom = 98.0
+offset_left = -144.0
+offset_top = 39.0
+offset_right = -43.0
+offset_bottom = 103.0
 texture_normal = ExtResource("2_4b5es")
 ignore_texture_size = true
 stretch_mode = 4
 
 [node name="energy" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 28.0
-offset_right = 272.0
-offset_bottom = 104.0
+offset_left = 128.0
+offset_top = 33.0
+offset_right = 283.0
+offset_bottom = 111.0
 texture_normal = ExtResource("3_srpw1")
 ignore_texture_size = true
 stretch_mode = 4
@@ -83,10 +83,10 @@ grow_vertical = 0
 
 [node name="gatcha" type="TextureButton" parent="down" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = -127.0
-offset_top = -103.0
-offset_right = 80.0
-offset_bottom = 29.0
+offset_left = -142.0
+offset_top = -108.0
+offset_right = 65.0
+offset_bottom = 24.0
 texture_normal = ExtResource("4_gepen")
 ignore_texture_size = true
 stretch_mode = 4
@@ -98,10 +98,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 55.0
-offset_top = -173.0
-offset_right = 272.0
-offset_bottom = -11.0
+offset_left = 44.0
+offset_top = -171.0
+offset_right = 261.0
+offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("5_41n7c")
@@ -123,20 +123,20 @@ grow_vertical = 2
 
 [node name="gatchaAd" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = -146.0
-offset_top = 134.0
-offset_right = 27.0
-offset_bottom = 290.0
+offset_left = -154.0
+offset_top = 174.0
+offset_right = 19.0
+offset_bottom = 330.0
 texture_normal = ExtResource("6_o00v3")
 ignore_texture_size = true
 stretch_mode = 4
 
 [node name="pig" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = -85.0
-offset_top = 6.0
-offset_right = 24.0
-offset_bottom = 137.0
+offset_left = -91.0
+offset_top = 52.0
+offset_right = 18.0
+offset_bottom = 183.0
 texture_normal = ExtResource("7_0xqs4")
 ignore_texture_size = true
 stretch_mode = 4
@@ -144,30 +144,40 @@ stretch_mode = 4
 [node name="achievements" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
 offset_left = -83.0
-offset_top = -104.0
+offset_top = -55.0
 offset_right = 43.0
-offset_bottom = -5.0
+offset_bottom = 44.0
 texture_normal = ExtResource("8_axe4h")
 ignore_texture_size = true
 stretch_mode = 4
 
 [node name="login" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = -92.0
-offset_top = -219.0
-offset_right = 11.0
-offset_bottom = -126.0
+offset_left = -85.0
+offset_top = -226.0
+offset_right = 18.0
+offset_bottom = -133.0
 texture_normal = ExtResource("10_clk1v")
 ignore_texture_size = true
 stretch_mode = 4
 
 [node name="dailies" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = -92.0
-offset_top = -331.0
-offset_right = 17.0
-offset_bottom = -229.0
+offset_left = -118.0
+offset_top = -353.0
+offset_right = 23.0
+offset_bottom = -228.0
 texture_normal = ExtResource("11_nl7io")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="catCollection" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
+layout_mode = 0
+offset_left = -62.0
+offset_top = -129.0
+offset_right = 15.0
+offset_bottom = -56.0
+texture_normal = ExtResource("9_ou73q")
 ignore_texture_size = true
 stretch_mode = 4
 
@@ -193,41 +203,31 @@ stretch_mode = 4
 
 [node name="onlineLeaderboard" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = 27.0
-offset_top = -176.0
-offset_right = 146.0
-offset_bottom = -64.0
+offset_left = 21.0
+offset_top = -183.0
+offset_right = 140.0
+offset_bottom = -71.0
 texture_normal = ExtResource("5_h6x57")
 ignore_texture_size = true
 stretch_mode = 4
 
 [node name="specialOffer" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = 21.0
-offset_top = -67.0
-offset_right = 151.0
-offset_bottom = 76.0
+offset_left = 18.0
+offset_top = -90.0
+offset_right = 148.0
+offset_bottom = 53.0
 texture_normal = ExtResource("6_250mt")
 ignore_texture_size = true
 stretch_mode = 4
 
 [node name="skinCollection" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 138.0
-offset_right = 156.0
-offset_bottom = 281.0
+offset_left = 18.0
+offset_top = 101.0
+offset_right = 144.0
+offset_bottom = 244.0
 texture_normal = ExtResource("7_7kpe4")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="catCollection" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 62.0
-offset_right = 119.0
-offset_bottom = 135.0
-texture_normal = ExtResource("9_ou73q")
 ignore_texture_size = true
 stretch_mode = 4
 
@@ -235,9 +235,9 @@ stretch_mode = 4
 layout_mode = 1
 offset_left = 22.0
 offset_top = 25.0
-offset_right = 102.0
-offset_bottom = 110.0
-texture_normal = ExtResource("8_kmsy3")
+offset_right = 120.0
+offset_bottom = 118.0
+texture_normal = ExtResource("17_1om6d")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -246,10 +246,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -154.0
-offset_right = 125.0
-offset_bottom = -44.0
+offset_left = 10.0
+offset_top = -158.0
+offset_right = 129.0
+offset_bottom = -38.0
 grow_vertical = 0
 texture_normal = ExtResource("17_iil4f")
 ignore_texture_size = true

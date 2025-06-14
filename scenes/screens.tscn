@@ -14,3 +14,4 @@ script = ExtResource("1_qe71l")
 visible = false
 
 [node name="item_box" parent="." instance=ExtResource("4_jski3")]
+visible = false

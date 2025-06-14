@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://0k0k60spe7c0"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_player.gd" id="1_gc8xu"]
-[ext_resource type="Texture2D" uid="uid://dso0wayh2ft6l" path="res://assets/test/IMG_6336.PNG" id="2_bevmb"]
 [ext_resource type="PackedScene" uid="uid://d2wfcuapvsfy" path="res://scenes/dialogue_window.tscn" id="2_dpqs6"]
+[ext_resource type="Texture2D" uid="uid://cac83wohoae7f" path="res://assets/IMG_6394.PNG" id="2_y6j34"]
 
 [node name="dialogue_player" type="Control"]
 layout_mode = 3
@@ -12,6 +12,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gc8xu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.243137)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="sprite" type="Control" parent="."]
 layout_mode = 1
@@ -28,11 +38,11 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="sprite"]
-position = Vector2(-65, 302)
-scale = Vector2(0.629485, 0.621379)
-texture = ExtResource("2_bevmb")
+position = Vector2(15, 296)
+scale = Vector2(0.421429, 0.416002)
+texture = ExtResource("2_y6j34")
 region_enabled = true
-region_rect = Rect2(761, 569.625, 641.25, 725.625)
+region_rect = Rect2(2.27258, 856.02, 1435.75, 1073.35)
 
 [node name="dialogue_window" parent="." instance=ExtResource("2_dpqs6")]
 layout_mode = 1
