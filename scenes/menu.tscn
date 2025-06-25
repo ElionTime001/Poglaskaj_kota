@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbup714ugbgum"]
+
+[ext_resource type="Texture2D" uid="uid://dbdkbcgndgvv3" path="res://assets/test/progress_not_full.PNG" id="1_4n0qk"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_sfkbu"]
+[ext_resource type="Texture2D" uid="uid://0hcbf86choro" path="res://assets/test/buttons/progress_full.PNG" id="2_ogkyu"]
+[ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="4_s5h3v"]
+[ext_resource type="Texture2D" uid="uid://bxbkhlq0fnu7l" path="res://assets/test/progress.PNG" id="5_gf3ra"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sfkbu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 761.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.401324, 0.219872, 0.287696, 1)
+
+[node name="quest" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 360.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="quest"]
+layout_mode = 2
+color = Color(0.520436, 0.381821, 0.397303, 1)
+
+[node name="Label" type="Label" parent="quest"]
+layout_mode = 2
+
+[node name="money" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 380.0
+offset_right = 545.0
+offset_bottom = 433.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_4n0qk")
+texture_progress = ExtResource("2_ogkyu")
+
+[node name="clients" type="TextureProgressBar" parent="money"]
+offset_top = 68.0
+offset_right = 426.0
+offset_bottom = 121.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_4n0qk")
+texture_progress = ExtResource("2_ogkyu")
+
+[node name="annoyance" type="TextureProgressBar" parent="money"]
+offset_top = 137.0
+offset_right = 426.0
+offset_bottom = 190.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_4n0qk")
+texture_progress = ExtResource("2_ogkyu")
+
+[node name="Label" type="Label" parent="money"]
+layout_mode = 0
+offset_left = -76.0
+offset_top = 19.0
+offset_right = -36.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 63.0
+text = "QUESTS"
+
+[node name="CloseItemBox" type="TextureButton" parent="."]
+modulate = Color(1, 0.189276, 0.947632, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -248.0
+offset_right = 21.0
+offset_bottom = -179.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.864777
+texture_normal = ExtResource("4_s5h3v")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 598.0
+offset_right = 446.0
+offset_bottom = 747.0
+texture = ExtResource("5_gf3ra")
+expand_mode = 1
+stretch_mode = 4
+
+[connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]

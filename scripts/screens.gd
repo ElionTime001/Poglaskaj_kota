@@ -4,18 +4,21 @@ var dialogue_player : Control
 var item_box: Control
 var drag_preview 
 var current_button_held : TextureButton
+var menu: Control
 var interface: Control
 
 func _ready():
 	dialogue_player = $dialogue_player
 	item_box = $item_box
 	interface = $interface
+	menu = $menu
 	
 	interface.button_clicked.connect(interface_change)
 	
 	item_box.visible = false
+	menu.visible = false
 	item_box.item_picked.connect(_create_drag_preview)
-	dialogue_player.play_dialogue("test_dialogue")
+	#dialogue_player.play_dialogue("test_dialogue")
 	
 func _process(delta):
 	if drag_preview:
@@ -55,9 +58,12 @@ func button_dropped(button):
 	interface.make_button_visible(button)
 	print("Dropped button c: | " + button.name)
 	
+	if button.name == "shop":
+		dialogue_player.play_dialogue("test_dialogue")
+	
 func interface_change(button):
 	match button.name:
 		"MainMenuButton":
-			pass
+			menu.visible = true
 		"AddElementButton":
 			item_box.visible = true

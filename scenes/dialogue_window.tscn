@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/dialogue_window.gd" id="1_fh0my"]
 [ext_resource type="Texture2D" uid="uid://bct4vm5cjchie" path="res://assets/IMG_6393.PNG" id="2_b5u83"]
-[ext_resource type="FontFile" uid="uid://b4jlqjq86n648" path="res://assets/digistrip.ttf" id="3_y02h7"]
+[ext_resource type="FontFile" uid="uid://byjt5ghojp7ex" path="res://troika.otf" id="3_g3rdt"]
 
 [node name="dialogue_window" type="Control"]
 layout_mode = 3
@@ -35,8 +35,7 @@ offset_top = 39.0
 offset_right = 564.0
 offset_bottom = 189.0
 theme_override_colors/font_color = Color(0.874475, 0.718377, 0.769706, 1)
-theme_override_fonts/font = ExtResource("3_y02h7")
-theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("3_g3rdt")
+theme_override_font_sizes/font_size = 30
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-horizontal_alignment = 1
 autowrap_mode = 2
