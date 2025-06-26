@@ -56,6 +56,7 @@ texture_under = ExtResource("1_4n0qk")
 texture_progress = ExtResource("2_ogkyu")
 
 [node name="clients" type="TextureProgressBar" parent="money"]
+layout_mode = 0
 offset_top = 68.0
 offset_right = 426.0
 offset_bottom = 121.0
@@ -64,6 +65,7 @@ texture_under = ExtResource("1_4n0qk")
 texture_progress = ExtResource("2_ogkyu")
 
 [node name="annoyance" type="TextureProgressBar" parent="money"]
+layout_mode = 0
 offset_top = 137.0
 offset_right = 426.0
 offset_bottom = 190.0

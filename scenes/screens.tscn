@@ -1,23 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=7 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
 [ext_resource type="PackedScene" uid="uid://dorq6s10qvfmn" path="res://scenes/interface.tscn" id="3_2ma7d"]
 [ext_resource type="PackedScene" uid="uid://beiya5qlnu5b1" path="res://scenes/item_box.tscn" id="4_jski3"]
 [ext_resource type="PackedScene" uid="uid://bbup714ugbgum" path="res://scenes/menu.tscn" id="5_1lp3j"]
-[ext_resource type="FontFile" uid="uid://byjt5ghojp7ex" path="res://troika.otf" id="6_rteni"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl0jv"]
-bg_color = Color(0.92549, 0.768627, 0.807843, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.709804, 0.541176, 0.603922, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[ext_resource type="PackedScene" uid="uid://b8ylexf5awjs" path="res://scenes/speech_bubble.tscn" id="6_4dh3q"]
 
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
@@ -38,22 +26,4 @@ visible = false
 [node name="menu" parent="." instance=ExtResource("5_1lp3j")]
 visible = false
 
-[node name="random dialogue" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="Panel" parent="random dialogue"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kl0jv")
-
-[node name="MarginContainer" type="MarginContainer" parent="random dialogue"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="Label" type="Label" parent="random dialogue/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.709804, 0.541176, 0.603922, 1)
-theme_override_fonts/font = ExtResource("6_rteni")
-theme_override_font_sizes/font_size = 27
-text = "dzzvzdvzdvzdvz"
+[node name="speechBubble" parent="." instance=ExtResource("6_4dh3q")]
