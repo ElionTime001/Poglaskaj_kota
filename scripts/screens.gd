@@ -17,6 +17,7 @@ func _ready():
 	
 	item_box.visible = false
 	menu.visible = false
+	interface.visible = false
 	item_box.item_picked.connect(_create_drag_preview)
 	#dialogue_player.play_dialogue("test_dialogue")
 	
@@ -59,7 +60,7 @@ func button_dropped(button):
 	print("Dropped button c: | " + button.name)
 	
 	if button.name == "shop":
-		dialogue_player.play_dialogue("test_dialogue")
+		dialogue_player.play_dialogue("starting_1")
 	
 func interface_change(button):
 	match button.name:

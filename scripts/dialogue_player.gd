@@ -30,9 +30,12 @@ func play_dialogue(key: String):
 	appear()
 	
 func foroward_dialogue():
-	if index+1 < array_size:
-		index += 1
-		dialogue_window.change_label(dialogue_array[index])
+	if dialogue_window.get_line_status():
+		if index+1 < array_size:
+			index += 1
+			dialogue_window.change_label(dialogue_array[index])
+		else:
+			print("Dialogue finished")
+			disappear()
 	else:
-		print("Dialogue finished")
-		disappear()
+		dialogue_window.skip_clicked()
