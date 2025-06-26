@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DataFiles="*res://scripts/singeltons/DataFiles.gd"
+Flags="*res://scripts/singeltons/Flags.gd"
 
 [display]
 

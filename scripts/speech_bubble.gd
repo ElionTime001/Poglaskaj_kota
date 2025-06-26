@@ -15,7 +15,7 @@ func _ready():
 	random_dialogue = $"random dialogue"
 	index = 0
 	
-	play_dialogue("intro")
+	#play_dialogue("intro")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -7,18 +7,25 @@ var current_button_held : TextureButton
 var menu: Control
 var interface: Control
 
+var chapter1_controller
+
 func _ready():
 	dialogue_player = $dialogue_player
 	item_box = $item_box
 	interface = $interface
 	menu = $menu
+	chapter1_controller = $Chapter1_controller
 	
 	interface.button_clicked.connect(interface_change)
 	
 	item_box.visible = false
 	menu.visible = false
-	interface.visible = false
+	interface.visible = true
 	item_box.item_picked.connect(_create_drag_preview)
+	
+	Flags.change_flag("cat_clickable", true)
+	
+	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
 	
 func _process(delta):
@@ -68,3 +75,5 @@ func interface_change(button):
 			menu.visible = true
 		"AddElementButton":
 			item_box.visible = true
+		"petButton":
+			print("catto patted")
