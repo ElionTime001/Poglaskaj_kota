@@ -26,15 +26,17 @@ func play_dialogue(key: String):
 	index = 0
 	dialogue_array = DataFiles.read_dialogue_data(key,"dialogues")
 	array_size = dialogue_array.size()
-	label.text = dialogue_array[index]
+	#label.text = dialogue_array[index]
 	print(array_size)
+	change_label_with_bounce(dialogue_array[index])
 	appear()
 	bounce_container_once(random_dialogue)
 
 func _on_proceed_pressed():
 		if index+1 < array_size:
 			index += 1
-			label.text = dialogue_array[index]
+			#label.text = dialogue_array[index]
+			change_label_with_bounce(dialogue_array[index])
 			bounce_container_once(random_dialogue)
 		else:
 			print("Dialogue finished")
@@ -56,5 +58,19 @@ func bounce_container_once(container: MarginContainer):
 
 	tween.tween_property(container, "position", up_pos, 0.1)
 	tween.tween_property(container, "position", start_pos, 0.1)
+	
+func change_label_with_bounce(new_text: String):
+	# 1. Clear text to let the container shrink
+	label.text = ""
+
+	# 2. Force an update
+	await get_tree().process_frame
+
+	# 3. Now update the text to grow naturally
+	label.text = new_text
+
+	# 4. Bounce effect (optional)
+	#bounce_container_once(random_dialogue)
+
 
 

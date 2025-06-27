@@ -1,7 +1,7 @@
 extends Node
 
-var flag_names = ["intro_dialogue_completed", "cat_clickable"]
-var states = ["intro"]
+var flag_names = ["intro_dialogue_completed", "cat_clickable", "dailies_added", "login_added"]
+var states = ["intro", "first_quest"]
 var flags = {}
 var current_state
 

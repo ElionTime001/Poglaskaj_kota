@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dqqaw5lywjiok" path="res://assets/test/buttons/battle_pass_2.PNG" id="13_b4ki5"]
 [ext_resource type="Texture2D" uid="uid://4w5ivlambkre" path="res://assets/test/buttons/online_2.PNG" id="14_as16n"]
 [ext_resource type="Texture2D" uid="uid://clja0lx03bggc" path="res://assets/test/buttons/special_offer_2.PNG" id="15_0q0v7"]
-[ext_resource type="Texture2D" uid="uid://c175iktgwbdeb" path="res://assets/test/buttons/collection.PNG" id="15_holpe"]
 [ext_resource type="Texture2D" uid="uid://bwp2ohr5rwsma" path="res://assets/test/buttons/edit_animal_skin_2.PNG" id="16_6se6l"]
+[ext_resource type="Texture2D" uid="uid://t8q2rtox4uom" path="res://assets/test/buttons/collection_2.PNG" id="17_uv5at"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="18_oe84w"]
 [ext_resource type="Texture2D" uid="uid://bct4vm5cjchie" path="res://assets/IMG_6393.PNG" id="18_tsgju"]
 [ext_resource type="FontFile" uid="uid://byjt5ghojp7ex" path="res://troika.otf" id="19_7nkio"]
@@ -78,18 +78,18 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="paidCurrency" type="TextureButton" parent="MarginContainer/Control"]
+[node name="paidCurrency" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = -117.0
 offset_top = -250.0
-offset_right = 28.0
-offset_bottom = -162.0
+offset_right = 20.0
+offset_bottom = -165.0
 texture_normal = ExtResource("2_of8g8")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="freeCurrency" type="TextureButton" parent="MarginContainer/Control"]
+[node name="freeCurrency" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = -114.0
 offset_top = -307.0
@@ -100,7 +100,7 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="energy" type="TextureButton" parent="MarginContainer/Control"]
+[node name="energy" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = -114.0
 offset_top = -180.0
@@ -111,11 +111,11 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="gatcha" type="TextureButton" parent="MarginContainer/Control"]
+[node name="gatcha" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = -143.0
 offset_top = -94.0
-offset_right = 60.0
+offset_right = 58.0
 offset_bottom = 17.0
 texture_normal = ExtResource("6_p1oon")
 ignore_texture_size = true
@@ -140,7 +140,7 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="gatchaAd" type="TextureButton" parent="MarginContainer/Control"]
+[node name="gatchaAd" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = 66.0
 offset_top = -124.0
@@ -151,7 +151,7 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="pig" type="TextureButton" parent="MarginContainer/Control"]
+[node name="pig" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = 135.0
 offset_top = -235.0
@@ -162,18 +162,18 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="achievements" type="TextureButton" parent="MarginContainer/Control"]
+[node name="achievements" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = 36.0
 offset_top = -225.0
-offset_right = 162.0
+offset_right = 124.0
 offset_bottom = -130.0
 texture_normal = ExtResource("10_wv25x")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="login" type="TextureButton" parent="MarginContainer/Control"]
+[node name="login" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = 129.0
 offset_top = -337.0
@@ -184,7 +184,7 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="dailies" type="TextureButton" parent="MarginContainer/Control"]
+[node name="dailies" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = -137.0
 offset_top = 32.0
@@ -195,18 +195,18 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="battlePass" type="TextureButton" parent="MarginContainer/Control"]
+[node name="battlePass" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
-offset_left = -252.0
-offset_top = -231.0
-offset_right = -122.0
-offset_bottom = -88.0
+offset_left = -253.0
+offset_top = -230.0
+offset_right = -123.0
+offset_bottom = -101.0
 texture_normal = ExtResource("13_b4ki5")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="onlineLeaderboard" type="TextureButton" parent="MarginContainer/Control"]
+[node name="onlineLeaderboard" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = -253.0
 offset_top = -348.0
@@ -217,7 +217,7 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="specialOffer" type="TextureButton" parent="MarginContainer/Control"]
+[node name="specialOffer" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = 19.0
 offset_top = -337.0
@@ -228,24 +228,24 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="skinCollection" type="TextureButton" parent="MarginContainer/Control"]
+[node name="skinCollection" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
 offset_left = -246.0
-offset_top = 21.0
-offset_right = -120.0
+offset_top = 22.0
+offset_right = -145.0
 offset_bottom = 164.0
 texture_normal = ExtResource("16_6se6l")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
 
-[node name="catCollection" type="TextureButton" parent="MarginContainer/Control"]
+[node name="catCollection" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
 layout_mode = 0
-offset_left = -237.0
-offset_top = -52.0
-offset_right = -160.0
+offset_left = -238.0
+offset_top = -68.0
+offset_right = -155.0
 offset_bottom = 21.0
-texture_normal = ExtResource("15_holpe")
+texture_normal = ExtResource("17_uv5at")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_qhesl")
@@ -337,22 +337,48 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [connection signal="button_down" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_pressed"]
 [connection signal="button_down" from="MarginContainer/Control/freeCurrency" to="MarginContainer/Control/freeCurrency" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/freeCurrency" to="MarginContainer/Control/freeCurrency" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/freeCurrency" to="MarginContainer/Control/freeCurrency" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/energy" to="MarginContainer/Control/energy" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/energy" to="MarginContainer/Control/energy" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/energy" to="MarginContainer/Control/energy" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/gatcha" to="MarginContainer/Control/gatcha" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/gatcha" to="MarginContainer/Control/gatcha" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/gatcha" to="MarginContainer/Control/gatcha" method="_on_pressed"]
 [connection signal="button_down" from="MarginContainer/Control/shop" to="MarginContainer/Control/shop" method="_on_button_down"]
 [connection signal="button_up" from="MarginContainer/Control/shop" to="MarginContainer/Control/shop" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/shop" to="MarginContainer/Control/shop" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/gatchaAd" to="MarginContainer/Control/gatchaAd" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/gatchaAd" to="MarginContainer/Control/gatchaAd" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/gatchaAd" to="MarginContainer/Control/gatchaAd" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/pig" to="MarginContainer/Control/pig" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/pig" to="MarginContainer/Control/pig" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/pig" to="MarginContainer/Control/pig" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/achievements" to="MarginContainer/Control/achievements" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/achievements" to="MarginContainer/Control/achievements" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/achievements" to="MarginContainer/Control/achievements" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/login" to="MarginContainer/Control/login" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/login" to="MarginContainer/Control/login" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/login" to="MarginContainer/Control/login" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/dailies" to="MarginContainer/Control/dailies" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/dailies" to="MarginContainer/Control/dailies" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/dailies" to="MarginContainer/Control/dailies" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/battlePass" to="MarginContainer/Control/battlePass" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/battlePass" to="MarginContainer/Control/battlePass" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/battlePass" to="MarginContainer/Control/battlePass" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/onlineLeaderboard" to="MarginContainer/Control/onlineLeaderboard" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/onlineLeaderboard" to="MarginContainer/Control/onlineLeaderboard" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/onlineLeaderboard" to="MarginContainer/Control/onlineLeaderboard" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/specialOffer" to="MarginContainer/Control/specialOffer" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/specialOffer" to="MarginContainer/Control/specialOffer" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/specialOffer" to="MarginContainer/Control/specialOffer" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/skinCollection" to="MarginContainer/Control/skinCollection" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/skinCollection" to="MarginContainer/Control/skinCollection" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/skinCollection" to="MarginContainer/Control/skinCollection" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer/Control/catCollection" to="MarginContainer/Control/catCollection" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Control/catCollection" to="MarginContainer/Control/catCollection" method="_on_button_up"]
 [connection signal="pressed" from="MarginContainer/Control/catCollection" to="MarginContainer/Control/catCollection" method="_on_pressed"]
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]

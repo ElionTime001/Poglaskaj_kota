@@ -20,8 +20,8 @@ func _ready():
 	for button in buttons:
 		button.visible = false
 		
-	main_menu_button.visible = false
-	add_element_button.visible = false
+	#main_menu_button.visible = false
+	#add_element_button.visible = false
 
 
 func _process(delta):

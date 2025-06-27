@@ -23,8 +23,7 @@ func _ready():
 	interface.visible = true
 	item_box.item_picked.connect(_create_drag_preview)
 	
-	Flags.change_flag("cat_clickable", true)
-	
+	await get_tree().create_timer(0.5).timeout
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
 	
@@ -76,4 +75,11 @@ func interface_change(button):
 		"AddElementButton":
 			item_box.visible = true
 		"petButton":
+			var clicability = Flags.get_flag("cat_clickable")
+			
+			if clicability:
+				chapter1_controller.story_proceed()
+			else:
+				#tu powinna być animacja.. w obu powinna być w sumie, może tutaj pass
+				pass
 			print("catto patted")
