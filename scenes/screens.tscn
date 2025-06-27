@@ -31,7 +31,9 @@ visible = false
 [node name="speechBubble" parent="." instance=ExtResource("6_4dh3q")]
 visible = false
 
-[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble")]
+[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface")]
 script = ExtResource("7_7eaxb")
 dialogue_player = NodePath("../dialogue_player")
 speech_bubble = NodePath("../speechBubble")
+item_box = NodePath("../item_box")
+interface = NodePath("../interface")

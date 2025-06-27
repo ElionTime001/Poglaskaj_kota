@@ -74,6 +74,11 @@ func interface_change(button):
 			menu.visible = true
 		"AddElementButton":
 			item_box.visible = true
+			
+			#To tylko się dzieje jak jesteśmy przy tutorialu
+			if Flags.get_flag("interface_clickable"):
+				chapter1_controller.story_proceed()
+			
 		"petButton":
 			var clicability = Flags.get_flag("cat_clickable")
 			

@@ -1,6 +1,7 @@
 extends Control
 
 signal button_clicked(button)
+signal button_dropped(button)
 
 var buttons := []
 
@@ -33,6 +34,7 @@ func make_button_visible(button):
 		if right_button.name == button_name:
 			right_button.visible = true
 			break
+	button_dropped.emit(button)
 
 
 func _on_main_menu_button_pressed():

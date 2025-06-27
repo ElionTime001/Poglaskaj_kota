@@ -6,6 +6,7 @@ var drag_texture
 
 signal item_dropped(item)
 signal item_picked(button)
+signal item_clicked(button)
 
 func _ready():
 	item_buttons = get_tree().get_nodes_in_group("itemboxbutton")
@@ -17,6 +18,7 @@ func _ready():
 
 func _on_button_pressed(button):
 	print("Clicked:", button.name)
+	item_clicked.emit(button)
 	#_remove_drag_preview()
 
 func _on_button_down(texture):
