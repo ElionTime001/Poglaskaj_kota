@@ -1,7 +1,7 @@
 extends Control
 
 var dialogue_label: Label
-var chunk_size := 3 
+var chunk_size := 1
 signal line_finished
 var is_line_finished : bool
 var current_label : String
@@ -23,7 +23,7 @@ func change_label(new_label : String):
 		var next_chunk := new_label.substr(pos, chunk_size)
 		shown += next_chunk
 		dialogue_label.text = shown
-		await get_tree().create_timer(0.05).timeout  
+		await get_tree().create_timer(0.04).timeout  
 		pos += chunk_size
 	is_line_finished = true
 	

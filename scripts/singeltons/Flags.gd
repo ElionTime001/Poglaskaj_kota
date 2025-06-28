@@ -6,7 +6,7 @@ var flag_names = [
 		#first quest flags
 	"dailies_added", "login_added"]
 
-var states = ["intro", "tutorial_interface", "first_quest"]
+var states = ["intro", "tutorial_interface", "first_quest", "second_quest"]
 
 var flags = {}
 

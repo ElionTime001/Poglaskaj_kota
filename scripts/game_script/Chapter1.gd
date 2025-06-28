@@ -9,7 +9,7 @@ var current_moment : String
 
 
 func _ready():
-	pass
+	interface.button_dropped.connect(check_if_proceed)
 	
 func story_proceed():
 	current_moment = Flags.get_state_name()
@@ -55,6 +55,15 @@ func story_proceed():
 		"first_quest":
 			#first quest logic
 			print("congrats, you're in the first quest")
+			var were_dailies_added = Flags.get_flag("dailies_added")
+			var was_login_added = Flags.get_flag("login_added")
+			print(were_dailies_added)
+			print(was_login_added)
+			
+			if was_login_added and were_dailies_added:
+				print("SUCCESS FIRST QUEST!")
+		_:
+			print("Story has nowhere to proceed")
 
 
 func value_change():
@@ -76,3 +85,28 @@ func wait_for_specific_button_dropped(target_name: String):
 			print("Dropped the right one:", target_name)
 			return button
 
+func check_if_proceed(button):
+	current_moment = Flags.get_state_name()
+	match current_moment:
+		"first_quest":
+			var were_dailies_added = Flags.get_flag("dailies_added")
+			var was_login_added = Flags.get_flag("login_added")
+			match button.name: 
+				"dailies":
+					Flags.change_flag("dailies_added",true)
+					if was_login_added:
+						dialogue_player.play_dialogue("dailies_login")
+						await dialogue_player.dialogue_finished
+						story_proceed()
+					else:
+						dialogue_player.play_dialogue("dailies_not_login")
+				"login":
+					Flags.change_flag("login_added",true)
+					if were_dailies_added:
+						dialogue_player.play_dialogue("login_dailies")
+						await dialogue_player.dialogue_finished
+						story_proceed()
+					else:
+						dialogue_player.play_dialogue("login_not_dailies")
+		_:
+			print("Nothing of note")
