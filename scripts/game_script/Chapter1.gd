@@ -4,12 +4,14 @@ extends Node
 @export var speech_bubble: Control
 @export var item_box : Control
 @export var interface: Control
+@export var answers: Control
 
 var current_moment : String
 
 
 func _ready():
 	interface.button_dropped.connect(check_if_proceed)
+	
 	
 func story_proceed():
 	current_moment = Flags.get_state_name()
@@ -62,6 +64,54 @@ func story_proceed():
 			
 			if was_login_added and were_dailies_added:
 				print("SUCCESS FIRST QUEST!")
+				await get_tree().create_timer(0.5).timeout
+				dialogue_player.play_dialogue("fomo_question_1", false)
+				await dialogue_player.dialogue_finished
+				answers.change_visible("answer_3")
+				answers.visible = true
+				var answer = await answers.answer_chosen
+				answers.visible =  false
+				#Tak
+				if answer == "1":
+					dialogue_player.play_dialogue("fomo_answer_1_yes", false)
+					await dialogue_player.dialogue_finished
+				elif answer == "2":
+					dialogue_player.play_dialogue("fomo_answer_1_no", false)
+					await dialogue_player.dialogue_finished
+				await get_tree().create_timer(0.2).timeout
+				dialogue_player.play_dialogue("fomo_question_2", false)
+				await dialogue_player.dialogue_finished
+				answers.visible = true
+				answer = await answers.answer_chosen
+				answers.visible =  false
+				if answer == "1":
+					dialogue_player.play_dialogue("fomo_answer_2_yes", false)
+					await dialogue_player.dialogue_finished
+					await get_tree().create_timer(0.2).timeout
+					dialogue_player.play_dialogue("fomo_answer_2_yes", false)
+					answers.change_visible("answer_3")
+					answers.change_label("answer_1", "Zadania Codzienne")
+					answers.change_label("answer_2", "Nagrody za Logowanie")
+					answers.change_label("answer_3", "Oba")
+					answers.visible = true
+					answer = await answers.answer_chosen
+					answers.visible =  false
+					match answer:
+						"1":
+							dialogue_player.play_dialogue("fomo_answer_2_maybe", false)
+						"2":
+							dialogue_player.play_dialogue("fomo_answer_2_maybe", false)
+						"3":
+							dialogue_player.play_dialogue("fomo_answer_3_both", false)
+				elif answer == "2":
+					dialogue_player.play_dialogue("fomo_answer_2_no", false)
+				await dialogue_player.dialogue_finished
+				await get_tree().create_timer(0.2).timeout
+				dialogue_player.play_dialogue("fomo_end")
+				
+				
+			else:
+				print("Not first quest success yet")
 		_:
 			print("Story has nowhere to proceed")
 

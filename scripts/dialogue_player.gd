@@ -8,14 +8,17 @@ var dialogue_array = []
 var index 
 var array_size 
 var current_key
+var should_it_disappear
 
 signal dialogue_finished(current_dialogue_key)
 
 func appear():
-	self.visible = true
+	if !self.visible:
+		self.visible = true
 
 func disappear():
-	self.visible = false
+	if self.visible:
+		self.visible = false
 
 func _ready():
 	further_doalogue = $FurtherDialogueButton
@@ -26,7 +29,8 @@ func _on_further_dialogue_button_pressed():
 	print("pass")
 	foroward_dialogue()
 	
-func play_dialogue(key: String):
+func play_dialogue(key: String, should_it_disappear_after := true):
+	should_it_disappear = should_it_disappear_after
 	current_key = key
 	index = 0
 	dialogue_array = DataFiles.read_dialogue_data(key,"dialogues")
@@ -45,7 +49,8 @@ func foroward_dialogue():
 		else:
 			print("Dialogue finished")
 			dialogue_finished.emit(current_key)
-			disappear()
+			if should_it_disappear:
+				disappear()
 	else:
 		dialogue_window.skip_clicked()
 		

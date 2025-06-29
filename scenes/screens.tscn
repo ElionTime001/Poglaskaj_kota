@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=9 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bbup714ugbgum" path="res://scenes/menu.tscn" id="5_1lp3j"]
 [ext_resource type="PackedScene" uid="uid://b8ylexf5awjs" path="res://scenes/speech_bubble.tscn" id="6_4dh3q"]
 [ext_resource type="Script" path="res://scripts/game_script/Chapter1.gd" id="7_7eaxb"]
+[ext_resource type="PackedScene" uid="uid://chockrbnd4ah8" path="res://scenes/answers.tscn" id="7_aaxm4"]
 
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
@@ -31,9 +32,13 @@ visible = false
 [node name="speechBubble" parent="." instance=ExtResource("6_4dh3q")]
 visible = false
 
-[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface")]
+[node name="answers" parent="." instance=ExtResource("7_aaxm4")]
+visible = false
+
+[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers")]
 script = ExtResource("7_7eaxb")
 dialogue_player = NodePath("../dialogue_player")
 speech_bubble = NodePath("../speechBubble")
 item_box = NodePath("../item_box")
 interface = NodePath("../interface")
+answers = NodePath("../answers")

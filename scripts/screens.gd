@@ -24,6 +24,10 @@ func _ready():
 	item_box.item_picked.connect(_create_drag_preview)
 	
 	await get_tree().create_timer(0.5).timeout
+	
+	#TO JEST DO USUNIĘCIA PÓŹNIEJ!!!!
+	Flags.change_state("first_quest")
+	
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
 	

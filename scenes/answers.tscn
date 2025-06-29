@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://chockrbnd4ah8"]
+
+[ext_resource type="Script" path="res://answers.gd" id="1_kd0fx"]
+
+[node name="answers" type="Control" node_paths=PackedStringArray("answer_1", "answer_2", "answer_3")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kd0fx")
+answer_1 = NodePath("answer_1")
+answer_2 = NodePath("answer_2")
+answer_3 = NodePath("answer_3")
+
+[node name="answer_1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -87.0
+offset_right = 183.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TAK"
+
+[node name="answer_2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -26.0
+offset_right = 183.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NIE"
+
+[node name="answer_3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = 35.0
+offset_right = 183.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MOŻE"
+
+[connection signal="pressed" from="answer_1" to="." method="_on_answer_1_pressed"]
+[connection signal="pressed" from="answer_2" to="." method="_on_answer_2_pressed"]
+[connection signal="pressed" from="answer_3" to="." method="_on_answer_3_pressed"]
