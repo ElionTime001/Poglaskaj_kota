@@ -6,7 +6,7 @@ var flag_names = [
 		#first quest flags
 	"dailies_added", "login_added",
 	#second chapter flags
-	"shop_to_complete", "skins_added", "energy_added", "currency_added"]
+	"shop_to_complete", "outfits_added", "energy_added", "currency_added"]
 
 var states = ["intro", "tutorial_interface", "first_quest", "second_quest", "open_world"]
 

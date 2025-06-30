@@ -8,6 +8,7 @@ var buttons := []
 var main_menu_button: TextureButton
 var add_element_button: TextureButton
 var catto_pat_button: Button
+var back_to_shop_button: TextureButton
 
 signal interface_button_clicked(button)
 
@@ -17,12 +18,15 @@ func _ready():
 	main_menu_button = $MainMenuButton
 	add_element_button = $AddElementButton
 	catto_pat_button = $petButton
+	back_to_shop_button = $BackToShopButton
 	
 	buttons = get_tree().get_nodes_in_group("mainscreenbutton")
 	
 	for button in buttons:
 		button.visible = false
 		button.clicked.connect(interface_button_pressed)
+	
+	hide_back_to_shop()
 		
 	#main_menu_button.visible = false
 	#add_element_button.visible = false
@@ -48,9 +52,19 @@ func _on_main_menu_button_pressed():
 func _on_add_element_button_pressed():
 	button_clicked.emit(add_element_button)
 
+func hide_menu():
+	main_menu_button.visible = false
+	add_element_button.visible = false
+
 func show_menu():
 	main_menu_button.visible = true
 	add_element_button.visible = true
+	
+func show_back_to_shop():
+	back_to_shop_button.visible = true
+	
+func hide_back_to_shop():
+	back_to_shop_button.visible = false
 
 func _on_pet_button_pressed():
 	button_clicked.emit(catto_pat_button)

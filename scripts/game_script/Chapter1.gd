@@ -5,6 +5,7 @@ extends Node
 @export var item_box : Control
 @export var interface: Control
 @export var answers: Control
+@export var shop: Control
 
 var current_moment : String
 
@@ -135,7 +136,19 @@ func story_proceed(button_name:=""):
 						Flags.change_flag("energy_added",true)
 					"skinCollection":
 						Flags.change_flag("outfits_added",true)
+						
+			var currency_flag = Flags.get_flag("currency_added")
+			var energy_flag = Flags.get_flag("energy_added")
+			var outfits_flag = Flags.get_flag("outfits_added")
 			
+			if currency_flag and energy_flag and outfits_flag:
+				dialogue_player.play_dialogue("shop_after_all_gathered")
+				await dialogue_player.dialogue_finished
+				await wait_for_specific_button_dropped("paidCurrencyButton", false, true)
+				dialogue_player.play_dialogue("paid_currency_chosen")
+				await shop.shop_closed
+				await get_tree().create_timer(0.2).timeout
+				dialogue_player.play_dialogue("story_almost_end")
 		_:
 			print("Story has nowhere to proceed")
 
@@ -151,13 +164,15 @@ func wait_for_specific_button_clicked(target_name: String):
 			print("Clicked the right one:", target_name)
 			return button
 			
-func wait_for_specific_button_dropped(target_name: String, clicked:=false):
+func wait_for_specific_button_dropped(target_name: String, clicked:=false, in_shop:=false):
 	while true:
 		var button
-		if !clicked:
-			button = await interface.button_dropped
-		else:
+		if clicked:
 			button = await interface.interface_button_clicked
+		elif in_shop:
+			button = await shop.button_has_been_clicked
+		else:
+			button = await interface.button_dropped
 		print(button.name)
 		if button.name == target_name:
 			print("Dropped the right one:", target_name)
@@ -192,6 +207,7 @@ func check_if_proceed(button):
 					dialogue_player.play_dialogue("paid_currency")
 				"energy":
 					dialogue_player.play_dialogue("energy")
+					await dialogue_player.dialogue_finished
 				"skinCollection":
 					dialogue_player.play_dialogue("outfits")
 		_:

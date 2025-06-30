@@ -75,15 +75,25 @@ func button_dropped(button):
 	print("Dropped button c: | " + button.name)
 	
 func shop_active_function():
+	interface.hide_menu()
+	interface.show_back_to_shop()
 	var button = await interface.interface_button_clicked
-	var panels = shop.get_panels()
-	for panel in panels:
-		if button.name == panel.name:
-			Flags.is_shop_active = false
-			shop.visible = true
-			await get_tree().create_timer(0.5).timeout
-			shop.make_panel_visible(panel.name)
-			chapter1_controller.story_proceed(panel.name)
+	if button.name == "BackToShopButton":
+		Flags.is_shop_active = false
+		shop.visible = true
+		interface.show_menu()
+		interface.hide_back_to_shop()
+	else:
+		var panels = shop.get_panels()
+		for panel in panels:
+			if button.name == panel.name:
+				Flags.is_shop_active = false
+				shop.visible = true
+				interface.show_menu()
+				interface.hide_back_to_shop()
+				await get_tree().create_timer(0.5).timeout
+				shop.make_panel_visible(panel.name)
+				chapter1_controller.story_proceed(panel.name)
 	
 func interface_change(button):
 	if !Flags.is_shop_active:
