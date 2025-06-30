@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b86arcdhu0d2b"]
+[gd_scene load_steps=4 format=3 uid="uid://b86arcdhu0d2b"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_bnh1b"]
+[ext_resource type="Script" path="res://scripts/menubuttondefault.gd" id="2_ckr77"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="2_k6v10"]
 
 [node name="shop" type="Control"]
@@ -36,6 +37,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.370732, 0.202856, 0.266526, 1)
 
+[node name="paidCurrencyButton" type="Button" parent="paidCurrency" groups=["shop_button"]]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "paid"
+script = ExtResource("2_ckr77")
+
 [node name="energy" type="ColorRect" parent="." groups=["shop_elements"]]
 layout_mode = 1
 anchors_preset = 14
@@ -48,6 +62,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.370732, 0.202856, 0.266526, 1)
 
+[node name="energyButton" type="Button" parent="energy" groups=["shop_button"]]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "energy"
+script = ExtResource("2_ckr77")
+
 [node name="skinCollection" type="ColorRect" parent="." groups=["shop_elements"]]
 layout_mode = 1
 anchors_preset = 14
@@ -59,6 +86,19 @@ offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.370732, 0.202856, 0.266526, 1)
+
+[node name="skinCollectionButton" type="Button" parent="skinCollection" groups=["shop_button"]]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "skins"
+script = ExtResource("2_ckr77")
 
 [node name="AddElementButton" type="TextureButton" parent="."]
 layout_mode = 1
@@ -74,4 +114,27 @@ texture_normal = ExtResource("2_k6v10")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="CloseShop" type="TextureButton" parent="."]
+modulate = Color(1, 0.189276, 0.947632, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -150.0
+offset_right = 33.0
+offset_bottom = -81.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.864777
+texture_normal = ExtResource("2_k6v10")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="paidCurrency/paidCurrencyButton" to="paidCurrency/paidCurrencyButton" method="_on_pressed"]
+[connection signal="pressed" from="energy/energyButton" to="energy/energyButton" method="_on_pressed"]
+[connection signal="pressed" from="skinCollection/skinCollectionButton" to="skinCollection/skinCollectionButton" method="_on_pressed"]
 [connection signal="pressed" from="AddElementButton" to="." method="_on_add_element_button_pressed"]
+[connection signal="pressed" from="CloseShop" to="." method="_on_close_shop_pressed"]

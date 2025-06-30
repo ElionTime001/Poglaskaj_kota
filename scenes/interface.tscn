@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dorq6s10qvfmn"]
+[gd_scene load_steps=21 format=3 uid="uid://dorq6s10qvfmn"]
 
 [ext_resource type="Script" path="res://scripts/interface.gd" id="1_amojj"]
 [ext_resource type="Texture2D" uid="uid://bh2t2rx2n6cju" path="res://assets/test/buttons/paid_currency.PNG" id="1_hwjkg"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cw0bkrdg58w0h" path="res://assets/test/buttons/Dailies.PNG" id="11_nl7io"]
 [ext_resource type="Texture2D" uid="uid://f0a4rjw1qeg7" path="res://assets/test/buttons/menu.png" id="17_1om6d"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="17_iil4f"]
+[ext_resource type="Texture2D" uid="uid://bhn4imroywr1u" path="res://assets/test/340.png" id="20_e4uf6"]
 
 [node name="interface" type="Control"]
 layout_mode = 3
@@ -286,6 +287,23 @@ texture_normal = ExtResource("17_iil4f")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="BackToShopButton" type="TextureButton" parent="." groups=["mainscreenbutton"]]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -162.0
+offset_right = 123.0
+offset_bottom = -31.0
+grow_vertical = 0
+texture_normal = ExtResource("20_e4uf6")
+ignore_texture_size = true
+stretch_mode = 4
+flip_h = true
+script = ExtResource("3_l4i5o")
+
 [connection signal="pressed" from="petButton" to="." method="_on_pet_button_pressed"]
 [connection signal="pressed" from="up/paidCurrency" to="up/paidCurrency" method="_on_pressed"]
 [connection signal="pressed" from="up/freeCurrency" to="up/freeCurrency" method="_on_pressed"]
@@ -304,3 +322,4 @@ stretch_mode = 0
 [connection signal="pressed" from="left/skinCollection" to="left/skinCollection" method="_on_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="AddElementButton" to="." method="_on_add_element_button_pressed"]
+[connection signal="pressed" from="BackToShopButton" to="BackToShopButton" method="_on_pressed"]

@@ -40,10 +40,11 @@ visible = false
 [node name="answers" parent="." instance=ExtResource("7_aaxm4")]
 visible = false
 
-[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers")]
+[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop")]
 script = ExtResource("7_7eaxb")
 dialogue_player = NodePath("../dialogue_player")
 speech_bubble = NodePath("../speechBubble")
 item_box = NodePath("../item_box")
 interface = NodePath("../interface")
 answers = NodePath("../answers")
+shop = NodePath("../shop")

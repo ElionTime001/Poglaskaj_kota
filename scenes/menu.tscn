@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbup714ugbgum"]
+[gd_scene load_steps=10 format=3 uid="uid://bbup714ugbgum"]
 
 [ext_resource type="Texture2D" uid="uid://dbdkbcgndgvv3" path="res://assets/test/progress_not_full.PNG" id="1_4n0qk"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_sfkbu"]
 [ext_resource type="Texture2D" uid="uid://0hcbf86choro" path="res://assets/test/buttons/progress_full.PNG" id="2_ogkyu"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="4_s5h3v"]
+[ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="4_ver4h"]
 [ext_resource type="Texture2D" uid="uid://bxbkhlq0fnu7l" path="res://assets/test/progress.PNG" id="5_gf3ra"]
+[ext_resource type="Script" path="res://scripts/Quest.gd" id="7_rg5c8"]
+[ext_resource type="Texture2D" uid="uid://c8djaec4nn8gl" path="res://assets/test/buttons/okay_not_check.png" id="8_0gjmt"]
+[ext_resource type="Texture2D" uid="uid://beovtkwcp3h5w" path="res://assets/test/buttons/okay_check.png" id="9_nu0sm"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -24,7 +28,7 @@ grow_horizontal = 2
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0.401324, 0.219872, 0.287696, 1)
+color = Color(0.615686, 0.462745, 0.478431, 1)
 
 [node name="quest" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -42,15 +46,31 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 color = Color(0.520436, 0.381821, 0.397303, 1)
 
-[node name="Label" type="Label" parent="quest"]
+[node name="MarginContainer" type="MarginContainer" parent="quest"]
 layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Label" type="Label" parent="quest/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="ColorRect" type="ColorRect" parent="quest/MarginContainer"]
+layout_mode = 2
+color = Color(0.616804, 0.463384, 0.480025, 1)
 
 [node name="money" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_left = 119.0
-offset_top = 380.0
-offset_right = 545.0
-offset_bottom = 433.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -213.0
+offset_top = 379.0
+offset_right = 213.0
+offset_bottom = 432.0
+grow_horizontal = 2
 nine_patch_stretch = true
 texture_under = ExtResource("1_4n0qk")
 texture_progress = ExtResource("2_ogkyu")
@@ -80,13 +100,51 @@ offset_top = 19.0
 offset_right = -36.0
 offset_bottom = 42.0
 
-[node name="Label" type="Label" parent="."]
+[node name="zarobki" type="Label" parent="money"]
+offset_left = -28.0
+offset_top = -16.0
+offset_right = 87.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("4_ver4h")
+theme_override_font_sizes/font_size = 22
+text = "ZAROBKI"
+
+[node name="aktywnosc" type="Label" parent="money"]
+offset_left = -23.0
+offset_top = 58.0
+offset_right = 92.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("4_ver4h")
+theme_override_font_sizes/font_size = 22
+text = "AKTYWNOŚĆ"
+
+[node name="irytacja" type="Label" parent="money"]
+offset_left = -23.0
+offset_top = 128.0
+offset_right = 130.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("4_ver4h")
+theme_override_font_sizes/font_size = 22
+text = "IRYTACJA GRACZY"
+
+[node name="Quests" type="Label" parent="."]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 40.0
-offset_right = 136.0
-offset_bottom = 63.0
+offset_left = 57.0
+offset_top = 24.0
+offset_right = 172.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("4_ver4h")
+theme_override_font_sizes/font_size = 27
 text = "QUESTS"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 754.0
+offset_bottom = 770.0
+grow_horizontal = 2
+color = Color(0.520436, 0.381821, 0.397303, 1)
 
 [node name="CloseItemBox" type="TextureButton" parent="."]
 modulate = Color(1, 0.189276, 0.947632, 1)
@@ -108,12 +166,132 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 147.0
-offset_top = 598.0
-offset_right = 446.0
-offset_bottom = 747.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_top = 604.0
+offset_right = 141.0
+offset_bottom = 753.0
+grow_horizontal = 2
 texture = ExtResource("5_gf3ra")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Quest_current" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 15.0
+offset_bottom = 65.0
+grow_horizontal = 2
+script = ExtResource("7_rg5c8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Quest_current"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 55.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 97
+theme_override_constants/margin_right = 60
+
+[node name="Label" type="Label" parent="Quest_current/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ver4h")
+theme_override_font_sizes/font_size = 24
+text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2) aaaaaaaaaaaa"
+autowrap_mode = 2
+
+[node name="check_not_ok" type="TextureRect" parent="Quest_current"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = 43.0
+offset_right = 93.0
+offset_bottom = 83.0
+grow_vertical = 2
+texture = ExtResource("8_0gjmt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="check_ok" type="TextureRect" parent="Quest_current"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = 43.0
+offset_right = 93.0
+offset_bottom = 83.0
+grow_vertical = 2
+texture = ExtResource("9_nu0sm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Quest_persistent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 119.0
+offset_bottom = 169.0
+grow_horizontal = 2
+script = ExtResource("7_rg5c8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Quest_persistent"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 55.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 97
+theme_override_constants/margin_right = 60
+
+[node name="Label" type="Label" parent="Quest_persistent/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ver4h")
+theme_override_font_sizes/font_size = 24
+text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2) aaaaaaaaaaaa"
+autowrap_mode = 2
+
+[node name="check_not_ok" type="TextureRect" parent="Quest_persistent"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = 43.0
+offset_right = 93.0
+offset_bottom = 83.0
+grow_vertical = 2
+texture = ExtResource("8_0gjmt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="check_ok" type="TextureRect" parent="Quest_persistent"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = 43.0
+offset_right = 93.0
+offset_bottom = 83.0
+grow_vertical = 2
+texture = ExtResource("9_nu0sm")
 expand_mode = 1
 stretch_mode = 4
 
