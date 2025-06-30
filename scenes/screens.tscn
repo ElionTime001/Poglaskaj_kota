@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=10 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8ylexf5awjs" path="res://scenes/speech_bubble.tscn" id="6_4dh3q"]
 [ext_resource type="Script" path="res://scripts/game_script/Chapter1.gd" id="7_7eaxb"]
 [ext_resource type="PackedScene" uid="uid://chockrbnd4ah8" path="res://scenes/answers.tscn" id="7_aaxm4"]
+[ext_resource type="PackedScene" uid="uid://b86arcdhu0d2b" path="res://scenes/shop.tscn" id="8_rl6nk"]
 
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
@@ -19,6 +20,10 @@ mouse_filter = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="shop" parent="." node_paths=PackedStringArray("interface") instance=ExtResource("8_rl6nk")]
+visible = false
+interface = NodePath("../interface")
 
 [node name="dialogue_player" parent="." instance=ExtResource("1_uhk0v")]
 visible = false

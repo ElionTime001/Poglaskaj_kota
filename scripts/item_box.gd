@@ -4,6 +4,8 @@ var item_buttons
 var drag_preview 
 var drag_texture 
 
+@export var shop_button: TextureButton
+
 signal item_dropped(item)
 signal item_picked(button)
 signal item_clicked(button)
@@ -29,6 +31,9 @@ func _on_button_dragged(button):
 	button.visible = false
 	item_picked.emit(button)
 	#_create_drag_preview(drag_texture)
+
+func make_invisible(button):
+	button.visible = false
 
 func _process(delta):
 	pass

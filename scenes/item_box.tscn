@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bct4vm5cjchie" path="res://assets/IMG_6393.PNG" id="18_tsgju"]
 [ext_resource type="FontFile" uid="uid://byjt5ghojp7ex" path="res://troika.otf" id="19_7nkio"]
 
-[node name="item_box" type="Control"]
+[node name="item_box" type="Control" node_paths=PackedStringArray("shop_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pxvih")
+shop_button = NodePath("MarginContainer/Control/shop")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

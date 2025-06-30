@@ -6,6 +6,7 @@ var drag_preview
 var current_button_held : TextureButton
 var menu: Control
 var interface: Control
+var shop: Control
 
 var chapter1_controller
 
@@ -15,8 +16,12 @@ func _ready():
 	interface = $interface
 	menu = $menu
 	chapter1_controller = $Chapter1_controller
+	shop = $shop
 	
 	interface.button_clicked.connect(interface_change)
+	interface.interface_button_clicked.connect(interface_change)
+	
+	shop.shop_active.connect(shop_active_function)
 	
 	item_box.visible = false
 	menu.visible = false
@@ -26,7 +31,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	
 	#TO JEST DO USUNIĘCIA PÓŹNIEJ!!!!
-	Flags.change_state("first_quest")
+	Flags.change_state("second_quest")
 	
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
@@ -69,26 +74,37 @@ func button_dropped(button):
 	interface.make_button_visible(button)
 	print("Dropped button c: | " + button.name)
 	
-	if button.name == "shop":
-		dialogue_player.play_dialogue("starting_1")
+func shop_active_function():
+	var button = await interface.interface_button_clicked
+	var panels = shop.get_panels()
+	for panel in panels:
+		if button.name == panel.name:
+			Flags.is_shop_active = false
+			shop.visible = true
+			await get_tree().create_timer(0.5).timeout
+			shop.make_panel_visible(panel.name)
+			chapter1_controller.story_proceed(panel.name)
 	
 func interface_change(button):
-	match button.name:
-		"MainMenuButton":
-			menu.visible = true
-		"AddElementButton":
-			item_box.visible = true
-			
-			#To tylko się dzieje jak jesteśmy przy tutorialu
-			if Flags.get_flag("interface_clickable"):
-				chapter1_controller.story_proceed()
-			
-		"petButton":
-			var clicability = Flags.get_flag("cat_clickable")
-			
-			if clicability:
-				chapter1_controller.story_proceed()
-			else:
-				#tu powinna być animacja.. w obu powinna być w sumie, może tutaj pass
-				pass
-			print("catto patted")
+	if !Flags.is_shop_active:
+		match button.name:
+			"MainMenuButton":
+				menu.visible = true
+			"AddElementButton":
+				item_box.visible = true
+				
+				#To tylko się dzieje jak jesteśmy przy tutorialu
+				if Flags.get_flag("interface_clickable"):
+					chapter1_controller.story_proceed()
+				
+			"petButton":
+				var clicability = Flags.get_flag("cat_clickable")
+				
+				if clicability:
+					chapter1_controller.story_proceed()
+				else:
+					#tu powinna być animacja.. w obu powinna być w sumie, może tutaj pass
+					pass
+				print("catto patted")
+			"shop":
+				shop.visible = true

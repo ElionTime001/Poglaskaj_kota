@@ -13,7 +13,7 @@ func _ready():
 	interface.button_dropped.connect(check_if_proceed)
 	
 	
-func story_proceed():
+func story_proceed(button_name:=""):
 	current_moment = Flags.get_state_name()
 	match current_moment:
 		"intro":
@@ -85,8 +85,6 @@ func story_proceed():
 				answer = await answers.answer_chosen
 				answers.visible =  false
 				if answer == "1":
-					dialogue_player.play_dialogue("fomo_answer_2_yes", false)
-					await dialogue_player.dialogue_finished
 					await get_tree().create_timer(0.2).timeout
 					dialogue_player.play_dialogue("fomo_answer_2_yes", false)
 					answers.change_visible("answer_3")
@@ -108,10 +106,36 @@ func story_proceed():
 				await dialogue_player.dialogue_finished
 				await get_tree().create_timer(0.2).timeout
 				dialogue_player.play_dialogue("fomo_end")
-				
+				Flags.change_state("second_quest")
+				await dialogue_player.dialogue_finished
+				story_proceed()
 				
 			else:
 				print("Not first quest success yet")
+		"second_quest":
+			if !Flags.get_flag("shop_to_complete"):
+				print("In second quest")
+				await get_tree().create_timer(0.2).timeout
+				dialogue_player.play_dialogue("story_1")
+				await dialogue_player.dialogue_finished
+				var shop = item_box.shop_button
+				await get_tree().create_timer(0.2).timeout
+				item_box.make_invisible(shop)
+				interface.make_button_visible(shop, false)
+				Flags.change_flag("shop_to_complete", true)
+				await wait_for_specific_button_dropped("shop",true)
+				await get_tree().create_timer(0.2).timeout
+				speech_bubble.play_dialogue("story_2")
+				
+			else:
+				match button_name:
+					"paidCurrency":
+						Flags.change_flag("currency_added",true)
+					"energy":
+						Flags.change_flag("energy_added",true)
+					"skinCollection":
+						Flags.change_flag("outfits_added",true)
+			
 		_:
 			print("Story has nowhere to proceed")
 
@@ -127,9 +151,13 @@ func wait_for_specific_button_clicked(target_name: String):
 			print("Clicked the right one:", target_name)
 			return button
 			
-func wait_for_specific_button_dropped(target_name: String):
+func wait_for_specific_button_dropped(target_name: String, clicked:=false):
 	while true:
-		var button = await interface.button_dropped
+		var button
+		if !clicked:
+			button = await interface.button_dropped
+		else:
+			button = await interface.interface_button_clicked
 		print(button.name)
 		if button.name == target_name:
 			print("Dropped the right one:", target_name)
@@ -158,5 +186,13 @@ func check_if_proceed(button):
 						story_proceed()
 					else:
 						dialogue_player.play_dialogue("login_not_dailies")
+		"second_quest":
+			match button.name: 
+				"paidCurrency":
+					dialogue_player.play_dialogue("paid_currency")
+				"energy":
+					dialogue_player.play_dialogue("energy")
+				"skinCollection":
+					dialogue_player.play_dialogue("outfits")
 		_:
 			print("Nothing of note")

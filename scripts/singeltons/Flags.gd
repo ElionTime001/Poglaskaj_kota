@@ -4,16 +4,22 @@ var flag_names = [
 		#Intro flags
 	"intro_dialogue_completed", "cat_clickable", "interface_clickable", "free_currency_clickable", "free_currency_clicked", "free_currency_placable", "free_currency_placed",
 		#first quest flags
-	"dailies_added", "login_added"]
+	"dailies_added", "login_added",
+	#second chapter flags
+	"shop_to_complete", "skins_added", "energy_added", "currency_added"]
 
-var states = ["intro", "tutorial_interface", "first_quest", "second_quest"]
+var states = ["intro", "tutorial_interface", "first_quest", "second_quest", "open_world"]
+
+var is_shop_active : bool
 
 var flags = {}
 
 var current_state
 
 func _ready():
-
+	
+	is_shop_active = false
+	
 	for name in flag_names:
 		flags[name] = false
 	

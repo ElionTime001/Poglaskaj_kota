@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dorq6s10qvfmn"]
+[gd_scene load_steps=20 format=3 uid="uid://dorq6s10qvfmn"]
 
 [ext_resource type="Script" path="res://scripts/interface.gd" id="1_amojj"]
 [ext_resource type="Texture2D" uid="uid://bh2t2rx2n6cju" path="res://assets/test/buttons/paid_currency.PNG" id="1_hwjkg"]
 [ext_resource type="Texture2D" uid="uid://c66s472lp85r5" path="res://assets/test/buttons/free_currency.PNG" id="2_4b5es"]
+[ext_resource type="Script" path="res://scripts/mainscreenbutton.gd" id="3_l4i5o"]
 [ext_resource type="Texture2D" uid="uid://ca3gvbqrwq6d2" path="res://assets/test/buttons/energy.PNG" id="3_srpw1"]
 [ext_resource type="Texture2D" uid="uid://fmb5cad1gj4q" path="res://assets/test/buttons/battle_pass.PNG" id="4_da6p2"]
 [ext_resource type="Texture2D" uid="uid://dao8wvdo45gbn" path="res://assets/test/buttons/gatcha.PNG" id="4_gepen"]
@@ -62,6 +63,7 @@ offset_bottom = 114.0
 texture_normal = ExtResource("1_hwjkg")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="freeCurrency" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -72,6 +74,7 @@ offset_bottom = 103.0
 texture_normal = ExtResource("2_4b5es")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="energy" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -82,6 +85,7 @@ offset_bottom = 111.0
 texture_normal = ExtResource("3_srpw1")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="down" type="Control" parent="."]
 layout_mode = 1
@@ -105,6 +109,7 @@ offset_bottom = 24.0
 texture_normal = ExtResource("4_gepen")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="shop" type="TextureButton" parent="down" groups=["mainscreenbutton"]]
 layout_mode = 1
@@ -122,6 +127,7 @@ grow_vertical = 0
 texture_normal = ExtResource("5_41n7c")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="right" type="Control" parent="."]
 layout_mode = 1
@@ -145,6 +151,7 @@ offset_bottom = 330.0
 texture_normal = ExtResource("6_o00v3")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="pig" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -155,6 +162,7 @@ offset_bottom = 183.0
 texture_normal = ExtResource("7_0xqs4")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="achievements" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -165,6 +173,7 @@ offset_bottom = 44.0
 texture_normal = ExtResource("8_axe4h")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="login" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -175,6 +184,7 @@ offset_bottom = -133.0
 texture_normal = ExtResource("10_clk1v")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="dailies" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -185,6 +195,7 @@ offset_bottom = -228.0
 texture_normal = ExtResource("11_nl7io")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="catCollection" type="TextureButton" parent="right" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -195,6 +206,7 @@ offset_bottom = -56.0
 texture_normal = ExtResource("9_ou73q")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="left" type="Control" parent="."]
 layout_mode = 1
@@ -215,6 +227,7 @@ offset_bottom = -175.0
 texture_normal = ExtResource("4_da6p2")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="onlineLeaderboard" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -225,6 +238,7 @@ offset_bottom = -71.0
 texture_normal = ExtResource("5_h6x57")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="specialOffer" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -235,6 +249,7 @@ offset_bottom = 53.0
 texture_normal = ExtResource("6_250mt")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="skinCollection" type="TextureButton" parent="left" groups=["mainscreenbutton"]]
 layout_mode = 0
@@ -245,6 +260,7 @@ offset_bottom = 244.0
 texture_normal = ExtResource("7_7kpe4")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_l4i5o")
 
 [node name="MainMenuButton" type="TextureButton" parent="."]
 layout_mode = 1
@@ -271,5 +287,20 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [connection signal="pressed" from="petButton" to="." method="_on_pet_button_pressed"]
+[connection signal="pressed" from="up/paidCurrency" to="up/paidCurrency" method="_on_pressed"]
+[connection signal="pressed" from="up/freeCurrency" to="up/freeCurrency" method="_on_pressed"]
+[connection signal="pressed" from="up/energy" to="up/energy" method="_on_pressed"]
+[connection signal="pressed" from="down/gatcha" to="down/gatcha" method="_on_pressed"]
+[connection signal="pressed" from="down/shop" to="down/shop" method="_on_pressed"]
+[connection signal="pressed" from="right/gatchaAd" to="right/gatchaAd" method="_on_pressed"]
+[connection signal="pressed" from="right/pig" to="right/pig" method="_on_pressed"]
+[connection signal="pressed" from="right/achievements" to="right/achievements" method="_on_pressed"]
+[connection signal="pressed" from="right/login" to="right/login" method="_on_pressed"]
+[connection signal="pressed" from="right/dailies" to="right/dailies" method="_on_pressed"]
+[connection signal="pressed" from="right/catCollection" to="right/catCollection" method="_on_pressed"]
+[connection signal="pressed" from="left/battlePass" to="left/battlePass" method="_on_pressed"]
+[connection signal="pressed" from="left/onlineLeaderboard" to="left/onlineLeaderboard" method="_on_pressed"]
+[connection signal="pressed" from="left/specialOffer" to="left/specialOffer" method="_on_pressed"]
+[connection signal="pressed" from="left/skinCollection" to="left/skinCollection" method="_on_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="AddElementButton" to="." method="_on_add_element_button_pressed"]
