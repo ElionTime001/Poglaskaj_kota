@@ -101,6 +101,7 @@ offset_right = -36.0
 offset_bottom = 42.0
 
 [node name="zarobki" type="Label" parent="money"]
+layout_mode = 0
 offset_left = -28.0
 offset_top = -16.0
 offset_right = 87.0
@@ -110,6 +111,7 @@ theme_override_font_sizes/font_size = 22
 text = "ZAROBKI"
 
 [node name="aktywnosc" type="Label" parent="money"]
+layout_mode = 0
 offset_left = -23.0
 offset_top = 58.0
 offset_right = 92.0
@@ -119,6 +121,7 @@ theme_override_font_sizes/font_size = 22
 text = "AKTYWNOŚĆ"
 
 [node name="irytacja" type="Label" parent="money"]
+layout_mode = 0
 offset_left = -23.0
 offset_top = 128.0
 offset_right = 130.0
@@ -135,7 +138,7 @@ offset_right = 172.0
 offset_bottom = 52.0
 theme_override_fonts/font = ExtResource("4_ver4h")
 theme_override_font_sizes/font_size = 27
-text = "QUESTS"
+text = "ZADANIA"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -180,6 +183,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Quest_current" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -224,6 +228,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="check_ok" type="TextureRect" parent="Quest_current"]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -238,6 +243,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Quest_persistent" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -282,6 +288,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="check_ok" type="TextureRect" parent="Quest_persistent"]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5

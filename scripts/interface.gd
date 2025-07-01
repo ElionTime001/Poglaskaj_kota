@@ -28,8 +28,8 @@ func _ready():
 	
 	hide_back_to_shop()
 		
-	#main_menu_button.visible = false
-	#add_element_button.visible = false
+	main_menu_button.visible = false
+	add_element_button.visible = false
 
 
 func _process(delta):

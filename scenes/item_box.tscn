@@ -59,21 +59,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.84375, 0.631385, 0.702994, 1)
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/ColorRect/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -429.5
-offset_top = -334.5
-offset_right = 426.5
-offset_bottom = -322.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.674283, 0.435775, 0.521938, 1)
-
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -336,6 +321,18 @@ rotation = 0.864777
 texture_normal = ExtResource("18_oe84w")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -428.0
+offset_top = 123.0
+offset_right = 428.0
+offset_bottom = 135.0
+grow_horizontal = 2
+color = Color(0.674283, 0.435775, 0.521938, 1)
 
 [connection signal="button_down" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_button_down"]
 [connection signal="button_up" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_button_up"]

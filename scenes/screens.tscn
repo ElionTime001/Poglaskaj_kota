@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=14 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
@@ -9,6 +9,16 @@
 [ext_resource type="Script" path="res://scripts/game_script/Chapter1.gd" id="7_7eaxb"]
 [ext_resource type="PackedScene" uid="uid://chockrbnd4ah8" path="res://scenes/answers.tscn" id="7_aaxm4"]
 [ext_resource type="PackedScene" uid="uid://b86arcdhu0d2b" path="res://scenes/shop.tscn" id="8_rl6nk"]
+[ext_resource type="PackedScene" uid="uid://cb7e3uwkpx2s8" path="res://scenes/quest_alert.tscn" id="9_3e1ba"]
+[ext_resource type="Script" path="res://scripts/for_the_player.gd" id="10_7t1yj"]
+[ext_resource type="Texture2D" uid="uid://b4jabje7xtcd2" path="res://assets/test/FNF_Arrow.png" id="11_jl1ph"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ukbv"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
@@ -40,7 +50,64 @@ visible = false
 [node name="answers" parent="." instance=ExtResource("7_aaxm4")]
 visible = false
 
-[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop")]
+[node name="quest_alert" parent="." instance=ExtResource("9_3e1ba")]
+visible = false
+
+[node name="for_the_player" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("10_7t1yj")
+
+[node name="coin" type="Panel" parent="for_the_player" groups=["highlights_and_arrows"]]
+self_modulate = Color(1, 1, 1, 0.6)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -248.0
+offset_right = 2.0
+offset_bottom = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ukbv")
+
+[node name="arrow_add" type="TextureRect" parent="for_the_player" groups=["highlights_and_arrows"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -276.0
+offset_right = 132.0
+offset_bottom = -169.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("11_jl1ph")
+expand_mode = 1
+stretch_mode = 4
+flip_v = true
+
+[node name="arrow_menu" type="TextureRect" parent="for_the_player" groups=["highlights_and_arrows"]]
+layout_mode = 1
+offset_left = 17.0
+offset_top = 131.0
+offset_right = 135.0
+offset_bottom = 238.0
+mouse_filter = 2
+texture = ExtResource("11_jl1ph")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop", "menu", "quest_alert", "for_the_player")]
 script = ExtResource("7_7eaxb")
 dialogue_player = NodePath("../dialogue_player")
 speech_bubble = NodePath("../speechBubble")
@@ -48,3 +115,6 @@ item_box = NodePath("../item_box")
 interface = NodePath("../interface")
 answers = NodePath("../answers")
 shop = NodePath("../shop")
+menu = NodePath("../menu")
+quest_alert = NodePath("../quest_alert")
+for_the_player = NodePath("../for_the_player")

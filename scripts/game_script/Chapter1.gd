@@ -6,6 +6,9 @@ extends Node
 @export var interface: Control
 @export var answers: Control
 @export var shop: Control
+@export var menu: Control
+@export var quest_alert: Control
+@export var for_the_player : Control
 
 var current_moment : String
 
@@ -19,6 +22,7 @@ func story_proceed(button_name:=""):
 	match current_moment:
 		"intro":
 			#intro logic
+			#aktywowanie po kliknięciu kłota
 			if Flags.get_flag("intro_dialogue_completed"):
 				Flags.change_flag("cat_clickable", false)
 				dialogue_player.play_dialogue("intro_after_clicked")
@@ -27,7 +31,9 @@ func story_proceed(button_name:=""):
 				speech_bubble.play_dialogue("tutorial_1")
 				Flags.change_flag("interface_clickable", true)
 				Flags.change_state("tutorial_interface")
-			else:
+				interface.show_menu()
+				for_the_player.node_appear_ingame("arrow_add", false)
+			else: #sam początek
 				speech_bubble.play_dialogue("intro")
 				Flags.change_flag("cat_clickable", true)
 				Flags.change_flag("intro_dialogue_completed", true)
@@ -38,17 +44,30 @@ func story_proceed(button_name:=""):
 			var was_currency_clicked = Flags.get_flag("free_currency_clicked")
 			
 			if !was_currency_placed and !was_currency_clicked:
+				#Przed klikknięciem free currency
+				for_the_player.node_disappear_ingame("arrow_add", false)
+				for_the_player.node_appear_ingame("coin")
 				Flags.change_flag("interface_clickable", false)
 				Flags.change_flag("free_currency_clickable", true)
 				await get_tree().create_timer(0.3).timeout
 				speech_bubble.play_dialogue("tutorial_1_5")
 				await wait_for_specific_button_clicked("freeCurrency")
 				Flags.change_flag("free_currency_clicked", true)
+				
+				# PO KLIKNIĘCIU FREE CURRENCY
 				speech_bubble.play_dialogue("tutorial_1_clicked")
+				Flags.change_flag("dragging_locked", false)
+				
+				#czekanie na drop
 				await wait_for_specific_button_dropped("freeCurrency")
+				for_the_player.node_disappear_ingame("coin")
 				await get_tree().create_timer(0.5).timeout
 				dialogue_player.play_dialogue("tutorial_1_dragged")
 				Flags.change_state("first_quest")
+				await dialogue_player.dialogue_finished
+				menu.make_quest_change("Dodaj do interfejsu elementy, które zachęcają graczy do regularnego powrotu do gry (0/2)")
+				quest_alert._set_label("Dodaj do interfejsu elementy, które zachęcają graczy do regularnego powrotu do gry (0/2)")
+				quest_alert.visible = true
 			elif was_currency_clicked:
 				pass
 				#here after clicking

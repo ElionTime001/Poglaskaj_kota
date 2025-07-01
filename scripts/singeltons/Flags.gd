@@ -2,7 +2,7 @@ extends Node
 
 var flag_names = [
 		#Intro flags
-	"intro_dialogue_completed", "cat_clickable", "interface_clickable", "free_currency_clickable", "free_currency_clicked", "free_currency_placable", "free_currency_placed",
+	"intro_dialogue_completed", "cat_clickable", "interface_clickable", "free_currency_clickable", "free_currency_clicked", "free_currency_placable", "free_currency_placed", "dragging_locked",
 		#first quest flags
 	"dailies_added", "login_added",
 	#second chapter flags
@@ -22,6 +22,8 @@ func _ready():
 	
 	for name in flag_names:
 		flags[name] = false
+		
+	flags["dragging_locked"] = true
 	
 	current_state = "intro"
 

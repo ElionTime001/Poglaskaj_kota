@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb7e3uwkpx2s8"]
+
+[ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="1_1u4eu"]
+[ext_resource type="Script" path="res://scripts/quest_alert.gd" id="1_4gub7"]
+
+[node name="quest_alert" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4gub7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -146.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.483549, 0.272595, 0.351127, 1)
+
+[node name="OkButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = 83.0
+offset_right = 51.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OK"
+
+[node name="NewQuest" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -130.0
+offset_right = 57.5
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_1u4eu")
+theme_override_font_sizes/font_size = 27
+text = "NOWE ZADANIE"
+
+[node name="QuestPlace" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -92.0
+offset_right = -23.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.737486, 0.475479, 0.568638, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="QuestPlace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="QuestPlace/MarginContainer2"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1u4eu")
+theme_override_font_sizes/font_size = 24
+text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2)"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="OkButton" to="." method="_on_ok_button_pressed"]

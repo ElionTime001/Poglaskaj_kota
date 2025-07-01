@@ -31,7 +31,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	
 	#TO JEST DO USUNIĘCIA PÓŹNIEJ!!!!
-	Flags.change_state("second_quest")
+	#Flags.change_state("second_quest")
 	
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
@@ -118,3 +118,4 @@ func interface_change(button):
 				print("catto patted")
 			"shop":
 				shop.visible = true
+				

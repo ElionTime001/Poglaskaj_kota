@@ -32,9 +32,11 @@ func make_quest_change(new_text: String, is_current:= true, is_updated:=false):
 		quest = quest_current
 	else:
 		quest = quest_persistent
+		
 	if is_updated:
 		quest.change_quest_label(new_text)
 	else:
+		quest.visible = true
 		quest._quest_restarted(new_text)
 		
 	
