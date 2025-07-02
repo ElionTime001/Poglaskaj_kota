@@ -22,5 +22,8 @@ func _quest_restarted(new_text: String):
 func change_quest_label(new_text: String):
 	label.text = new_text
 
+func get_quest_label():
+	return label.text
+
 func _process(delta):
 	pass

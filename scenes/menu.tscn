@@ -187,8 +187,8 @@ visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 15.0
-offset_bottom = 65.0
+offset_top = 28.0
+offset_bottom = 78.0
 grow_horizontal = 2
 script = ExtResource("7_rg5c8")
 
@@ -210,7 +210,7 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ver4h")
 theme_override_font_sizes/font_size = 24
-text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2) aaaaaaaaaaaa"
+text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2) aaaaaaaaaaaaa adslkdj laskdjaldkj "
 autowrap_mode = 2
 
 [node name="check_not_ok" type="TextureRect" parent="Quest_current"]
@@ -242,13 +242,32 @@ texture = ExtResource("9_nu0sm")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="Label" type="Label" parent="Quest_current"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.908847, 0.748861, 0.779838, 1)
+theme_override_fonts/font = ExtResource("4_ver4h")
+theme_override_font_sizes/font_size = 24
+text = "ZADANIE GŁÓWNE"
+
 [node name="Quest_persistent" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 119.0
-offset_bottom = 169.0
+offset_top = 151.0
+offset_bottom = 201.0
 grow_horizontal = 2
 script = ExtResource("7_rg5c8")
 
@@ -265,12 +284,17 @@ grow_vertical = 2
 theme_override_constants/margin_left = 97
 theme_override_constants/margin_right = 60
 
+[node name="ColorRect" type="ColorRect" parent="Quest_persistent/MarginContainer"]
+layout_mode = 2
+color = Color(0.539483, 0.395732, 0.410788, 1)
+
 [node name="Label" type="Label" parent="Quest_persistent/MarginContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_ver4h")
 theme_override_font_sizes/font_size = 24
-text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2) aaaaaaaaaaaa"
+text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2) aaaaaaaaaaaanoajsd alskdj laksjda"
 autowrap_mode = 2
 
 [node name="check_not_ok" type="TextureRect" parent="Quest_persistent"]
@@ -301,5 +325,24 @@ grow_vertical = 2
 texture = ExtResource("9_nu0sm")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="Label" type="Label" parent="Quest_persistent"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -2.0
+offset_right = 21.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.908847, 0.748861, 0.779838, 1)
+theme_override_fonts/font = ExtResource("4_ver4h")
+theme_override_font_sizes/font_size = 24
+text = "ZADANIE POBOCZNE"
 
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]

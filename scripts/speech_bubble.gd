@@ -7,6 +7,9 @@ var index
 var label : Label
 var animation_player: AnimationPlayer
 var random_dialogue: MarginContainer
+var current_key
+
+signal dialogue_finished(current_dialogue_key)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +27,7 @@ func _process(delta):
 
 func play_dialogue(key: String):
 	index = 0
+	current_key = key
 	dialogue_array = DataFiles.read_dialogue_data(key,"dialogues")
 	array_size = dialogue_array.size()
 	#label.text = dialogue_array[index]
@@ -40,6 +44,7 @@ func _on_proceed_pressed():
 			bounce_container_once(random_dialogue)
 		else:
 			print("Dialogue finished")
+			dialogue_finished.emit(current_key)
 			disappear()
 
 func disappear():

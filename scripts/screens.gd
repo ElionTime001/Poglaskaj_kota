@@ -31,7 +31,9 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	
 	#TO JEST DO USUNIĘCIA PÓŹNIEJ!!!!
-	#Flags.change_state("second_quest")
+	#Flags.change_state("first_quest")
+	#interface.show_menu()
+	#Flags.change_flag("dragging_locked",false)
 	
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
@@ -77,23 +79,31 @@ func button_dropped(button):
 func shop_active_function():
 	interface.hide_menu()
 	interface.show_back_to_shop()
-	var button = await interface.interface_button_clicked
-	if button.name == "BackToShopButton":
-		Flags.is_shop_active = false
-		shop.visible = true
-		interface.show_menu()
-		interface.hide_back_to_shop()
-	else:
-		var panels = shop.get_panels()
-		for panel in panels:
-			if button.name == panel.name:
-				Flags.is_shop_active = false
-				shop.visible = true
-				interface.show_menu()
-				interface.hide_back_to_shop()
-				await get_tree().create_timer(0.5).timeout
-				shop.make_panel_visible(panel.name)
-				chapter1_controller.story_proceed(panel.name)
+	
+	while true:
+		var button = await interface.interface_button_clicked
+		if button.name == "BackToShopButton":
+			Flags.is_shop_active = false
+			shop.visible = true
+			interface.show_menu()
+			interface.hide_back_to_shop()
+			break
+		else:
+			var found := false
+			var panels = shop.get_panels()
+			for panel in panels:
+				if button.name == panel.name:
+					Flags.is_shop_active = false
+					shop.visible = true
+					interface.show_menu()
+					interface.hide_back_to_shop()
+					await get_tree().create_timer(0.5).timeout
+					shop.make_panel_visible(panel.name)
+					chapter1_controller.story_proceed(panel.name)
+					found = true
+					break
+			if found:
+				break
 	
 func interface_change(button):
 	if !Flags.is_shop_active:

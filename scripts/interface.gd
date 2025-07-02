@@ -11,6 +11,8 @@ var catto_pat_button: Button
 var back_to_shop_button: TextureButton
 
 signal interface_button_clicked(button)
+signal button_returned(button)
+signal menu_clicked
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +26,7 @@ func _ready():
 	
 	for button in buttons:
 		button.visible = false
+		print(button.name)
 		button.clicked.connect(interface_button_pressed)
 	
 	hide_back_to_shop()
@@ -44,9 +47,17 @@ func make_button_visible(button, is_drag_preview_there:=true):
 	if is_drag_preview_there:
 		button_dropped.emit(button)
 
+func return_button(button):
+	var button_name = button.name
+	for right_button in buttons:
+		if right_button.name == button_name:
+			right_button.visible = false
+			break
+	button_returned.emit(button)
 
 func _on_main_menu_button_pressed():
 	button_clicked.emit(main_menu_button)
+	menu_clicked.emit()
 
 
 func _on_add_element_button_pressed():

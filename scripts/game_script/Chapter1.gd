@@ -30,6 +30,7 @@ func story_proceed(button_name:=""):
 				await get_tree().create_timer(0.5).timeout
 				speech_bubble.play_dialogue("tutorial_1")
 				Flags.change_flag("interface_clickable", true)
+				#Interface Add tutorial
 				Flags.change_state("tutorial_interface")
 				interface.show_menu()
 				for_the_player.node_appear_ingame("arrow_add", false)
@@ -57,17 +58,27 @@ func story_proceed(button_name:=""):
 				# PO KLIKNIĘCIU FREE CURRENCY
 				speech_bubble.play_dialogue("tutorial_1_clicked")
 				Flags.change_flag("dragging_locked", false)
+				for_the_player.node_disappear_ingame("coin")
+				await speech_bubble.dialogue_finished
+				await get_tree().create_timer(0.2).timeout
+				display_quest_change("Dodaj do interfejsu darmową walutę (0/1)")
 				
 				#czekanie na drop
 				await wait_for_specific_button_dropped("freeCurrency")
-				for_the_player.node_disappear_ingame("coin")
+				#for_the_player.node_disappear_ingame("coin")
 				await get_tree().create_timer(0.5).timeout
 				dialogue_player.play_dialogue("tutorial_1_dragged")
 				Flags.change_state("first_quest")
 				await dialogue_player.dialogue_finished
-				menu.make_quest_change("Dodaj do interfejsu elementy, które zachęcają graczy do regularnego powrotu do gry (0/2)")
-				quest_alert._set_label("Dodaj do interfejsu elementy, które zachęcają graczy do regularnego powrotu do gry (0/2)")
-				quest_alert.visible = true
+				await get_tree().create_timer(0.2).timeout
+				display_quest_change("Dodaj do interfejsu elementy, które zachęcają graczy do regularnego powrotu do gry (0/2)")
+				await quest_alert.quest_closed
+				speech_bubble.play_dialogue("menu_tutorial")
+				await speech_bubble.dialogue_finished
+				for_the_player.node_appear_ingame("arrow_menu", false)
+				await interface.menu_clicked
+				for_the_player.node_disappear_ingame("arrow_menu", false)
+				
 			elif was_currency_clicked:
 				pass
 				#here after clicking
@@ -83,6 +94,7 @@ func story_proceed(button_name:=""):
 			print(was_login_added)
 			
 			if was_login_added and were_dailies_added:
+				#AFTER BOTH CONDITIONS ARE GOOD! Otherwise logic in check if proceed
 				print("SUCCESS FIRST QUEST!")
 				await get_tree().create_timer(0.5).timeout
 				dialogue_player.play_dialogue("fomo_question_1", false)
@@ -107,6 +119,7 @@ func story_proceed(button_name:=""):
 				if answer == "1":
 					await get_tree().create_timer(0.2).timeout
 					dialogue_player.play_dialogue("fomo_answer_2_yes", false)
+					await dialogue_player.dialogue_finished
 					answers.change_visible("answer_3")
 					answers.change_label("answer_1", "Zadania Codzienne")
 					answers.change_label("answer_2", "Nagrody za Logowanie")
@@ -133,7 +146,9 @@ func story_proceed(button_name:=""):
 			else:
 				print("Not first quest success yet")
 		"second_quest":
+			
 			if !Flags.get_flag("shop_to_complete"):
+				#TUTAJ WSTĘP I WEJŚCIE DO SKLEPU
 				print("In second quest")
 				await get_tree().create_timer(0.2).timeout
 				dialogue_player.play_dialogue("story_1")
@@ -143,9 +158,14 @@ func story_proceed(button_name:=""):
 				item_box.make_invisible(shop)
 				interface.make_button_visible(shop, false)
 				Flags.change_flag("shop_to_complete", true)
+				#WEJŚCIE DO SKLEPU
 				await wait_for_specific_button_dropped("shop",true)
 				await get_tree().create_timer(0.2).timeout
 				speech_bubble.play_dialogue("story_2")
+				await speech_bubble.dialogue_finished
+				display_quest_change("Spróbuj wypełnić sklep przynajmniej trzema produktami (0/3)")
+				await quest_alert.quest_closed
+				display_quest_change("Spróbuj podwyższyć dochody (0/500)", false)
 				
 			else:
 				match button_name:
@@ -200,6 +220,14 @@ func wait_for_specific_button_dropped(target_name: String, clicked:=false, in_sh
 func check_if_proceed(button):
 	current_moment = Flags.get_state_name()
 	match current_moment:
+		"tutorial_interface":
+				match button.name:
+					"freeCurrency":
+						pass
+					_:
+						dialogue_player.play_dialogue("incorrect_auto_response_interface")
+						await dialogue_player.dialogue_finished
+						interface.return_button(button)
 		"first_quest":
 			var were_dailies_added = Flags.get_flag("dailies_added")
 			var was_login_added = Flags.get_flag("login_added")
@@ -209,17 +237,27 @@ func check_if_proceed(button):
 					if was_login_added:
 						dialogue_player.play_dialogue("dailies_login")
 						await dialogue_player.dialogue_finished
+						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
 						story_proceed()
 					else:
+						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
 						dialogue_player.play_dialogue("dailies_not_login")
 				"login":
 					Flags.change_flag("login_added",true)
 					if were_dailies_added:
+						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
 						dialogue_player.play_dialogue("login_dailies")
 						await dialogue_player.dialogue_finished
 						story_proceed()
 					else:
+						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
 						dialogue_player.play_dialogue("login_not_dailies")
+				_:
+					#ewentualnie można tutaj dać bardziej custom rzeczy
+					dialogue_player.play_dialogue("incorrect_auto_response_quest_1")
+					await dialogue_player.dialogue_finished
+					interface.return_button(button)
+					
 		"second_quest":
 			match button.name: 
 				"paidCurrency":
@@ -231,3 +269,39 @@ func check_if_proceed(button):
 					dialogue_player.play_dialogue("outfits")
 		_:
 			print("Nothing of note")
+
+func display_quest_change(new_line: String, is_current:= true):
+	menu.make_quest_change(new_line, is_current)
+	quest_alert._set_label(new_line)
+	quest_alert.appear()
+
+func increment_quest_progress(quest_text: String) -> String:
+	var start_idx := quest_text.find("(")
+	var end_idx := quest_text.find(")")
+
+	if start_idx == -1 or end_idx == -1:
+		push_warning("No progress found!")
+		return quest_text
+
+	# Extract "X/Y"
+	var progress := quest_text.substr(start_idx + 1, end_idx - start_idx - 1)
+	var parts := progress.split("/")
+
+	if parts.size() != 2:
+		push_warning("Progress format invalid!")
+		return quest_text
+
+	var current := int(parts[0])
+	var total := int(parts[1])
+
+	current += 1
+	if current > total:
+		current = total
+
+	var new_progress := "(" + str(current) + "/" + str(total) + ")"
+
+	# Replace old "(X/Y)" with new one
+	var updated := quest_text.substr(0, start_idx) + new_progress + quest_text.substr(end_idx + 1)
+
+	return updated
+

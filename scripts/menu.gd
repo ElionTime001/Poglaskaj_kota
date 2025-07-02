@@ -39,7 +39,13 @@ func make_quest_change(new_text: String, is_current:= true, is_updated:=false):
 		quest.visible = true
 		quest._quest_restarted(new_text)
 		
-	
+func get_quest_text(is_current:= true):
+	var quest 
+	if is_current:
+		quest = quest_current
+	else:
+		quest = quest_persistent
+	return quest.get_quest_label()
 
 func _on_close_item_box_pressed():
 	self.visible = false

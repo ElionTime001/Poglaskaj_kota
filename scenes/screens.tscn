@@ -38,8 +38,9 @@ interface = NodePath("../interface")
 [node name="dialogue_player" parent="." instance=ExtResource("1_uhk0v")]
 visible = false
 
-[node name="item_box" parent="." instance=ExtResource("4_jski3")]
+[node name="item_box" parent="." node_paths=PackedStringArray("interface") instance=ExtResource("4_jski3")]
 visible = false
+interface = NodePath("../interface")
 
 [node name="menu" parent="." instance=ExtResource("5_1lp3j")]
 visible = false

@@ -5,6 +5,7 @@ var drag_preview
 var drag_texture 
 
 @export var shop_button: TextureButton
+@export var interface: Control
 
 signal item_dropped(item)
 signal item_picked(button)
@@ -17,6 +18,7 @@ func _ready():
 			button.item_button_clicked.connect(_on_button_pressed)
 			button.item_button_being_pressed.connect(_on_button_down)
 			button.item_button_dragged.connect(_on_button_dragged)
+	interface.button_returned.connect(button_returned)
 
 func _on_button_pressed(button):
 	print("Clicked:", button.name)
@@ -39,3 +41,8 @@ func _process(delta):
 
 func _on_close_item_box_pressed():
 	self.visible = false
+
+func button_returned(returned_button):
+	for button in item_buttons:
+		if button.name == returned_button.name:
+			button.visible = true
