@@ -34,9 +34,9 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	
 	#TO JEST DO USUNIĘCIA PÓŹNIEJ!!!!
-	#Flags.change_state("first_quest")
-	#interface.show_menu()
-	#Flags.change_flag("dragging_locked",false)
+	Flags.change_state("second_quest")
+	interface.show_menu()
+	Flags.change_flag("dragging_locked",false)
 	
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
@@ -162,4 +162,6 @@ func interface_change(button):
 				shop.visible = true
 			"gatcha":
 				gatcha.visible = true
+				if !Flags.get_flag("gatcha_quest_finished"):
+					chapter1_controller.gatcha_sidequest_proceed()
 				

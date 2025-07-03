@@ -18,10 +18,10 @@ func change_label(button_name, new_label):
 			print("Answer changed")
 			break
 
-func change_visible(button_name):
+func change_visible(button_name, is_visible):
 	for answer in answers:
 		if answer.name == button_name:
-			if answer.visible:
+			if !is_visible:
 				answer.visible = false
 			else:
 				answer.visible = true

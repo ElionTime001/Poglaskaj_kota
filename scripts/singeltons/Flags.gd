@@ -6,7 +6,10 @@ var flag_names = [
 		#first quest flags
 	"dailies_added", "login_added",
 	#second chapter flags
-	"shop_to_complete", "outfits_added", "energy_added", "currency_added", "gatcha_quest_in_progress"]
+	"shop_to_complete", "outfits_added", "energy_added", "currency_added",
+	#For gatcha
+	"gatcha_quest_in_progress", "gatcha_quest_finished", "skins_gatcha", "characters_gatcha", "gatcha_first_entered",
+	"sunk_cost_fallacy_explained"]
 
 var states = ["intro", "tutorial_interface", "first_quest", "second_quest", "open_world"]
 

@@ -99,7 +99,7 @@ func story_proceed(button_name:=""):
 				await get_tree().create_timer(0.5).timeout
 				dialogue_player.play_dialogue("fomo_question_1", false)
 				await dialogue_player.dialogue_finished
-				answers.change_visible("answer_3")
+				answers.change_visible("answer_3", false)
 				answers.visible = true
 				var answer = await answers.answer_chosen
 				answers.visible =  false
@@ -120,7 +120,7 @@ func story_proceed(button_name:=""):
 					await get_tree().create_timer(0.2).timeout
 					dialogue_player.play_dialogue("fomo_answer_2_yes", false)
 					await dialogue_player.dialogue_finished
-					answers.change_visible("answer_3")
+					answers.change_visible("answer_3", true)
 					answers.change_label("answer_1", "Zadania Codzienne")
 					answers.change_label("answer_2", "Nagrody za Logowanie")
 					answers.change_label("answer_3", "Oba")
@@ -165,7 +165,6 @@ func story_proceed(button_name:=""):
 				await speech_bubble.dialogue_finished
 				display_quest_change("Spróbuj wypełnić sklep przynajmniej trzema produktami (0/3)")
 				await quest_alert.quest_closed
-				display_quest_change("Spróbuj podwyższyć dochody (0/500)", false)
 				
 			else:
 				match button_name:
@@ -270,6 +269,47 @@ func check_if_proceed(button):
 		_:
 			print("Nothing of note")
 
+func gatcha_sidequest_proceed(gatcha_node = null):
+	var skins_gatcha = Flags.get_flag("skins_gatcha")
+	var characters_gatcha = Flags.get_flag("characters_gatcha")
+	var first_entered = Flags.get_flag("gatcha_first_entered")
+	
+	var sunk_cost_fallacy_explained = Flags.get_flag("sunk_cost_fallacy_explained")
+	
+	if !skins_gatcha and !characters_gatcha:
+		if !sunk_cost_fallacy_explained:
+			await get_tree().create_timer(0.2).timeout
+			dialogue_player.play_dialogue("sunk_cost_fallacy", false)
+			await dialogue_player.dialogue_finished
+			answers.change_visible("answer_3", false)
+			answers.change_label("answer_1", "Yes")
+			answers.change_label("answer_2", "No")
+			answers.visible = true
+			var answer = await answers.answer_chosen
+			answers.visible =  false
+			match answer:
+				"1":
+					dialogue_player.play_dialogue("sunk_cost_fallacy_yes", false)
+				"2":
+					dialogue_player.play_dialogue("sunk_cost_fallacy_no", false)
+			await dialogue_player.dialogue_finished
+			dialogue_player.play_dialogue("gatcha_sunk", false)
+			await dialogue_player.dialogue_finished
+		elif !first_entered:
+			await get_tree().create_timer(0.2).timeout
+			dialogue_player.play_dialogue("gatcha_not_sunk", false)
+			await dialogue_player.dialogue_finished
+		print("GOT HERE???? IN GATCHA??")
+		await get_tree().create_timer(0.2).timeout
+		dialogue_player.play_dialogue("gatcha")
+		await dialogue_player.dialogue_finished
+		display_quest_change("Dodaj dwa elementy do gatcha (0/2)", false)
+		await quest_alert.quest_closed
+	else:
+		if gatcha_node != null:
+			pass #for the logic when choosing addons
+	
+	
 func display_quest_change(new_line: String, is_current:= true):
 	menu.make_quest_change(new_line, is_current)
 	quest_alert._set_label(new_line)

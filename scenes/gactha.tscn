@@ -146,6 +146,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="freeCurrency" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 348.0
 offset_top = 6.0
 offset_right = 459.0
