@@ -1,0 +1,193 @@
+[gd_scene load_steps=7 format=3 uid="uid://xr7y6lmaqwfl"]
+
+[ext_resource type="Texture2D" uid="uid://cuj0bai1r2fav" path="res://assets/test/buttons/gatcha_2.PNG" id="1_2jlvl"]
+[ext_resource type="Script" path="res://scripts/gactha.gd" id="1_4dtlp"]
+[ext_resource type="Texture2D" uid="uid://c66s472lp85r5" path="res://assets/test/buttons/free_currency.PNG" id="1_dwwvk"]
+[ext_resource type="Script" path="res://scripts/mainscreenbutton.gd" id="3_jbsfd"]
+[ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="5_flo1h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lf2ic"]
+
+[node name="Gactha" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4dtlp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.483549, 0.272595, 0.351127, 1)
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -377.0
+offset_right = 239.0
+offset_bottom = 377.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2jlvl")
+
+[node name="skinCollection" type="Panel" parent="." groups=["gatcha_panels"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -1.0
+offset_right = 296.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
+
+[node name="Label" type="Label" parent="skinCollection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Skin Gatcha"
+
+[node name="catCollection" type="Panel" parent="." groups=["gatcha_panels"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -169.0
+offset_right = 296.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
+
+[node name="Label" type="Label" parent="catCollection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character Gatcha"
+
+[node name="gatcha_character_rate" type="Panel" parent="." groups=["gatcha_panels"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -334.0
+offset_right = 296.0
+offset_bottom = -183.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
+
+[node name="Label" type="Label" parent="gatcha_character_rate"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character Gatcha rate"
+
+[node name="changed_currency" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 5.0
+offset_right = 46.0
+offset_bottom = 71.0
+grow_horizontal = 2
+texture = ExtResource("1_dwwvk")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="freeCurrency" type="TextureButton" parent="."]
+offset_left = 348.0
+offset_top = 6.0
+offset_right = 459.0
+offset_bottom = 79.0
+texture_normal = ExtResource("1_dwwvk")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_jbsfd")
+
+[node name="AddElementButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -167.0
+offset_right = 154.0
+offset_bottom = -47.0
+grow_vertical = 0
+texture_normal = ExtResource("5_flo1h")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CloseItemBox" type="TextureButton" parent="."]
+modulate = Color(1, 0.189276, 0.947632, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.9999
+offset_top = -152.0
+offset_right = 17.0001
+offset_bottom = -83.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.864777
+texture_normal = ExtResource("5_flo1h")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="freeCurrency" to="freeCurrency" method="_on_pressed"]
+[connection signal="pressed" from="AddElementButton" to="." method="_on_add_element_button_pressed"]
+[connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=15 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b86arcdhu0d2b" path="res://scenes/shop.tscn" id="8_rl6nk"]
 [ext_resource type="PackedScene" uid="uid://cb7e3uwkpx2s8" path="res://scenes/quest_alert.tscn" id="9_3e1ba"]
 [ext_resource type="Script" path="res://scripts/for_the_player.gd" id="10_7t1yj"]
+[ext_resource type="PackedScene" uid="uid://xr7y6lmaqwfl" path="res://scenes/gactha.tscn" id="10_fwfeg"]
 [ext_resource type="Texture2D" uid="uid://b4jabje7xtcd2" path="res://assets/test/FNF_Arrow.png" id="11_jl1ph"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ukbv"]
@@ -52,6 +53,9 @@ visible = false
 visible = false
 
 [node name="quest_alert" parent="." instance=ExtResource("9_3e1ba")]
+visible = false
+
+[node name="gatcha" parent="." instance=ExtResource("10_fwfeg")]
 visible = false
 
 [node name="for_the_player" type="Control" parent="."]

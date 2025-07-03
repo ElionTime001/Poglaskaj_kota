@@ -6,11 +6,12 @@ var flag_names = [
 		#first quest flags
 	"dailies_added", "login_added",
 	#second chapter flags
-	"shop_to_complete", "outfits_added", "energy_added", "currency_added"]
+	"shop_to_complete", "outfits_added", "energy_added", "currency_added", "gatcha_quest_in_progress"]
 
 var states = ["intro", "tutorial_interface", "first_quest", "second_quest", "open_world"]
 
 var is_shop_active : bool
+var is_gatcha_active : bool
 
 var flags = {}
 
@@ -19,6 +20,7 @@ var current_state
 func _ready():
 	
 	is_shop_active = false
+	is_gatcha_active = false
 	
 	for name in flag_names:
 		flags[name] = false

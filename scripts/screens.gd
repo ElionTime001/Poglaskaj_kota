@@ -7,6 +7,7 @@ var current_button_held : TextureButton
 var menu: Control
 var interface: Control
 var shop: Control
+var gatcha: Control
 
 var chapter1_controller
 
@@ -17,11 +18,13 @@ func _ready():
 	menu = $menu
 	chapter1_controller = $Chapter1_controller
 	shop = $shop
+	gatcha = $gatcha
 	
 	interface.button_clicked.connect(interface_change)
 	interface.interface_button_clicked.connect(interface_change)
 	
 	shop.shop_active.connect(shop_active_function)
+	gatcha.gatcha_active.connect(gatcha_active_function)
 	
 	item_box.visible = false
 	menu.visible = false
@@ -104,9 +107,38 @@ func shop_active_function():
 					break
 			if found:
 				break
+
+func gatcha_active_function():
+	interface.hide_menu()
+	interface.show_back_to_shop()
 	
+	while true:
+		var button = await interface.interface_button_clicked
+		if button.name == "BackToShopButton":
+			Flags.is_gatcha_active = false
+			gatcha.visible = true
+			interface.show_menu()
+			interface.hide_back_to_shop()
+			break
+		else:
+			var found := false
+			var panels = gatcha.get_panels()
+			for panel in panels:
+				if button.name == panel.name:
+					Flags.is_shop_active = false
+					shop.visible = true
+					interface.show_menu()
+					interface.hide_back_to_shop()
+					await get_tree().create_timer(0.5).timeout
+					gatcha.make_panel_visible(panel.name)
+					#chapter1_controller.story_proceed(panel.name)
+					found = true
+					break
+			if found:
+				break
+
 func interface_change(button):
-	if !Flags.is_shop_active:
+	if !Flags.is_shop_active and !Flags.is_gatcha_active:
 		match button.name:
 			"MainMenuButton":
 				menu.visible = true
@@ -128,4 +160,6 @@ func interface_change(button):
 				print("catto patted")
 			"shop":
 				shop.visible = true
+			"gatcha":
+				gatcha.visible = true
 				
