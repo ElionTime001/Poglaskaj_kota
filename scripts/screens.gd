@@ -143,7 +143,7 @@ func gatcha_active_function():
 				break
 
 func interface_change(button):
-	if !Flags.is_shop_active and !Flags.is_gatcha_active:
+	if !Flags.is_shop_active and !Flags.is_gatcha_active and !Flags.is_choosing_answer:
 		match button.name:
 			"MainMenuButton":
 				menu.visible = true

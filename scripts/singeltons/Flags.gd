@@ -15,6 +15,7 @@ var states = ["intro", "tutorial_interface", "first_quest", "second_quest", "ope
 
 var is_shop_active : bool
 var is_gatcha_active : bool
+var is_choosing_answer : bool
 
 var flags = {}
 
@@ -24,6 +25,7 @@ func _ready():
 	
 	is_shop_active = false
 	is_gatcha_active = false
+	is_choosing_answer = false
 	
 	for name in flag_names:
 		flags[name] = false

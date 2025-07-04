@@ -12,6 +12,8 @@ extends Node
 
 var current_moment : String
 
+var buttons_recquired_for_loss_aversion = {}
+
 
 func _ready():
 	interface.button_dropped.connect(check_if_proceed)
@@ -233,6 +235,7 @@ func check_if_proceed(button):
 			var was_login_added = Flags.get_flag("login_added")
 			match button.name: 
 				"dailies":
+					buttons_recquired_for_loss_aversion[button.name] = false
 					Flags.change_flag("dailies_added",true)
 					if was_login_added:
 						dialogue_player.play_dialogue("dailies_login")
@@ -243,6 +246,7 @@ func check_if_proceed(button):
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
 						dialogue_player.play_dialogue("dailies_not_login")
 				"login":
+					buttons_recquired_for_loss_aversion[button.name] = false
 					Flags.change_flag("login_added",true)
 					if were_dailies_added:
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
@@ -264,15 +268,18 @@ func check_if_proceed(button):
 					dialogue_player.play_dialogue("paid_currency")
 					await dialogue_player.dialogue_finished
 				"energy":
+					buttons_recquired_for_loss_aversion[button.name] = false
 					dialogue_player.play_dialogue("energy")
 					await dialogue_player.dialogue_finished
 				"skinCollection":
 					dialogue_player.play_dialogue("skin_collection")
 					await dialogue_player.dialogue_finished
 				"gatcha":
+					buttons_recquired_for_loss_aversion[button.name] = false
 					dialogue_player.play_dialogue("gatcha_added")
 					await dialogue_player.dialogue_finished
 				"gatchaAd":
+					buttons_recquired_for_loss_aversion[button.name] = false
 					var is_gatcha_finished = Flags.get_flag("gatcha_quest_finished")
 					if is_gatcha_finished:
 						dialogue_player.play_dialogue("gatcha_ad_yes")
@@ -340,6 +347,7 @@ func check_if_proceed(button):
 				"specialOffer":
 					var is_shop_finished = Flags.get_flag("shop_completed")
 					if is_shop_finished:
+						buttons_recquired_for_loss_aversion[button.name] = false
 						dialogue_player.play_dialogue("special_offer_yes")
 						#tu może jeszcze pytanie o Sunk Cost?
 						await dialogue_player.dialogue_finished
@@ -347,6 +355,7 @@ func check_if_proceed(button):
 						dialogue_player.play_dialogue("free_reward")
 						await dialogue_player.dialogue_finished
 						#should have a flag for not activating buttons??!!!
+						Flags.is_choosing_answer = true
 						while true:
 							var clicked_button = await interface.interface_button_clicked
 							print(button.name)
@@ -359,13 +368,64 @@ func check_if_proceed(button):
 								_:
 									dialogue_player.play_dialogue("free_reward_again")
 									await dialogue_player.dialogue_finished
-						
+						Flags.is_choosing_answer = false
 					else:
 						dialogue_player.play_dialogue("special_offer_no")
 						await dialogue_player.dialogue_finished
 						interface.return_button(button)
 				"battlePass":
+					buttons_recquired_for_loss_aversion[button.name] = false
 					dialogue_player.play_dialogue("battle_pass")
+					await dialogue_player.dialogue_finished
+					#LOSS AVERSION
+					#loss_aversion
+					await get_tree().create_timer(1).timeout
+					dialogue_player.play_dialogue("loss_aversion")
+					await dialogue_player.dialogue_finished
+					#które elementy mogą wywołać loss aversion?
+					#choosing
+					Flags.is_choosing_answer = true
+					while !all_clicked(buttons_recquired_for_loss_aversion):
+							var clicked_button = await interface.interface_button_clicked
+							print(button.name)
+							if buttons_recquired_for_loss_aversion[clicked_button.name]:
+								pass #play "To już było, wybierz coś innego
+							else:
+								match clicked_button.name:
+									"login":
+										speech_bubble.play_dialogue("loss_version_default")
+										await speech_bubble.dialogue_finished
+										buttons_recquired_for_loss_aversion[clicked_button.name] = true
+									 	#DODAĆ RESZTĘ dailies, login, ads x2, battle_pass, energia i opisy
+									"dailies":
+										speech_bubble.play_dialogue("loss_version_default")
+										await speech_bubble.dialogue_finished
+										buttons_recquired_for_loss_aversion[clicked_button.name] = true
+									"gatchaAd":
+										speech_bubble.play_dialogue("loss_version_default")
+										await speech_bubble.dialogue_finished
+										buttons_recquired_for_loss_aversion[clicked_button.name] = true
+									"specialOffer":
+										speech_bubble.play_dialogue("loss_version_default")
+										await speech_bubble.dialogue_finished
+										buttons_recquired_for_loss_aversion[clicked_button.name] = true
+									"gatcha":
+										speech_bubble.play_dialogue("loss_version_default")
+										await speech_bubble.dialogue_finished
+										buttons_recquired_for_loss_aversion[clicked_button.name] = true
+									"energy":
+										dialogue_player.play_dialogue("loss_aversion_energy")
+										await dialogue_player.dialogue_finished
+										buttons_recquired_for_loss_aversion[clicked_button.name] = true
+									"battlePass":
+										speech_bubble.play_dialogue("loss_aversion_battle_pass")
+										await speech_bubble.dialogue_finished
+										buttons_recquired_for_loss_aversion[clicked_button.name] = true
+									_:
+										pass # Tutaj daj coś jak "hmmm, inne"
+					Flags.is_choosing_answer = false
+					await get_tree().create_timer(0.2).timeout
+					dialogue_player.play_dialogue("loss_eversion_end")
 					await dialogue_player.dialogue_finished
 				"onlineLeaderboard":
 					dialogue_player.play_dialogue("online_leaderboard")
@@ -464,3 +524,8 @@ func increment_quest_progress(quest_text: String) -> String:
 
 	return updated
 
+func all_clicked(flags):
+	for key in flags.keys():
+		if !flags[key]:
+			return false
+	return true
