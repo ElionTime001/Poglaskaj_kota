@@ -34,9 +34,9 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	
 	#TO JEST DO USUNIĘCIA PÓŹNIEJ!!!!
-	Flags.change_state("second_quest")
-	interface.show_menu()
-	Flags.change_flag("dragging_locked",false)
+	#Flags.change_state("second_quest")
+	#interface.show_menu()
+	#Flags.change_flag("dragging_locked",false)
 	
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")

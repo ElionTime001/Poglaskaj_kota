@@ -9,6 +9,7 @@ extends Node
 @export var menu: Control
 @export var quest_alert: Control
 @export var for_the_player : Control
+@export var windows: Control
 
 var current_moment : String
 
@@ -159,9 +160,11 @@ func story_proceed(button_name:=""):
 				await get_tree().create_timer(0.2).timeout
 				item_box.make_invisible(shop)
 				interface.make_button_visible(shop, false)
+				for_the_player.node_appear_ingame("arrow_shop", false)
 				Flags.change_flag("shop_to_complete", true)
 				#WEJŚCIE DO SKLEPU
 				await wait_for_specific_button_dropped("shop",true)
+				for_the_player.node_disappear_ingame("arrow_shop", false)
 				await get_tree().create_timer(0.2).timeout
 				speech_bubble.play_dialogue("story_2")
 				await speech_bubble.dialogue_finished
@@ -190,6 +193,8 @@ func story_proceed(button_name:=""):
 				await shop.shop_closed
 				await get_tree().create_timer(0.2).timeout
 				dialogue_player.play_dialogue("story_almost_end")
+				await dialogue_player.dialogue_finished
+				display_quest_change("Spróbuj powiększyć dochody (0/500)")
 		_:
 			print("Story has nowhere to proceed")
 
@@ -237,10 +242,20 @@ func check_if_proceed(button):
 				"dailies":
 					buttons_recquired_for_loss_aversion[button.name] = false
 					Flags.change_flag("dailies_added",true)
+					
+					windows.open_window(button.name)
+					
 					if was_login_added:
 						dialogue_player.play_dialogue("dailies_login")
 						await dialogue_player.dialogue_finished
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
+						
+						#O wyrabianiu nawyków
+						await windows.window_closed
+						await get_tree().create_timer(1).timeout
+						dialogue_player.play_dialogue("wyrabianie_nawyku")
+						await dialogue_player.dialogue_finished
+						
 						story_proceed()
 					else:
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
@@ -248,10 +263,20 @@ func check_if_proceed(button):
 				"login":
 					buttons_recquired_for_loss_aversion[button.name] = false
 					Flags.change_flag("login_added",true)
+					
+					windows.open_window(button.name)
+					
 					if were_dailies_added:
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
 						dialogue_player.play_dialogue("login_dailies")
 						await dialogue_player.dialogue_finished
+						
+						#O wyrabianiu nawyku
+						await windows.window_closed
+						await get_tree().create_timer(1).timeout
+						dialogue_player.play_dialogue("wyrabianie_nawyku")
+						await dialogue_player.dialogue_finished
+						
 						story_proceed()
 					else:
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
@@ -475,6 +500,9 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 		await get_tree().create_timer(0.2).timeout
 		dialogue_player.play_dialogue("gatcha_finished", false)
 		await dialogue_player.dialogue_finished
+		answers.change_visible("answer_3", false)
+		answers.change_label("answer_1", "Tak")
+		answers.change_label("answer_2", "Nie")
 		answers.visible = true
 		var answer = await answers.answer_chosen
 		answers.visible =  false

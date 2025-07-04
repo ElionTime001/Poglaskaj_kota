@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=16 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
 [ext_resource type="PackedScene" uid="uid://dorq6s10qvfmn" path="res://scenes/interface.tscn" id="3_2ma7d"]
+[ext_resource type="PackedScene" uid="uid://cx6r0w78c4430" path="res://scenes/windows.tscn" id="3_hywgt"]
 [ext_resource type="PackedScene" uid="uid://beiya5qlnu5b1" path="res://scenes/item_box.tscn" id="4_jski3"]
 [ext_resource type="PackedScene" uid="uid://bbup714ugbgum" path="res://scenes/menu.tscn" id="5_1lp3j"]
 [ext_resource type="PackedScene" uid="uid://b8ylexf5awjs" path="res://scenes/speech_bubble.tscn" id="6_4dh3q"]
@@ -24,13 +25,17 @@ corner_radius_bottom_left = 10
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
 
-[node name="interface" parent="." instance=ExtResource("3_2ma7d")]
+[node name="interface" parent="." node_paths=PackedStringArray("windows") instance=ExtResource("3_2ma7d")]
 mouse_filter = 1
+windows = NodePath("../windows")
 
 [node name="TextureRect" type="TextureRect" parent="interface"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="windows" parent="." instance=ExtResource("3_hywgt")]
+visible = false
 
 [node name="shop" parent="." node_paths=PackedStringArray("interface") instance=ExtResource("8_rl6nk")]
 visible = false
@@ -112,7 +117,23 @@ texture = ExtResource("11_jl1ph")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop", "menu", "quest_alert", "for_the_player")]
+[node name="arrow_shop" type="TextureRect" parent="for_the_player" groups=["highlights_and_arrows"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 411.0
+offset_top = -285.0
+offset_right = 529.0
+offset_bottom = -178.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("11_jl1ph")
+expand_mode = 1
+stretch_mode = 4
+flip_v = true
+
+[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop", "menu", "quest_alert", "for_the_player", "windows")]
 script = ExtResource("7_7eaxb")
 dialogue_player = NodePath("../dialogue_player")
 speech_bubble = NodePath("../speechBubble")
@@ -123,3 +144,4 @@ shop = NodePath("../shop")
 menu = NodePath("../menu")
 quest_alert = NodePath("../quest_alert")
 for_the_player = NodePath("../for_the_player")
+windows = NodePath("../windows")

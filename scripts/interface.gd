@@ -1,5 +1,7 @@
 extends Control
 
+@export var windows: Control
+
 signal button_clicked(button)
 signal button_dropped(button)
 
@@ -83,3 +85,5 @@ func _on_pet_button_pressed():
 func interface_button_pressed(button):
 	print(button.name + " pressed")
 	interface_button_clicked.emit(button)
+	if !Flags.is_shop_active and !Flags.is_gatcha_active and !Flags.is_choosing_answer:
+		windows.open_window(button.name)
