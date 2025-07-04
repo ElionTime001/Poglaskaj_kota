@@ -6,7 +6,7 @@ var flag_names = [
 		#first quest flags
 	"dailies_added", "login_added",
 	#second chapter flags
-	"shop_to_complete", "outfits_added", "energy_added", "currency_added",
+	"shop_to_complete", "outfits_added", "energy_added", "currency_added", "shop_completed",
 	#For gatcha
 	"gatcha_quest_in_progress", "gatcha_quest_finished", "skins_gatcha", "characters_gatcha", "gatcha_first_entered",
 	"sunk_cost_fallacy_explained"]
@@ -41,6 +41,7 @@ func get_state_name():
 
 func change_flag(key: String, value: bool):
 	flags[key] = value
+	print("changed " + key + " to " + str(value))
 
 func change_state(state_name: String):
 	current_state = state_name

@@ -125,13 +125,18 @@ func gatcha_active_function():
 			var panels = gatcha.get_panels()
 			for panel in panels:
 				if button.name == panel.name:
-					Flags.is_shop_active = false
-					shop.visible = true
+					Flags.is_gatcha_active = false
+					gatcha.visible = true
 					interface.show_menu()
 					interface.hide_back_to_shop()
 					await get_tree().create_timer(0.5).timeout
 					gatcha.make_panel_visible(panel.name)
-					#chapter1_controller.story_proceed(panel.name)
+					match panel.name:
+						"skinCollection":
+							Flags.change_flag("skins_gatcha", true)
+						"catCollection":
+							Flags.change_flag("characters_gatcha",true)
+					chapter1_controller.gatcha_sidequest_proceed(panel.name)
 					found = true
 					break
 			if found:

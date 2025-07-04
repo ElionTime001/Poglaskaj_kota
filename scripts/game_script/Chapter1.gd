@@ -180,6 +180,7 @@ func story_proceed(button_name:=""):
 			var outfits_flag = Flags.get_flag("outfits_added")
 			
 			if currency_flag and energy_flag and outfits_flag:
+				Flags.change_flag("shop_completed",true)
 				dialogue_player.play_dialogue("shop_after_all_gathered")
 				await dialogue_player.dialogue_finished
 				await wait_for_specific_button_dropped("paidCurrencyButton", false, true)
@@ -261,11 +262,114 @@ func check_if_proceed(button):
 			match button.name: 
 				"paidCurrency":
 					dialogue_player.play_dialogue("paid_currency")
+					await dialogue_player.dialogue_finished
 				"energy":
 					dialogue_player.play_dialogue("energy")
 					await dialogue_player.dialogue_finished
 				"skinCollection":
-					dialogue_player.play_dialogue("outfits")
+					dialogue_player.play_dialogue("skin_collection")
+					await dialogue_player.dialogue_finished
+				"gatcha":
+					dialogue_player.play_dialogue("gatcha_added")
+					await dialogue_player.dialogue_finished
+				"gatchaAd":
+					var is_gatcha_finished = Flags.get_flag("gatcha_quest_finished")
+					if is_gatcha_finished:
+						dialogue_player.play_dialogue("gatcha_ad_yes")
+					else:
+						dialogue_player.play_dialogue("gatcha_ad_no")
+						await dialogue_player.dialogue_finished
+						interface.return_button(button)
+				"pig":
+					var sunk_cost = Flags.get_flag("sunk_cost_fallacy_explained")
+					
+					if !sunk_cost:
+						await get_tree().create_timer(0.2).timeout
+						dialogue_player.play_dialogue("sunk_cost_fallacy", false)
+						await dialogue_player.dialogue_finished
+						answers.change_visible("answer_3", false)
+						answers.change_label("answer_1", "Tak")
+						answers.change_label("answer_2", "Nie")
+						answers.visible = true
+						var answer = await answers.answer_chosen
+						answers.visible =  false
+						match answer:
+							"1":
+								dialogue_player.play_dialogue("sunk_cost_fallacy_yes", false)
+							"2":
+								dialogue_player.play_dialogue("sunk_cost_fallacy_no", false)
+						await dialogue_player.dialogue_finished
+						Flags.change_flag("sunk_cost_fallacy_explained", true)
+						
+					await get_tree().create_timer(0.2).timeout
+					dialogue_player.play_dialogue("money_pig", false)
+					await dialogue_player.dialogue_finished
+					answers.change_visible("answer_3", true)
+					answers.change_label("answer_1", "FOMO")
+					answers.change_label("answer_2", "Sunk Cost Fallacy")
+					answers.change_label("answer_3", "Wyrabianie nawyków")
+					answers.visible = true
+					var answer = await answers.answer_chosen
+					answers.visible =  false
+					match answer:
+						"1":
+							dialogue_player.play_dialogue("pig_fomo", false)
+						_:
+							dialogue_player.play_dialogue("pig_wrong", false)
+					await dialogue_player.dialogue_finished
+					dialogue_player.play_dialogue("money_pig_after_fomo", false)
+					await dialogue_player.dialogue_finished
+					answers.visible = true
+					answer = await answers.answer_chosen
+					answers.visible =  false
+					match answer:
+						"2":
+							dialogue_player.play_dialogue("pig_2_sunk_cost", false)
+						_:
+							dialogue_player.play_dialogue("pig_2_wrong", false)
+					await dialogue_player.dialogue_finished
+					await get_tree().create_timer(0.2).timeout
+					dialogue_player.play_dialogue("pig_sunk_cost_after")
+					await dialogue_player.dialogue_finished
+				"achievements":
+					dialogue_player.play_dialogue("achievements")
+					await dialogue_player.dialogue_finished
+				"catCollection":
+					dialogue_player.play_dialogue("cat_collection")
+					await dialogue_player.dialogue_finished
+				"specialOffer":
+					var is_shop_finished = Flags.get_flag("shop_completed")
+					if is_shop_finished:
+						dialogue_player.play_dialogue("special_offer_yes")
+						#tu może jeszcze pytanie o Sunk Cost?
+						await dialogue_player.dialogue_finished
+						await get_tree().create_timer(1).timeout
+						dialogue_player.play_dialogue("free_reward")
+						await dialogue_player.dialogue_finished
+						#should have a flag for not activating buttons??!!!
+						while true:
+							var clicked_button = await interface.interface_button_clicked
+							print(button.name)
+							match clicked_button.name:
+								"shop":
+									dialogue_player.play_dialogue("free_reward_correct")
+									await dialogue_player.dialogue_finished
+									#SHOULD OPEN SHOP HERE!!!
+									break
+								_:
+									dialogue_player.play_dialogue("free_reward_again")
+									await dialogue_player.dialogue_finished
+						
+					else:
+						dialogue_player.play_dialogue("special_offer_no")
+						await dialogue_player.dialogue_finished
+						interface.return_button(button)
+				"battlePass":
+					dialogue_player.play_dialogue("battle_pass")
+					await dialogue_player.dialogue_finished
+				"onlineLeaderboard":
+					dialogue_player.play_dialogue("online_leaderboard")
+					await dialogue_player.dialogue_finished
 		_:
 			print("Nothing of note")
 
@@ -276,39 +380,54 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 	
 	var sunk_cost_fallacy_explained = Flags.get_flag("sunk_cost_fallacy_explained")
 	
-	if !skins_gatcha and !characters_gatcha:
-		if !sunk_cost_fallacy_explained:
+	if !skins_gatcha or !characters_gatcha:
+		if !first_entered:
+			if !sunk_cost_fallacy_explained:
+				await get_tree().create_timer(0.2).timeout
+				dialogue_player.play_dialogue("sunk_cost_fallacy", false)
+				await dialogue_player.dialogue_finished
+				answers.change_visible("answer_3", false)
+				answers.change_label("answer_1", "Tak")
+				answers.change_label("answer_2", "Nie")
+				answers.visible = true
+				var answer = await answers.answer_chosen
+				answers.visible =  false
+				match answer:
+					"1":
+						dialogue_player.play_dialogue("sunk_cost_fallacy_yes", false)
+					"2":
+						dialogue_player.play_dialogue("sunk_cost_fallacy_no", false)
+				await dialogue_player.dialogue_finished
+				Flags.change_flag("sunk_cost_fallacy_explained", true)
+				dialogue_player.play_dialogue("gatcha_sunk", false)
+				await dialogue_player.dialogue_finished
+			else:
+				await get_tree().create_timer(0.2).timeout
+				dialogue_player.play_dialogue("gatcha_not_sunk", false)
+				await dialogue_player.dialogue_finished
 			await get_tree().create_timer(0.2).timeout
-			dialogue_player.play_dialogue("sunk_cost_fallacy", false)
+			dialogue_player.play_dialogue("gatcha")
 			await dialogue_player.dialogue_finished
-			answers.change_visible("answer_3", false)
-			answers.change_label("answer_1", "Yes")
-			answers.change_label("answer_2", "No")
-			answers.visible = true
-			var answer = await answers.answer_chosen
-			answers.visible =  false
-			match answer:
-				"1":
-					dialogue_player.play_dialogue("sunk_cost_fallacy_yes", false)
-				"2":
-					dialogue_player.play_dialogue("sunk_cost_fallacy_no", false)
-			await dialogue_player.dialogue_finished
-			dialogue_player.play_dialogue("gatcha_sunk", false)
-			await dialogue_player.dialogue_finished
-		elif !first_entered:
-			await get_tree().create_timer(0.2).timeout
-			dialogue_player.play_dialogue("gatcha_not_sunk", false)
-			await dialogue_player.dialogue_finished
-		print("GOT HERE???? IN GATCHA??")
-		await get_tree().create_timer(0.2).timeout
-		dialogue_player.play_dialogue("gatcha")
-		await dialogue_player.dialogue_finished
-		display_quest_change("Dodaj dwa elementy do gatcha (0/2)", false)
-		await quest_alert.quest_closed
+			display_quest_change("Dodaj dwa elementy do gatcha (0/2)", false)
+			Flags.change_flag("gatcha_first_entered", true)
+			await quest_alert.quest_closed
 	else:
-		if gatcha_node != null:
-			pass #for the logic when choosing addons
-	
+		await get_tree().create_timer(0.2).timeout
+		dialogue_player.play_dialogue("gatcha_finished", false)
+		await dialogue_player.dialogue_finished
+		answers.visible = true
+		var answer = await answers.answer_chosen
+		answers.visible =  false
+		match answer:
+			"1":
+				dialogue_player.play_dialogue("gatcha_finished_yes", false)
+			"2":
+				dialogue_player.play_dialogue("gatcha_finished_no", false)
+		await dialogue_player.dialogue_finished
+		await get_tree().create_timer(0.2).timeout
+		dialogue_player.play_dialogue("gatcha_finished_explanation", true)
+		Flags.change_flag("gatcha_quest_finished", true)
+		await dialogue_player.dialogue_finished
 	
 func display_quest_change(new_line: String, is_current:= true):
 	menu.make_quest_change(new_line, is_current)
