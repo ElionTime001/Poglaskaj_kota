@@ -1,18 +1,54 @@
-[gd_scene load_steps=12 format=3 uid="uid://cx6r0w78c4430"]
+[gd_scene load_steps=34 format=3 uid="uid://cx6r0w78c4430"]
 
 [ext_resource type="Script" path="res://scripts/windows.gd" id="1_b31qa"]
 [ext_resource type="Script" path="res://scripts/window_scirpt.gd" id="1_cclvv"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="2_6qo1v"]
-[ext_resource type="Texture2D" uid="uid://dbom0drbljrw4" path="res://assets/test/ugnnxz9q6bk11.jpg" id="2_m3wkq"]
-[ext_resource type="Texture2D" uid="uid://crk7e5eqfbmri" path="res://assets/test/DailyRewards.png" id="5_rpjjd"]
-[ext_resource type="Texture2D" uid="uid://bw2q5sd4khomq" path="res://assets/test/piggy_bank.png" id="6_n0y65"]
-[ext_resource type="Texture2D" uid="uid://d3rhbnx0j57uy" path="res://assets/test/skins.png" id="7_0lwex"]
-[ext_resource type="Texture2D" uid="uid://dqnfl1gdmmwhy" path="res://assets/test/achievements.png" id="8_yitvh"]
-[ext_resource type="Texture2D" uid="uid://b1hgvxj14gkqe" path="res://assets/test/battle_pass.png" id="9_ggxvn"]
-[ext_resource type="Texture2D" uid="uid://dfdapcwsq5gmr" path="res://assets/test/leaderboard.png" id="10_gargt"]
-[ext_resource type="Texture2D" uid="uid://hgs74jy121p1" path="res://assets/test/special_offer.png" id="11_o6chm"]
+[ext_resource type="Texture2D" uid="uid://cwpu54ir8cl0y" path="res://assets/test/interface/dailies.PNG" id="2_gvr27"]
+[ext_resource type="Script" path="res://scripts/dailies.gd" id="3_2x4qt"]
+[ext_resource type="Texture2D" uid="uid://cb4p5a70vlo3p" path="res://assets/test/interface/Login.PNG" id="5_i0sxq"]
+[ext_resource type="Texture2D" uid="uid://cts7td7jrlj1l" path="res://assets/test/interface/pig.PNG" id="6_ybrrx"]
+[ext_resource type="Texture2D" uid="uid://dulyv1mnyand" path="res://assets/test/interface/checkmark.PNG" id="7_34t81"]
+[ext_resource type="Texture2D" uid="uid://b1fmsys3nms00" path="res://assets/test/interface/catcollection.PNG" id="7_ceyil"]
+[ext_resource type="Texture2D" uid="uid://61f55rbyv5r" path="res://assets/test/interface/achievements.PNG" id="8_6f3q0"]
+[ext_resource type="Texture2D" uid="uid://dk70803cxrkqr" path="res://assets/test/interface/cat_collection.PNG" id="9_ujhqs"]
+[ext_resource type="Texture2D" uid="uid://dppunnevo8lot" path="res://assets/test/interface/battlepass.PNG" id="10_mvh6n"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="10_qtse6"]
+[ext_resource type="Texture2D" uid="uid://btvbkjq1fueel" path="res://assets/test/interface/leaderboard.PNG" id="11_0u3xy"]
+[ext_resource type="Texture2D" uid="uid://cx5pql8pf84s0" path="res://assets/test/interface/personal_offer.PNG" id="12_mrfte"]
+[ext_resource type="Script" path="res://scripts/price_animation.gd" id="13_164of"]
+[ext_resource type="Texture2D" uid="uid://c0j4p8tdr2dhb" path="res://assets/test/cats/ogcat_alien.PNG" id="13_cs4y5"]
+[ext_resource type="Texture2D" uid="uid://cnkamyyg6bknl" path="res://assets/test/cats/alien.PNG" id="14_ge4dd"]
+[ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="14_iwr56"]
+[ext_resource type="Texture2D" uid="uid://cxkkuty7juim7" path="res://assets/test/star_test.png" id="15_amm2e"]
+[ext_resource type="Texture2D" uid="uid://cqphhkxwl4xk6" path="res://assets/test/cats/ogcat_garfiels.PNG" id="15_l1j4h"]
+[ext_resource type="Texture2D" uid="uid://b174kl7rhq6fc" path="res://assets/test/cats/darkcat.PNG" id="16_8yt47"]
+[ext_resource type="Texture2D" uid="uid://dos8eh6byy2ox" path="res://assets/test/cats/ogcat_whiteish.PNG" id="16_75ynv"]
+[ext_resource type="FontFile" uid="uid://byjt5ghojp7ex" path="res://troika.otf" id="16_rktor"]
+[ext_resource type="Texture2D" uid="uid://ddjdxuidfguen" path="res://assets/test/cats/fluffcat.PNG" id="17_k7snv"]
+[ext_resource type="Texture2D" uid="uid://ca7pyo3wet3a5" path="res://assets/test/interface/claim_window.PNG" id="26_g5da4"]
+[ext_resource type="Script" path="res://scripts/claim.gd" id="27_ajqew"]
+[ext_resource type="Texture2D" uid="uid://dcaeu8j17f46b" path="res://assets/test/interface/money_claim.PNG" id="28_xolom"]
+[ext_resource type="Texture2D" uid="uid://n4jmc21r6qal" path="res://assets/test/interface/paid_claim.PNG" id="29_x03wp"]
+[ext_resource type="Texture2D" uid="uid://dbwamam70motk" path="res://assets/test/interface/energy_claim.PNG" id="30_dmfhh"]
 
-[node name="windows" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33jt4"]
+bg_color = Color(0.709804, 0.541176, 0.603922, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j04fq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7yuv"]
+bg_color = Color(0.98036, 0.899898, 0.8973, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="windows" type="Control" node_paths=PackedStringArray("dailies", "button_claim", "claim_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,25 +56,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b31qa")
+dailies = NodePath("dailies")
+button_claim = NodePath("claim_button")
+claim_window = NodePath("claim")
 
-[node name="dailies" type="TextureRect" parent="." groups=["windows"]]
-visible = false
+[node name="dailies" type="TextureRect" parent="." node_paths=PackedStringArray("quest_finished_1", "quest_finished_2", "quest_finished_3") groups=["windows"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -276.0
-offset_top = -191.0
-offset_right = 276.0
-offset_bottom = 191.0
+offset_left = -284.0
+offset_top = -283.0
+offset_right = 284.0
+offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_m3wkq")
+texture = ExtResource("2_gvr27")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("1_cclvv")
+script = ExtResource("3_2x4qt")
+quest_finished_1 = NodePath("checkmark_1")
+quest_finished_2 = NodePath("checkmark_2")
+quest_finished_3 = NodePath("checkmark_3")
 
 [node name="CloseWindow" type="TextureButton" parent="dailies"]
 modulate = Color(1, 0.189276, 0.947632, 1)
@@ -59,6 +100,66 @@ texture_normal = ExtResource("2_6qo1v")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="checkmark_1" type="TextureRect" parent="dailies"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 15.0
+offset_top = 124.0
+offset_right = 153.0
+offset_bottom = 260.0
+texture = ExtResource("7_34t81")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="checkmark_2" type="TextureRect" parent="dailies"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 15.0
+offset_top = 234.0
+offset_right = 153.0
+offset_bottom = 370.0
+texture = ExtResource("7_34t81")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="checkmark_3" type="TextureRect" parent="dailies"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 19.0
+offset_top = 345.0
+offset_right = 157.0
+offset_bottom = 481.0
+texture = ExtResource("7_34t81")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="dailies"]
+offset_left = 155.0
+offset_top = 196.0
+offset_right = 421.0
+offset_bottom = 257.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 30
+text = "pogłaskaj kota raz"
+
+[node name="Label2" type="Label" parent="dailies"]
+offset_left = 151.0
+offset_top = 303.0
+offset_right = 457.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 30
+text = "Wykorzystaj 5 energii"
+
+[node name="Label3" type="Label" parent="dailies"]
+offset_left = 153.0
+offset_top = 406.0
+offset_right = 459.0
+offset_bottom = 467.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 30
+text = "Pogłaskaj kota 10 razy"
+
 [node name="login" type="TextureRect" parent="." groups=["windows"]]
 visible = false
 layout_mode = 1
@@ -67,13 +168,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -276.0
-offset_top = -151.0
-offset_right = 276.0
-offset_bottom = 231.0
+offset_left = -292.0
+offset_top = -103.0
+offset_right = 292.0
+offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_rpjjd")
+texture = ExtResource("5_i0sxq")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_cclvv")
@@ -86,16 +187,59 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 254.0
-offset_top = -221.0
-offset_right = 325.0
-offset_bottom = -152.0
+offset_left = 240.0
+offset_top = -167.0
+offset_right = 311.0
+offset_bottom = -98.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.864777
 texture_normal = ExtResource("2_6qo1v")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="price" type="Panel" parent="login"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = 91.0
+offset_right = 145.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_33jt4")
+
+[node name="Label" type="Label" parent="login/price"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -20.5
+offset_right = 91.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.964706, 0.819608, 0.815686, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 52
+text = "ZBIERZ"
+
+[node name="TextureRect" type="TextureRect" parent="login"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 81.0
+offset_right = 121.0
+offset_bottom = 201.0
+texture = ExtResource("7_34t81")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="pig" type="TextureRect" parent="." groups=["windows"]]
 visible = false
@@ -105,13 +249,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -174.0
-offset_top = -273.0
-offset_right = 174.0
-offset_bottom = 273.0
+offset_left = -280.0
+offset_top = -282.0
+offset_right = 280.0
+offset_bottom = 282.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_n0y65")
+texture = ExtResource("6_ybrrx")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_cclvv")
@@ -124,16 +268,145 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 160.0
-offset_top = -279.0
-offset_right = 231.0
-offset_bottom = -210.0
+offset_left = 216.0
+offset_top = -228.0
+offset_right = 287.0
+offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.864777
 texture_normal = ExtResource("2_6qo1v")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="pig"]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 445.0
+offset_right = 230.0
+offset_bottom = 485.0
+color = Color(0.964706, 0.819608, 0.815686, 1)
+
+[node name="price" type="Panel" parent="pig"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = 189.0
+offset_right = 139.5
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_33jt4")
+
+[node name="Label2" type="Label" parent="pig/price"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -46.5
+offset_right = 113.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.596078, 0.431373, 0.494118, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 31
+text = "75 PLN"
+
+[node name="ColorRect" type="ColorRect" parent="pig/price/Label2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0787206
+color = Color(0.492975, 0.343288, 0.400611, 1)
+
+[node name="Label" type="Label" parent="pig/price"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -20.5
+offset_right = 91.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.964706, 0.819608, 0.815686, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 52
+text = "15 PLN"
+
+[node name="Panel" type="Panel" parent="pig/price"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j04fq")
+script = ExtResource("13_164of")
+
+[node name="TextureRect" type="TextureRect" parent="pig/price/Panel"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 51.0
+texture = ExtResource("15_amm2e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="pig/price/Panel"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -17.0
+offset_right = 46.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0.984705, 0.922236, 0.920142, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 26
+text = "250%
+"
+
+[node name="Label2" type="Label" parent="pig/price/Panel"]
+offset_left = -28.0
+offset_top = 7.0
+offset_right = 44.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.984314, 0.921569, 0.921569, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 12
+text = "WARTOŚĆ"
+
+[node name="timer" type="Label" parent="pig/price"]
+layout_mode = 0
+offset_left = 69.5
+offset_top = 70.0
+offset_right = 109.5
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.960203, 0, 0.442815, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 25
+text = "aaaaaaa"
+script = ExtResource("10_qtse6")
+
+[node name="Timer" type="Timer" parent="pig/price/timer"]
+wait_time = 3600.0
+one_shot = true
 
 [node name="skinCollection" type="TextureRect" parent="." groups=["windows"]]
 visible = false
@@ -143,13 +416,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -255.0
-offset_top = -151.0
-offset_right = 276.0
-offset_bottom = 231.0
+offset_left = -289.0
+offset_top = -294.0
+offset_right = 290.0
+offset_bottom = 376.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_0lwex")
+texture = ExtResource("7_ceyil")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_cclvv")
@@ -162,16 +435,127 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 254.0
-offset_top = -221.0
-offset_right = 325.0
-offset_bottom = -152.0
+offset_left = 262.5
+offset_top = -315.0
+offset_right = 333.5
+offset_bottom = -246.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.864777
 texture_normal = ExtResource("2_6qo1v")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Cat_1" type="Panel" parent="skinCollection"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -184.0
+offset_right = 166.5
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7yuv")
+
+[node name="TextureRect" type="TextureRect" parent="skinCollection/Cat_1"]
+layout_mode = 2
+offset_left = -12.0
+offset_top = -79.0
+offset_right = 335.0
+offset_bottom = 237.0
+texture = ExtResource("13_cs4y5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="skinCollection/Cat_1"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 95.0
+offset_right = 327.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "kosmo kot"
+
+[node name="Cat_2" type="Panel" parent="skinCollection"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -50.0
+offset_right = 166.5
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7yuv")
+
+[node name="TextureRect" type="TextureRect" parent="skinCollection/Cat_2"]
+layout_mode = 2
+offset_left = -7.0
+offset_top = -78.0
+offset_right = 340.0
+offset_bottom = 238.0
+texture = ExtResource("15_l1j4h")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="skinCollection/Cat_2"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 94.0
+offset_right = 330.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "Pasiasty kot"
+
+[node name="Cat_3" type="Panel" parent="skinCollection"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = 81.0
+offset_right = 166.5
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7yuv")
+
+[node name="TextureRect" type="TextureRect" parent="skinCollection/Cat_3"]
+layout_mode = 2
+offset_left = -7.0
+offset_top = -84.0
+offset_right = 340.0
+offset_bottom = 232.0
+texture = ExtResource("16_75ynv")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="skinCollection/Cat_3"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 94.0
+offset_right = 330.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "mroźny kot"
 
 [node name="achievements" type="TextureRect" parent="." groups=["windows"]]
 visible = false
@@ -181,13 +565,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -198.0
-offset_top = -325.0
-offset_right = 198.0
-offset_bottom = 325.0
+offset_left = -259.0
+offset_top = -380.0
+offset_right = 259.0
+offset_bottom = 380.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_yitvh")
+texture = ExtResource("8_6f3q0")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_cclvv")
@@ -200,16 +584,47 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 179.0
-offset_top = -348.0
-offset_right = 250.0
-offset_bottom = -279.0
+offset_left = 221.0
+offset_top = -356.0
+offset_right = 292.0
+offset_bottom = -287.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.864777
 texture_normal = ExtResource("2_6qo1v")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="achievements"]
+offset_left = 231.0
+offset_top = 191.0
+offset_right = 432.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "zdobąć dwa koty."
+
+[node name="Label2" type="Label" parent="achievements"]
+offset_left = 226.0
+offset_top = 359.0
+offset_right = 436.0
+offset_bottom = 420.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "pogłaskaj kota 10 
+razy."
+
+[node name="Label3" type="Label" parent="achievements"]
+offset_left = 234.0
+offset_top = 550.0
+offset_right = 435.0
+offset_bottom = 611.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "zdobąć jden strój."
 
 [node name="catCollection" type="TextureRect" parent="." groups=["windows"]]
 visible = false
@@ -219,16 +634,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -259.0
-offset_top = -151.0
-offset_right = 276.0
-offset_bottom = 231.0
+offset_left = -286.0
+offset_top = -294.0
+offset_right = 291.0
+offset_bottom = 372.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_0lwex")
+texture = ExtResource("9_ujhqs")
 expand_mode = 1
 stretch_mode = 4
-flip_h = true
 script = ExtResource("1_cclvv")
 
 [node name="CloseWindow" type="TextureButton" parent="catCollection"]
@@ -239,16 +653,127 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 254.0
-offset_top = -221.0
-offset_right = 325.0
-offset_bottom = -152.0
+offset_left = 259.5
+offset_top = -309.0
+offset_right = 330.5
+offset_bottom = -240.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.864777
 texture_normal = ExtResource("2_6qo1v")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Cat_1" type="Panel" parent="catCollection"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -184.0
+offset_right = 166.5
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7yuv")
+
+[node name="TextureRect" type="TextureRect" parent="catCollection/Cat_1"]
+layout_mode = 2
+offset_left = -15.0
+offset_top = -104.0
+offset_right = 332.0
+offset_bottom = 212.0
+texture = ExtResource("14_ge4dd")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="catCollection/Cat_1"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 94.0
+offset_right = 318.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "Cosmo"
+
+[node name="Cat_2" type="Panel" parent="catCollection"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -50.0
+offset_right = 166.5
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7yuv")
+
+[node name="TextureRect" type="TextureRect" parent="catCollection/Cat_2"]
+layout_mode = 2
+offset_left = -7.0
+offset_top = -78.0
+offset_right = 340.0
+offset_bottom = 238.0
+texture = ExtResource("16_8yt47")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="catCollection/Cat_2"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 94.0
+offset_right = 318.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "Dot"
+
+[node name="Cat_3" type="Panel" parent="catCollection"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = 81.0
+offset_right = 166.5
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7yuv")
+
+[node name="TextureRect" type="TextureRect" parent="catCollection/Cat_3"]
+layout_mode = 2
+offset_left = -8.0
+offset_top = -56.0
+offset_right = 339.0
+offset_bottom = 260.0
+texture = ExtResource("17_k7snv")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="catCollection/Cat_3"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 94.0
+offset_right = 318.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 25
+text = "Vallet"
 
 [node name="battlePass" type="TextureRect" parent="." groups=["windows"]]
 visible = false
@@ -264,7 +789,7 @@ offset_right = 221.0
 offset_bottom = 447.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_ggxvn")
+texture = ExtResource("10_mvh6n")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_cclvv")
@@ -296,13 +821,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -332.0
-offset_right = 180.0
-offset_bottom = 332.0
+offset_left = -279.0
+offset_top = -383.0
+offset_right = 279.0
+offset_bottom = 383.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_gargt")
+texture = ExtResource("11_0u3xy")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_cclvv")
@@ -315,10 +840,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 177.0
-offset_top = -67.9999
-offset_right = 248.0
-offset_bottom = 1.00006
+offset_left = 219.0
+offset_top = -314.0
+offset_right = 290.0
+offset_bottom = -245.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.864777
@@ -326,20 +851,52 @@ texture_normal = ExtResource("2_6qo1v")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Label" type="Label" parent="onlineLeaderboard"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 218.0
+offset_right = 402.0
+offset_bottom = 245.0
+theme_override_colors/font_color = Color(0.635294, 0.435294, 0.470588, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 23
+text = "_weird_username_29"
+
+[node name="Label2" type="Label" parent="onlineLeaderboard"]
+offset_left = 193.0
+offset_top = 322.0
+offset_right = 405.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0.635294, 0.435294, 0.470588, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 23
+text = "_who_even_is_this"
+
+[node name="Label3" type="Label" parent="onlineLeaderboard"]
+offset_left = 222.0
+offset_top = 421.0
+offset_right = 434.0
+offset_bottom = 469.0
+theme_override_colors/font_color = Color(0.988235, 0.87451, 0.870588, 1)
+theme_override_fonts/font = ExtResource("16_rktor")
+theme_override_font_sizes/font_size = 42
+text = "TY"
+
 [node name="specialOffer" type="TextureRect" parent="." groups=["windows"]]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -240.5
-offset_top = -300.0
-offset_right = 240.5
-offset_bottom = 300.0
+offset_left = -240.0
+offset_top = -266.0
+offset_right = 241.0
+offset_bottom = 266.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_o6chm")
+texture = ExtResource("12_mrfte")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("1_cclvv")
@@ -352,16 +909,278 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 205.0
-offset_top = -305.0
-offset_right = 276.0
-offset_bottom = -236.0
+offset_left = 200.5
+offset_top = -135.0
+offset_right = 271.5
+offset_bottom = -66.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.864777
 texture_normal = ExtResource("2_6qo1v")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="price" type="Panel" parent="specialOffer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = 156.0
+offset_right = 139.5
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_33jt4")
+
+[node name="Label2" type="Label" parent="specialOffer/price"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -46.5
+offset_right = 113.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.596078, 0.431373, 0.494118, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 31
+text = "100 PLN"
+
+[node name="ColorRect" type="ColorRect" parent="specialOffer/price/Label2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0787206
+color = Color(0.492975, 0.343288, 0.400611, 1)
+
+[node name="Label" type="Label" parent="specialOffer/price"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -20.5
+offset_right = 91.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.964706, 0.819608, 0.815686, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 52
+text = "20 PLN"
+
+[node name="Panel" type="Panel" parent="specialOffer/price"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j04fq")
+script = ExtResource("13_164of")
+
+[node name="TextureRect" type="TextureRect" parent="specialOffer/price/Panel"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 51.0
+texture = ExtResource("15_amm2e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="specialOffer/price/Panel"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -17.0
+offset_right = 46.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0.984705, 0.922236, 0.920142, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 26
+text = "300%
+"
+
+[node name="Label2" type="Label" parent="specialOffer/price/Panel"]
+offset_left = -28.0
+offset_top = 7.0
+offset_right = 44.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.984314, 0.921569, 0.921569, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 12
+text = "WARTOŚĆ"
+
+[node name="timer" type="Label" parent="specialOffer/price"]
+offset_left = 69.5
+offset_top = 70.0
+offset_right = 109.5
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.960203, 0, 0.442815, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 25
+text = "aaaaaaa"
+script = ExtResource("10_qtse6")
+
+[node name="Timer" type="Timer" parent="specialOffer/price/timer"]
+wait_time = 3600.0
+one_shot = true
+
+[node name="claim" type="TextureRect" parent="." node_paths=PackedStringArray("claim_button", "touch_screen_label", "freeCurrency_icon", "paidCurrency_icon", "energy_icon", "claim_label") groups=["windows"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -157.0
+offset_right = 218.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_g5da4")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("27_ajqew")
+claim_button = NodePath("../claim_button")
+touch_screen_label = NodePath("touch_screen")
+freeCurrency_icon = NodePath("Control/freeCurrency")
+paidCurrency_icon = NodePath("Control/paidCurrency")
+energy_icon = NodePath("Control/energy")
+claim_label = NodePath("Control/claim_label")
+
+[node name="price" type="Panel" parent="claim"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = 91.0
+offset_right = 145.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_33jt4")
+
+[node name="Label" type="Label" parent="claim/price"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -20.5
+offset_right = 83.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.964706, 0.819608, 0.815686, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 52
+text = "OK"
+horizontal_alignment = 1
+
+[node name="touch_screen" type="Label" parent="claim"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = 298.0
+offset_right = 191.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.964706, 0.819608, 0.815686, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 52
+text = "Dotknij ekranu"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="claim"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="freeCurrency" type="TextureRect" parent="claim/Control"]
+layout_mode = 0
+offset_left = -65.0
+offset_top = -61.0
+offset_right = 105.0
+offset_bottom = 101.0
+texture = ExtResource("28_xolom")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="paidCurrency" type="TextureRect" parent="claim/Control"]
+visible = false
+offset_left = -90.0
+offset_top = -79.0
+offset_right = 152.0
+offset_bottom = 123.0
+texture = ExtResource("29_x03wp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="energy" type="TextureRect" parent="claim/Control"]
+visible = false
+offset_left = -102.0
+offset_top = -83.0
+offset_right = 142.0
+offset_bottom = 123.0
+texture = ExtResource("30_dmfhh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="claim_label" type="Label" parent="claim/Control"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 74.0
+offset_right = 169.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(0.466667, 0.317647, 0.317647, 1)
+theme_override_font_sizes/font_size = 56
+text = "x10"
+
+[node name="claim_button" type="Button" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="dailies/CloseWindow" to="dailies" method="_on_close_window_pressed"]
 [connection signal="pressed" from="login/CloseWindow" to="login" method="_on_close_window_pressed"]
@@ -372,3 +1191,4 @@ stretch_mode = 0
 [connection signal="pressed" from="battlePass/CloseWindow" to="battlePass" method="_on_close_window_pressed"]
 [connection signal="pressed" from="onlineLeaderboard/CloseWindow" to="onlineLeaderboard" method="_on_close_window_pressed"]
 [connection signal="pressed" from="specialOffer/CloseWindow" to="specialOffer" method="_on_close_window_pressed"]
+[connection signal="pressed" from="claim_button" to="claim" method="_on_claim_button_pressed"]

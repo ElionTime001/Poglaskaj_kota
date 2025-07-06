@@ -1,9 +1,15 @@
 extends Control
 
 @export var windows: Control
+@export var energy_bar: Control
+
+@export var paid_currency_label: Label
+@export var free_currency_label: Label
+@export var energy_label: Label
 
 signal button_clicked(button)
 signal button_dropped(button)
+signal energy_dropped
 
 var buttons := []
 
@@ -48,6 +54,9 @@ func make_button_visible(button, is_drag_preview_there:=true):
 			break
 	if is_drag_preview_there:
 		button_dropped.emit(button)
+	if button.name == "energy":
+		energy_bar.visible = true
+		energy_dropped.emit()
 
 func return_button(button):
 	var button_name = button.name
@@ -87,3 +96,21 @@ func interface_button_pressed(button):
 	interface_button_clicked.emit(button)
 	if !Flags.is_shop_active and !Flags.is_gatcha_active and !Flags.is_choosing_answer:
 		windows.open_window(button.name)
+
+func get_currency(currency_name: String):
+	match currency_name:
+		"freeCurrency":
+			return free_currency_label.text
+		"paidCurrency":
+			return paid_currency_label.text
+		"energy":
+			return energy_label.text.substr(0, 1)
+
+func set_currency(currency_name: String, new_value: String):
+	match currency_name:
+		"freeCurrency":
+			free_currency_label.text = new_value
+		"paidCurrency":
+			paid_currency_label.text = new_value
+		"energy":
+			energy_label.text = new_value + "/5"

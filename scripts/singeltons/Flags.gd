@@ -21,6 +21,8 @@ var flags = {}
 
 var current_state
 
+var amount_of_pats
+
 func _ready():
 	
 	is_shop_active = false
@@ -33,6 +35,8 @@ func _ready():
 	flags["dragging_locked"] = true
 	
 	current_state = "intro"
+	
+	amount_of_pats = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func get_flag(key: String):

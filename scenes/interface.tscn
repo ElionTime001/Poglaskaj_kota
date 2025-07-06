@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dorq6s10qvfmn"]
+[gd_scene load_steps=22 format=3 uid="uid://dorq6s10qvfmn"]
 
 [ext_resource type="Script" path="res://scripts/interface.gd" id="1_amojj"]
 [ext_resource type="Texture2D" uid="uid://bh2t2rx2n6cju" path="res://assets/test/buttons/paid_currency.PNG" id="1_hwjkg"]
 [ext_resource type="Texture2D" uid="uid://c66s472lp85r5" path="res://assets/test/buttons/free_currency.PNG" id="2_4b5es"]
 [ext_resource type="Script" path="res://scripts/mainscreenbutton.gd" id="3_l4i5o"]
 [ext_resource type="Texture2D" uid="uid://ca3gvbqrwq6d2" path="res://assets/test/buttons/energy.PNG" id="3_srpw1"]
+[ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="4_cxcda"]
 [ext_resource type="Texture2D" uid="uid://fmb5cad1gj4q" path="res://assets/test/buttons/battle_pass.PNG" id="4_da6p2"]
 [ext_resource type="Texture2D" uid="uid://dao8wvdo45gbn" path="res://assets/test/buttons/gatcha.PNG" id="4_gepen"]
 [ext_resource type="Texture2D" uid="uid://db11qn4xaerdg" path="res://assets/test/buttons/shop.PNG" id="5_41n7c"]
@@ -21,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="17_iil4f"]
 [ext_resource type="Texture2D" uid="uid://bhn4imroywr1u" path="res://assets/test/340.png" id="20_e4uf6"]
 
-[node name="interface" type="Control"]
+[node name="interface" type="Control" node_paths=PackedStringArray("paid_currency_label", "free_currency_label", "energy_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +30,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_amojj")
+paid_currency_label = NodePath("up/paidCurrency/paid")
+free_currency_label = NodePath("up/freeCurrency/free")
+energy_label = NodePath("up/energy/en")
 
 [node name="petButton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -66,6 +70,26 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_l4i5o")
 
+[node name="ColorRect" type="ColorRect" parent="up/paidCurrency"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 65.0
+offset_bottom = 55.0
+mouse_filter = 2
+color = Color(0.964706, 0.819608, 0.815686, 1)
+
+[node name="paid" type="Label" parent="up/paidCurrency"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 22.0
+offset_right = 69.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("4_cxcda")
+theme_override_font_sizes/font_size = 36
+text = "10"
+
 [node name="freeCurrency" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
 layout_mode = 0
 offset_left = -144.0
@@ -77,6 +101,24 @@ ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_l4i5o")
 
+[node name="ColorRect" type="ColorRect" parent="up/freeCurrency"]
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 54.0
+offset_bottom = 50.0
+mouse_filter = 2
+color = Color(0.964706, 0.819608, 0.815686, 1)
+
+[node name="free" type="Label" parent="up/freeCurrency"]
+offset_left = 17.0
+offset_top = 21.0
+offset_right = 65.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("4_cxcda")
+theme_override_font_sizes/font_size = 36
+text = "10"
+
 [node name="energy" type="TextureButton" parent="up" groups=["mainscreenbutton"]]
 layout_mode = 0
 offset_left = 128.0
@@ -87,6 +129,24 @@ texture_normal = ExtResource("3_srpw1")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("3_l4i5o")
+
+[node name="ColorRect" type="ColorRect" parent="up/energy"]
+offset_left = 11.0
+offset_top = 21.0
+offset_right = 80.0
+offset_bottom = 54.0
+mouse_filter = 2
+color = Color(0.74902, 0.52549, 0.603922, 1)
+
+[node name="en" type="Label" parent="up/energy"]
+offset_left = 21.0
+offset_top = 24.0
+offset_right = 83.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.913725, 0.74902, 0.807843, 1)
+theme_override_fonts/font = ExtResource("4_cxcda")
+theme_override_font_sizes/font_size = 36
+text = "5/5"
 
 [node name="down" type="Control" parent="."]
 layout_mode = 1

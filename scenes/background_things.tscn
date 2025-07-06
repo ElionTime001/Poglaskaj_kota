@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://o6oh0ffkpi2x"]
+[gd_scene load_steps=6 format=3 uid="uid://o6oh0ffkpi2x"]
 
 [ext_resource type="Texture2D" uid="uid://c1pjaqdsoejtm" path="res://assets/bg.PNG" id="1_47hlh"]
+[ext_resource type="Script" path="res://scripts/background_things.gd" id="1_drs35"]
 [ext_resource type="PackedScene" uid="uid://b4doai0buhwl4" path="res://scenes/cat.tscn" id="2_7d8by"]
-[ext_resource type="Texture2D" uid="uid://bqnnjcp4q15yq" path="res://assets/test/buttons/timer.PNG" id="3_fnmyk"]
+[ext_resource type="Texture2D" uid="uid://5y2qxa75jiot" path="res://assets/test/buttons/energy_not_filled.PNG" id="4_i3inm"]
+[ext_resource type="Texture2D" uid="uid://xuyefy5llhmm" path="res://assets/test/buttons/energy_filled.PNG" id="5_ucj6l"]
 
-[node name="background_things" type="Control"]
+[node name="background_things" type="Control" node_paths=PackedStringArray("energy_bar", "energy_value")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_drs35")
+energy_bar = NodePath("energy_bar")
+energy_value = NodePath("energy_bar/TextureProgressBar")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -46,7 +51,7 @@ grow_vertical = 2
 position = Vector2(-30, 48)
 scale = Vector2(0.719999, 0.719999)
 
-[node name="timer" type="Control" parent="."]
+[node name="energy_bar" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -61,11 +66,13 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="timer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="energy_bar"]
 layout_mode = 0
 offset_left = -108.0
 offset_top = -197.0
 offset_right = 139.0
 offset_bottom = -120.0
+max_value = 5.0
 nine_patch_stretch = true
-texture_under = ExtResource("3_fnmyk")
+texture_under = ExtResource("4_i3inm")
+texture_progress = ExtResource("5_ucj6l")

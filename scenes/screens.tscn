@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=19 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
+[ext_resource type="Script" path="res://scripts/energy_bar.gd" id="2_b6c0c"]
 [ext_resource type="PackedScene" uid="uid://dorq6s10qvfmn" path="res://scenes/interface.tscn" id="3_2ma7d"]
 [ext_resource type="PackedScene" uid="uid://cx6r0w78c4430" path="res://scenes/windows.tscn" id="3_hywgt"]
 [ext_resource type="PackedScene" uid="uid://beiya5qlnu5b1" path="res://scenes/item_box.tscn" id="4_jski3"]
@@ -13,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://cb7e3uwkpx2s8" path="res://scenes/quest_alert.tscn" id="9_3e1ba"]
 [ext_resource type="Script" path="res://scripts/for_the_player.gd" id="10_7t1yj"]
 [ext_resource type="PackedScene" uid="uid://xr7y6lmaqwfl" path="res://scenes/gactha.tscn" id="10_fwfeg"]
-[ext_resource type="Texture2D" uid="uid://b4jabje7xtcd2" path="res://assets/test/FNF_Arrow.png" id="11_jl1ph"]
+[ext_resource type="Texture2D" uid="uid://dk4uscudbb33m" path="res://assets/test/buttons/arrow.PNG" id="13_1vmb6"]
+[ext_resource type="Texture2D" uid="uid://5y2qxa75jiot" path="res://assets/test/buttons/energy_not_filled.PNG" id="15_fs6xx"]
+[ext_resource type="Texture2D" uid="uid://xuyefy5llhmm" path="res://assets/test/buttons/energy_filled.PNG" id="16_n3xn5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ukbv"]
 bg_color = Color(1, 1, 1, 1)
@@ -25,9 +28,37 @@ corner_radius_bottom_left = 10
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
 
-[node name="interface" parent="." node_paths=PackedStringArray("windows") instance=ExtResource("3_2ma7d")]
+[node name="energy_bar" type="Control" parent="." node_paths=PackedStringArray("energy_value")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_b6c0c")
+energy_value = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="energy_bar"]
+layout_mode = 0
+offset_left = -126.0
+offset_top = -192.0
+offset_right = 157.0
+offset_bottom = -114.0
+max_value = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("15_fs6xx")
+texture_progress = ExtResource("16_n3xn5")
+
+[node name="interface" parent="." node_paths=PackedStringArray("windows", "energy_bar") instance=ExtResource("3_2ma7d")]
 mouse_filter = 1
 windows = NodePath("../windows")
+energy_bar = NodePath("../energy_bar")
 
 [node name="TextureRect" type="TextureRect" parent="interface"]
 layout_mode = 0
@@ -95,43 +126,42 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = -276.0
-offset_right = 132.0
-offset_bottom = -169.0
+offset_left = 9.0
+offset_top = -301.0
+offset_right = 129.0
+offset_bottom = -170.0
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("11_jl1ph")
+texture = ExtResource("13_1vmb6")
 expand_mode = 1
 stretch_mode = 4
-flip_v = true
 
 [node name="arrow_menu" type="TextureRect" parent="for_the_player" groups=["highlights_and_arrows"]]
 layout_mode = 1
-offset_left = 17.0
-offset_top = 131.0
-offset_right = 135.0
-offset_bottom = 238.0
+offset_left = 13.0
+offset_top = 121.0
+offset_right = 129.0
+offset_bottom = 254.0
 mouse_filter = 2
-texture = ExtResource("11_jl1ph")
+texture = ExtResource("13_1vmb6")
 expand_mode = 1
 stretch_mode = 4
+flip_v = true
 
 [node name="arrow_shop" type="TextureRect" parent="for_the_player" groups=["highlights_and_arrows"]]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 411.0
-offset_top = -285.0
-offset_right = 529.0
+offset_left = 404.0
+offset_top = -319.0
+offset_right = 536.0
 offset_bottom = -178.0
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("11_jl1ph")
+texture = ExtResource("13_1vmb6")
 expand_mode = 1
 stretch_mode = 4
-flip_v = true
 
 [node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop", "menu", "quest_alert", "for_the_player", "windows")]
 script = ExtResource("7_7eaxb")

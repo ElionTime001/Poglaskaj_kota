@@ -249,17 +249,17 @@ func check_if_proceed(button):
 						dialogue_player.play_dialogue("dailies_login")
 						await dialogue_player.dialogue_finished
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
-						
+						await windows.window_closed
+						story_proceed()
+					else:
+						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
+						dialogue_player.play_dialogue("dailies_not_login")
 						#O wyrabianiu nawyków
 						await windows.window_closed
 						await get_tree().create_timer(1).timeout
 						dialogue_player.play_dialogue("wyrabianie_nawyku")
 						await dialogue_player.dialogue_finished
 						
-						story_proceed()
-					else:
-						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
-						dialogue_player.play_dialogue("dailies_not_login")
 				"login":
 					buttons_recquired_for_loss_aversion[button.name] = false
 					Flags.change_flag("login_added",true)
@@ -270,17 +270,16 @@ func check_if_proceed(button):
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
 						dialogue_player.play_dialogue("login_dailies")
 						await dialogue_player.dialogue_finished
-						
+						await windows.window_closed
+						story_proceed()
+					else:
+						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
+						dialogue_player.play_dialogue("login_not_dailies")
 						#O wyrabianiu nawyku
 						await windows.window_closed
 						await get_tree().create_timer(1).timeout
 						dialogue_player.play_dialogue("wyrabianie_nawyku")
 						await dialogue_player.dialogue_finished
-						
-						story_proceed()
-					else:
-						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
-						dialogue_player.play_dialogue("login_not_dailies")
 				_:
 					#ewentualnie można tutaj dać bardziej custom rzeczy
 					dialogue_player.play_dialogue("incorrect_auto_response_quest_1")
@@ -413,41 +412,42 @@ func check_if_proceed(button):
 					while !all_clicked(buttons_recquired_for_loss_aversion):
 							var clicked_button = await interface.interface_button_clicked
 							print(button.name)
-							if buttons_recquired_for_loss_aversion[clicked_button.name]:
-								pass #play "To już było, wybierz coś innego
+							if buttons_recquired_for_loss_aversion.has(clicked_button.name):
+								if buttons_recquired_for_loss_aversion[clicked_button.name]:
+									pass #play "To już było, wybierz coś innego
+								else:
+									match clicked_button.name:
+										"login":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+										 	#DODAĆ RESZTĘ dailies, login, ads x2, battle_pass, energia i opisy
+										"dailies":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+										"gatchaAd":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+										"specialOffer":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+										"gatcha":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+										"energy":
+											dialogue_player.play_dialogue("loss_aversion_energy")
+											await dialogue_player.dialogue_finished
+											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+										"battlePass":
+											speech_bubble.play_dialogue("loss_aversion_battle_pass")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_loss_aversion[clicked_button.name] = true
 							else:
-								match clicked_button.name:
-									"login":
-										speech_bubble.play_dialogue("loss_version_default")
-										await speech_bubble.dialogue_finished
-										buttons_recquired_for_loss_aversion[clicked_button.name] = true
-									 	#DODAĆ RESZTĘ dailies, login, ads x2, battle_pass, energia i opisy
-									"dailies":
-										speech_bubble.play_dialogue("loss_version_default")
-										await speech_bubble.dialogue_finished
-										buttons_recquired_for_loss_aversion[clicked_button.name] = true
-									"gatchaAd":
-										speech_bubble.play_dialogue("loss_version_default")
-										await speech_bubble.dialogue_finished
-										buttons_recquired_for_loss_aversion[clicked_button.name] = true
-									"specialOffer":
-										speech_bubble.play_dialogue("loss_version_default")
-										await speech_bubble.dialogue_finished
-										buttons_recquired_for_loss_aversion[clicked_button.name] = true
-									"gatcha":
-										speech_bubble.play_dialogue("loss_version_default")
-										await speech_bubble.dialogue_finished
-										buttons_recquired_for_loss_aversion[clicked_button.name] = true
-									"energy":
-										dialogue_player.play_dialogue("loss_aversion_energy")
-										await dialogue_player.dialogue_finished
-										buttons_recquired_for_loss_aversion[clicked_button.name] = true
-									"battlePass":
-										speech_bubble.play_dialogue("loss_aversion_battle_pass")
-										await speech_bubble.dialogue_finished
-										buttons_recquired_for_loss_aversion[clicked_button.name] = true
-									_:
-										pass # Tutaj daj coś jak "hmmm, inne"
+								pass # Tutaj daj coś jak "hmmm, inne"
 					Flags.is_choosing_answer = false
 					await get_tree().create_timer(0.2).timeout
 					dialogue_player.play_dialogue("loss_eversion_end")

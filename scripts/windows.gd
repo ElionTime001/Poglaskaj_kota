@@ -2,8 +2,13 @@ extends Control
 
 var windows = []
 
+@export var dailies: TextureRect
+@export var button_claim: Button
+@export var claim_window: TextureRect
+
 signal window_opened(window_name)
 signal window_closed(window_name)
+signal currency_claimed(type, number)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +21,11 @@ func _ready():
 
 func on_window_closed(window_name):
 	self.visible = false
-	window_closed.emit(window_name)
+	match window_name:
+		"claim":
+			currency_claimed.emit(claim_window.get_currency_number(),claim_window.get_currency_name())
+		_:
+			window_closed.emit(window_name)
 
 func open_window(window_name):
 	make_everything_invisible()
@@ -27,6 +36,8 @@ func open_window(window_name):
 			self.visible = true
 			window_opened.emit(window.name)
 			bounce_window(window)
+			if window_name == "claim":
+				button_claim.visible = true
 			break
 
 func make_everything_invisible():
@@ -42,3 +53,6 @@ func bounce_window(window):
 
 	tween.tween_property(window, "position", bounce_up, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(window, "position", start_pos, 0.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+
+func checkmark_dailies(which_checkmark):
+	dailies.check_mission(which_checkmark)

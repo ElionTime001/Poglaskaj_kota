@@ -9,6 +9,8 @@ var interface: Control
 var shop: Control
 var gatcha: Control
 
+var energy_bar: Control
+
 var chapter1_controller
 
 func _ready():
@@ -19,6 +21,7 @@ func _ready():
 	chapter1_controller = $Chapter1_controller
 	shop = $shop
 	gatcha = $gatcha
+	energy_bar = $energy_bar
 	
 	interface.button_clicked.connect(interface_change)
 	interface.interface_button_clicked.connect(interface_change)
@@ -162,6 +165,13 @@ func interface_change(button):
 				else:
 					#tu powinna być animacja.. w obu powinna być w sumie, może tutaj pass
 					pass
+				if energy_bar.visible:
+					energy_bar.energy_depleat()
+					var energy_number = int(interface.get_currency("energy"))
+					if energy_number > 0:
+						energy_number -= 1
+						interface.set_currency("energy",str(energy_number))
+					
 				print("catto patted")
 			"shop":
 				shop.visible = true
@@ -169,4 +179,3 @@ func interface_change(button):
 				gatcha.visible = true
 				if !Flags.get_flag("gatcha_quest_finished"):
 					chapter1_controller.gatcha_sidequest_proceed()
-				
