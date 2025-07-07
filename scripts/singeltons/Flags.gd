@@ -22,6 +22,7 @@ var flags = {}
 var current_state
 
 var amount_of_pats
+var amount_of_energy_used
 
 func _ready():
 	
@@ -37,6 +38,7 @@ func _ready():
 	current_state = "intro"
 	
 	amount_of_pats = 0
+	amount_of_energy_used = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func get_flag(key: String):

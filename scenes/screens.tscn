@@ -65,8 +65,10 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="windows" parent="." instance=ExtResource("3_hywgt")]
+[node name="windows" parent="." node_paths=PackedStringArray("interface", "dialogue_player") instance=ExtResource("3_hywgt")]
 visible = false
+interface = NodePath("../interface")
+dialogue_player = NodePath("../dialogue_player")
 
 [node name="shop" parent="." node_paths=PackedStringArray("interface") instance=ExtResource("8_rl6nk")]
 visible = false

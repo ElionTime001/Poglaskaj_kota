@@ -4,17 +4,29 @@ var gatcha_panels
 var background
 var changed_currency
 
+@export var bg_basic: TextureRect
+@export var bg_featured: TextureRect
+@export var bg_skin: TextureRect
+
+@export var cat_basic: TextureRect
+@export var cat_basic2: TextureRect
+@export var cat_featured: TextureRect
+@export var cat_skin: TextureRect
+@export var cat_skin2: TextureRect
+
+
 signal gatcha_active
 
 func _ready():
-	background = $background
+	#background = $background
 	changed_currency = $changed_currency
 	
 	gatcha_panels = get_tree().get_nodes_in_group("gatcha_panels")
 	
 	for panel in gatcha_panels:
 		panel.visible = false
-	background.visible = false
+	#background.visible = false
+	_hide_all()
 
 func make_panel_visible(panel_name):
 	for panel in gatcha_panels:
@@ -32,3 +44,41 @@ func get_panels():
 
 func _on_close_item_box_pressed():
 	self.visible = false
+
+func _hide_all():
+	bg_basic.visible = false
+	bg_featured.visible = false
+	bg_skin.visible = false
+	
+	cat_basic.visible = false
+	cat_basic2.visible = false
+	cat_featured.visible = false
+	cat_skin.visible = false
+	cat_skin2.visible = false
+
+func _on_featured_button_pressed():
+	_hide_all()
+	bg_featured.visible = true
+	fade_in_node(cat_featured)
+
+
+func _on_skin_button_pressed():
+	_hide_all()
+	bg_skin.visible = true
+	fade_in_node(cat_skin)
+	fade_in_node(cat_skin2)
+
+
+func _on_basic_button_pressed():
+	_hide_all()
+	bg_basic.visible = true
+	fade_in_node(cat_basic)
+	fade_in_node(cat_basic2)
+
+func fade_in_node(node: TextureRect, duration := 0.3):
+	node.modulate.a = 0.0  # Make fully transparent
+	node.visible = true
+
+	var tween = create_tween()
+	tween.tween_property(node, "modulate:a", 1.0, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+

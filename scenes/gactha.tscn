@@ -1,14 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://xr7y6lmaqwfl"]
+[gd_scene load_steps=15 format=3 uid="uid://xr7y6lmaqwfl"]
 
-[ext_resource type="Texture2D" uid="uid://cuj0bai1r2fav" path="res://assets/test/buttons/gatcha_2.PNG" id="1_2jlvl"]
 [ext_resource type="Script" path="res://scripts/gactha.gd" id="1_4dtlp"]
 [ext_resource type="Texture2D" uid="uid://c66s472lp85r5" path="res://assets/test/buttons/free_currency.PNG" id="1_dwwvk"]
+[ext_resource type="Texture2D" uid="uid://xg5nnqndlkkd" path="res://assets/test/bg/IMG_6611.PNG" id="2_j2ob8"]
+[ext_resource type="Texture2D" uid="uid://c0j4p8tdr2dhb" path="res://assets/test/cats/ogcat_alien.PNG" id="3_a1ywb"]
 [ext_resource type="Script" path="res://scripts/mainscreenbutton.gd" id="3_jbsfd"]
+[ext_resource type="Texture2D" uid="uid://g1qv2nqvx62f" path="res://assets/test/cats/ogcat_arctic.PNG" id="4_1n3gs"]
+[ext_resource type="Texture2D" uid="uid://b375mryp1vyxx" path="res://assets/test/bg/IMG_6609.PNG" id="5_8ftx4"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="5_flo1h"]
+[ext_resource type="Texture2D" uid="uid://cnkamyyg6bknl" path="res://assets/test/cats/alien.PNG" id="6_gnlll"]
+[ext_resource type="Texture2D" uid="uid://bbqp53tjl6sae" path="res://assets/test/bg/IMG_6610.PNG" id="7_oudwo"]
+[ext_resource type="Texture2D" uid="uid://b174kl7rhq6fc" path="res://assets/test/cats/darkcat.PNG" id="8_7orhg"]
+[ext_resource type="Texture2D" uid="uid://ddjdxuidfguen" path="res://assets/test/cats/fluffcat.PNG" id="9_elmrv"]
+[ext_resource type="Texture2D" uid="uid://dvbcyvwnk0sc" path="res://assets/test/buttons/gatcha_currency.PNG" id="10_w2nur"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lf2ic"]
+bg_color = Color(0.933333, 0.776471, 0.811765, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[node name="Gactha" type="Control"]
+[node name="Gactha" type="Control" node_paths=PackedStringArray("bg_basic", "bg_featured", "bg_skin", "cat_basic", "cat_basic2", "cat_featured", "cat_skin", "cat_skin2")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +29,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4dtlp")
+bg_basic = NodePath("ColorRect/Panel/bg_basic")
+bg_featured = NodePath("ColorRect/Panel/bg_featured")
+bg_skin = NodePath("ColorRect/Panel/bg_skin")
+cat_basic = NodePath("ColorRect/Panel/cat_basic2")
+cat_basic2 = NodePath("ColorRect/Panel/cat_basic")
+cat_featured = NodePath("ColorRect/Panel/cat_featured")
+cat_skin = NodePath("ColorRect/Panel/cat_skin")
+cat_skin2 = NodePath("ColorRect/Panel/cat_skin2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -26,22 +47,160 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.483549, 0.272595, 0.351127, 1)
 
-[node name="background" type="TextureRect" parent="."]
+[node name="Panel" type="Panel" parent="ColorRect"]
+self_modulate = Color(1, 1, 1, 0)
+clip_contents = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -239.0
-offset_top = -377.0
-offset_right = 239.0
-offset_bottom = 377.0
+offset_left = -234.0
+offset_top = -248.0
+offset_right = 249.0
+offset_bottom = 379.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_2jlvl")
+
+[node name="bg_basic" type="TextureRect" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.5
+offset_top = -554.5
+offset_right = 289.5
+offset_bottom = 404.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_oudwo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="bg_featured" type="TextureRect" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.5
+offset_top = -554.5
+offset_right = 289.5
+offset_bottom = 404.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8ftx4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="bg_skin" type="TextureRect" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.5
+offset_top = -554.5
+offset_right = 289.5
+offset_bottom = 404.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j2ob8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_basic2" type="TextureRect" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.5
+offset_top = -306.0
+offset_right = 162.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_elmrv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_basic" type="TextureRect" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -223.5
+offset_top = -310.0
+offset_right = 33.5
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_7orhg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_featured" type="TextureRect" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -223.5
+offset_top = -310.0
+offset_right = 33.5
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_gnlll")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_skin" type="TextureRect" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -223.5
+offset_top = -310.0
+offset_right = 33.5
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_a1ywb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_skin2" type="TextureRect" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -114.5
+offset_top = -308.0
+offset_right = 142.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_1n3gs")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="skinCollection" type="Panel" parent="." groups=["gatcha_panels"]]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,6 +216,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
 
 [node name="Label" type="Label" parent="skinCollection"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,7 +231,62 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Skin Gatcha"
 
+[node name="TextureRect2" type="TextureRect" parent="skinCollection"]
+modulate = Color(0.974177, 0.912246, 0.925292, 1)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -412.0
+offset_top = -367.0
+offset_right = 387.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j2ob8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="skinCollection"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -128.0
+offset_right = 247.0
+offset_bottom = 212.0
+grow_vertical = 2
+texture = ExtResource("3_a1ywb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="skinCollection"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 108.0
+offset_top = -126.0
+offset_right = 378.0
+offset_bottom = 214.0
+grow_vertical = 2
+texture = ExtResource("4_1n3gs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="skin_button" type="Button" parent="skinCollection"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="catCollection" type="Panel" parent="." groups=["gatcha_panels"]]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -87,6 +302,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
 
 [node name="Label" type="Label" parent="catCollection"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -101,7 +317,48 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Character Gatcha"
 
+[node name="bg" type="TextureRect" parent="catCollection"]
+modulate = Color(0.974177, 0.912246, 0.925292, 1)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -491.0
+offset_top = -212.0
+offset_right = 501.0
+offset_bottom = 482.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8ftx4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="catCollection"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -161.5
+offset_right = 232.0
+offset_bottom = 178.5
+grow_vertical = 2
+texture = ExtResource("6_gnlll")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="featured_button" type="Button" parent="catCollection"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="gatcha_character_rate" type="Panel" parent="." groups=["gatcha_panels"]]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -117,6 +374,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
 
 [node name="Label" type="Label" parent="gatcha_character_rate"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -131,26 +389,80 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Character Gatcha rate"
 
+[node name="bg" type="TextureRect" parent="gatcha_character_rate"]
+modulate = Color(0.974177, 0.912246, 0.925292, 1)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = -75.0
+offset_right = 436.0
+offset_bottom = 509.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_oudwo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="gatcha_character_rate"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -130.5
+offset_right = 266.0
+offset_bottom = 209.5
+grow_vertical = 2
+texture = ExtResource("8_7orhg")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="gatcha_character_rate"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 153.0
+offset_top = -125.5
+offset_right = 423.0
+offset_bottom = 214.5
+grow_vertical = 2
+texture = ExtResource("9_elmrv")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="basic_button" type="Button" parent="gatcha_character_rate"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="changed_currency" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -60.0
-offset_top = 5.0
-offset_right = 46.0
-offset_bottom = 71.0
+offset_left = -233.0
+offset_top = 7.0
+offset_right = -93.0
+offset_bottom = 83.0
 grow_horizontal = 2
-texture = ExtResource("1_dwwvk")
+texture = ExtResource("10_w2nur")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="freeCurrency" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 348.0
-offset_top = 6.0
-offset_right = 459.0
-offset_bottom = 79.0
+offset_left = 197.0
+offset_top = 12.0
+offset_right = 308.0
+offset_bottom = 85.0
 texture_normal = ExtResource("1_dwwvk")
 ignore_texture_size = true
 stretch_mode = 4
@@ -189,6 +501,9 @@ texture_normal = ExtResource("5_flo1h")
 ignore_texture_size = true
 stretch_mode = 0
 
+[connection signal="pressed" from="skinCollection/skin_button" to="." method="_on_skin_button_pressed"]
+[connection signal="pressed" from="catCollection/featured_button" to="." method="_on_featured_button_pressed"]
+[connection signal="pressed" from="gatcha_character_rate/basic_button" to="." method="_on_basic_button_pressed"]
 [connection signal="pressed" from="freeCurrency" to="freeCurrency" method="_on_pressed"]
 [connection signal="pressed" from="AddElementButton" to="." method="_on_add_element_button_pressed"]
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]

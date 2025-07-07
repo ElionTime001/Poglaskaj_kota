@@ -8,6 +8,7 @@ var menu: Control
 var interface: Control
 var shop: Control
 var gatcha: Control
+var windows: Control
 
 var energy_bar: Control
 
@@ -22,6 +23,7 @@ func _ready():
 	shop = $shop
 	gatcha = $gatcha
 	energy_bar = $energy_bar
+	windows = $windows
 	
 	interface.button_clicked.connect(interface_change)
 	interface.interface_button_clicked.connect(interface_change)
@@ -37,9 +39,9 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	
 	#TO JEST DO USUNIĘCIA PÓŹNIEJ!!!!
-	#Flags.change_state("second_quest")
-	#interface.show_menu()
-	#Flags.change_flag("dragging_locked",false)
+	Flags.change_state("tutorial_interface")
+	interface.show_menu()
+	Flags.change_flag("dragging_locked",false)
 	
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
@@ -163,14 +165,17 @@ func interface_change(button):
 				if clicability:
 					chapter1_controller.story_proceed()
 				else:
-					#tu powinna być animacja.. w obu powinna być w sumie, może tutaj pass
 					pass
+				Flags.amount_of_pats += 1
 				if energy_bar.visible:
 					energy_bar.energy_depleat()
 					var energy_number = int(interface.get_currency("energy"))
 					if energy_number > 0:
+						Flags.amount_of_energy_used += 1
 						energy_number -= 1
 						interface.set_currency("energy",str(energy_number))
+					else:
+						windows.open_window("specialOfferenergy")
 					
 				print("catto patted")
 			"shop":

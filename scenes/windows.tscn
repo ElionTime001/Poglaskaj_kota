@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cx6r0w78c4430"]
+[gd_scene load_steps=36 format=3 uid="uid://cx6r0w78c4430"]
 
 [ext_resource type="Script" path="res://scripts/windows.gd" id="1_b31qa"]
 [ext_resource type="Script" path="res://scripts/window_scirpt.gd" id="1_cclvv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dulyv1mnyand" path="res://assets/test/interface/checkmark.PNG" id="7_34t81"]
 [ext_resource type="Texture2D" uid="uid://b1fmsys3nms00" path="res://assets/test/interface/catcollection.PNG" id="7_ceyil"]
 [ext_resource type="Texture2D" uid="uid://61f55rbyv5r" path="res://assets/test/interface/achievements.PNG" id="8_6f3q0"]
+[ext_resource type="Script" path="res://scripts/login.gd" id="8_hf6bc"]
 [ext_resource type="Texture2D" uid="uid://dk70803cxrkqr" path="res://assets/test/interface/cat_collection.PNG" id="9_ujhqs"]
 [ext_resource type="Texture2D" uid="uid://dppunnevo8lot" path="res://assets/test/interface/battlepass.PNG" id="10_mvh6n"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="10_qtse6"]
@@ -30,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dcaeu8j17f46b" path="res://assets/test/interface/money_claim.PNG" id="28_xolom"]
 [ext_resource type="Texture2D" uid="uid://n4jmc21r6qal" path="res://assets/test/interface/paid_claim.PNG" id="29_x03wp"]
 [ext_resource type="Texture2D" uid="uid://dbwamam70motk" path="res://assets/test/interface/energy_claim.PNG" id="30_dmfhh"]
+[ext_resource type="Texture2D" uid="uid://cismabfqehtlc" path="res://assets/test/interface/shop_energy.PNG" id="32_c0ki4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33jt4"]
 bg_color = Color(0.709804, 0.541176, 0.603922, 1)
@@ -48,7 +50,7 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[node name="windows" type="Control" node_paths=PackedStringArray("dailies", "button_claim", "claim_window")]
+[node name="windows" type="Control" node_paths=PackedStringArray("dailies", "button_claim", "claim_window", "login")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,8 +61,10 @@ script = ExtResource("1_b31qa")
 dailies = NodePath("dailies")
 button_claim = NodePath("claim_button")
 claim_window = NodePath("claim")
+login = NodePath("login")
 
-[node name="dailies" type="TextureRect" parent="." node_paths=PackedStringArray("quest_finished_1", "quest_finished_2", "quest_finished_3") groups=["windows"]]
+[node name="dailies" type="TextureRect" parent="." node_paths=PackedStringArray("quest_finished_1", "quest_finished_2", "quest_finished_3", "claim") groups=["windows"]]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,6 +84,7 @@ script = ExtResource("3_2x4qt")
 quest_finished_1 = NodePath("checkmark_1")
 quest_finished_2 = NodePath("checkmark_2")
 quest_finished_3 = NodePath("checkmark_3")
+claim = NodePath("../claim")
 
 [node name="CloseWindow" type="TextureButton" parent="dailies"]
 modulate = Color(1, 0.189276, 0.947632, 1)
@@ -102,6 +107,7 @@ stretch_mode = 0
 
 [node name="checkmark_1" type="TextureRect" parent="dailies"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 15.0
 offset_top = 124.0
 offset_right = 153.0
@@ -112,6 +118,7 @@ stretch_mode = 4
 
 [node name="checkmark_2" type="TextureRect" parent="dailies"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 15.0
 offset_top = 234.0
 offset_right = 153.0
@@ -121,7 +128,8 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="checkmark_3" type="TextureRect" parent="dailies"]
-self_modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 19.0
 offset_top = 345.0
 offset_right = 157.0
@@ -131,6 +139,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="dailies"]
+layout_mode = 0
 offset_left = 155.0
 offset_top = 196.0
 offset_right = 421.0
@@ -138,9 +147,10 @@ offset_bottom = 257.0
 theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
 theme_override_fonts/font = ExtResource("16_rktor")
 theme_override_font_sizes/font_size = 30
-text = "pogłaskaj kota raz"
+text = "Zaloguj się do gry"
 
 [node name="Label2" type="Label" parent="dailies"]
+layout_mode = 0
 offset_left = 151.0
 offset_top = 303.0
 offset_right = 457.0
@@ -151,6 +161,7 @@ theme_override_font_sizes/font_size = 30
 text = "Wykorzystaj 5 energii"
 
 [node name="Label3" type="Label" parent="dailies"]
+layout_mode = 0
 offset_left = 153.0
 offset_top = 406.0
 offset_right = 459.0
@@ -160,7 +171,7 @@ theme_override_fonts/font = ExtResource("16_rktor")
 theme_override_font_sizes/font_size = 30
 text = "Pogłaskaj kota 10 razy"
 
-[node name="login" type="TextureRect" parent="." groups=["windows"]]
+[node name="login" type="TextureRect" parent="." node_paths=PackedStringArray("checkmark") groups=["windows"]]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -177,7 +188,8 @@ grow_vertical = 2
 texture = ExtResource("5_i0sxq")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("1_cclvv")
+script = ExtResource("8_hf6bc")
+checkmark = NodePath("login_check")
 
 [node name="CloseWindow" type="TextureButton" parent="login"]
 modulate = Color(1, 0.189276, 0.947632, 1)
@@ -199,6 +211,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="price" type="Panel" parent="login"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -231,7 +244,8 @@ theme_override_fonts/font = ExtResource("14_iwr56")
 theme_override_font_sizes/font_size = 52
 text = "ZBIERZ"
 
-[node name="TextureRect" type="TextureRect" parent="login"]
+[node name="login_check" type="TextureRect" parent="login"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 11.0
 offset_top = 81.0
@@ -383,6 +397,7 @@ text = "250%
 "
 
 [node name="Label2" type="Label" parent="pig/price/Panel"]
+layout_mode = 0
 offset_left = -28.0
 offset_top = 7.0
 offset_right = 44.0
@@ -596,6 +611,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="achievements"]
+layout_mode = 0
 offset_left = 231.0
 offset_top = 191.0
 offset_right = 432.0
@@ -606,6 +622,7 @@ theme_override_font_sizes/font_size = 25
 text = "zdobąć dwa koty."
 
 [node name="Label2" type="Label" parent="achievements"]
+layout_mode = 0
 offset_left = 226.0
 offset_top = 359.0
 offset_right = 436.0
@@ -617,6 +634,7 @@ text = "pogłaskaj kota 10
 razy."
 
 [node name="Label3" type="Label" parent="achievements"]
+layout_mode = 0
 offset_left = 234.0
 offset_top = 550.0
 offset_right = 435.0
@@ -863,6 +881,7 @@ theme_override_font_sizes/font_size = 23
 text = "_weird_username_29"
 
 [node name="Label2" type="Label" parent="onlineLeaderboard"]
+layout_mode = 0
 offset_left = 193.0
 offset_top = 322.0
 offset_right = 405.0
@@ -873,6 +892,7 @@ theme_override_font_sizes/font_size = 23
 text = "_who_even_is_this"
 
 [node name="Label3" type="Label" parent="onlineLeaderboard"]
+layout_mode = 0
 offset_left = 222.0
 offset_top = 421.0
 offset_right = 434.0
@@ -1016,6 +1036,7 @@ text = "300%
 "
 
 [node name="Label2" type="Label" parent="specialOffer/price/Panel"]
+layout_mode = 0
 offset_left = -28.0
 offset_top = 7.0
 offset_right = 44.0
@@ -1026,6 +1047,7 @@ theme_override_font_sizes/font_size = 12
 text = "WARTOŚĆ"
 
 [node name="timer" type="Label" parent="specialOffer/price"]
+layout_mode = 0
 offset_left = 69.5
 offset_top = 70.0
 offset_right = 109.5
@@ -1041,6 +1063,7 @@ wait_time = 3600.0
 one_shot = true
 
 [node name="claim" type="TextureRect" parent="." node_paths=PackedStringArray("claim_button", "touch_screen_label", "freeCurrency_icon", "paidCurrency_icon", "energy_icon", "claim_label") groups=["windows"]]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1112,7 +1135,7 @@ offset_right = 191.0
 offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.964706, 0.819608, 0.815686, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("14_iwr56")
 theme_override_font_sizes/font_size = 52
 text = "Dotknij ekranu"
@@ -1144,6 +1167,7 @@ stretch_mode = 5
 
 [node name="paidCurrency" type="TextureRect" parent="claim/Control"]
 visible = false
+layout_mode = 0
 offset_left = -90.0
 offset_top = -79.0
 offset_right = 152.0
@@ -1154,6 +1178,7 @@ stretch_mode = 5
 
 [node name="energy" type="TextureRect" parent="claim/Control"]
 visible = false
+layout_mode = 0
 offset_left = -102.0
 offset_top = -83.0
 offset_right = 142.0
@@ -1171,6 +1196,199 @@ offset_bottom = 151.0
 theme_override_colors/font_color = Color(0.466667, 0.317647, 0.317647, 1)
 theme_override_font_sizes/font_size = 56
 text = "x10"
+
+[node name="specialOfferenergy" type="TextureRect" parent="." groups=["windows"]]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -266.0
+offset_right = 241.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_mrfte")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("1_cclvv")
+
+[node name="TextureRect" type="ColorRect" parent="specialOfferenergy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.5
+offset_top = -130.0
+offset_right = 170.5
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.964706, 0.819608, 0.815686, 1)
+
+[node name="TextureRect2" type="Sprite2D" parent="specialOfferenergy/TextureRect"]
+position = Vector2(200, 139)
+scale = Vector2(0.67954, 0.67954)
+texture = ExtResource("32_c0ki4")
+region_enabled = true
+region_rect = Rect2(249.408, 0, 279.606, 439)
+
+[node name="Label" type="Label" parent="specialOfferenergy/TextureRect"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 215.0
+offset_right = 302.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(0.466667, 0.317647, 0.317647, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 36
+text = "x10"
+
+[node name="CloseWindow" type="TextureButton" parent="specialOfferenergy"]
+modulate = Color(1, 0.189276, 0.947632, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 200.5
+offset_top = -135.0
+offset_right = 271.5
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.864777
+texture_normal = ExtResource("2_6qo1v")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="price" type="Panel" parent="specialOfferenergy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = 156.0
+offset_right = 139.5
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_33jt4")
+
+[node name="Label2" type="Label" parent="specialOfferenergy/price"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -46.5
+offset_right = 113.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.596078, 0.431373, 0.494118, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 31
+text = "60 PLN"
+
+[node name="ColorRect" type="ColorRect" parent="specialOfferenergy/price/Label2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0787206
+color = Color(0.492975, 0.343288, 0.400611, 1)
+
+[node name="Label" type="Label" parent="specialOfferenergy/price"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -20.5
+offset_right = 91.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.964706, 0.819608, 0.815686, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 52
+text = "15 PLN"
+
+[node name="Panel" type="Panel" parent="specialOfferenergy/price"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j04fq")
+script = ExtResource("13_164of")
+
+[node name="TextureRect" type="TextureRect" parent="specialOfferenergy/price/Panel"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 51.0
+texture = ExtResource("15_amm2e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="specialOfferenergy/price/Panel"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -17.0
+offset_right = 46.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0.984705, 0.922236, 0.920142, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 26
+text = "200%
+"
+
+[node name="Label2" type="Label" parent="specialOfferenergy/price/Panel"]
+layout_mode = 0
+offset_left = -28.0
+offset_top = 7.0
+offset_right = 44.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.984314, 0.921569, 0.921569, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 12
+text = "WARTOŚĆ"
+
+[node name="timer" type="Label" parent="specialOfferenergy/price"]
+layout_mode = 0
+offset_left = 69.5
+offset_top = 70.0
+offset_right = 109.5
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.960203, 0, 0.442815, 1)
+theme_override_fonts/font = ExtResource("14_iwr56")
+theme_override_font_sizes/font_size = 25
+text = "aaaaaaa"
+script = ExtResource("10_qtse6")
+
+[node name="Timer" type="Timer" parent="specialOfferenergy/price/timer"]
+wait_time = 3600.0
+one_shot = true
 
 [node name="claim_button" type="Button" parent="."]
 visible = false
@@ -1191,4 +1409,5 @@ grow_vertical = 2
 [connection signal="pressed" from="battlePass/CloseWindow" to="battlePass" method="_on_close_window_pressed"]
 [connection signal="pressed" from="onlineLeaderboard/CloseWindow" to="onlineLeaderboard" method="_on_close_window_pressed"]
 [connection signal="pressed" from="specialOffer/CloseWindow" to="specialOffer" method="_on_close_window_pressed"]
+[connection signal="pressed" from="specialOfferenergy/CloseWindow" to="specialOfferenergy" method="_on_close_window_pressed"]
 [connection signal="pressed" from="claim_button" to="claim" method="_on_claim_button_pressed"]

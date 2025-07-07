@@ -10,6 +10,8 @@ var array_size
 var current_key
 var should_it_disappear
 
+var dialogue_in_progress := false
+
 signal dialogue_finished(current_dialogue_key)
 
 func appear():
@@ -30,6 +32,7 @@ func _on_further_dialogue_button_pressed():
 	foroward_dialogue()
 	
 func play_dialogue(key: String, should_it_disappear_after := true):
+	dialogue_in_progress = true
 	should_it_disappear = should_it_disappear_after
 	current_key = key
 	index = 0
@@ -48,6 +51,7 @@ func foroward_dialogue():
 			dialogue_window.change_label(dialogue_array[index])
 		else:
 			print("Dialogue finished")
+			dialogue_in_progress = false
 			dialogue_finished.emit(current_key)
 			if should_it_disappear:
 				disappear()
@@ -62,3 +66,5 @@ func animate_cat():
 	tween.tween_property(cat_sprite, "position:y", up_y, 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(cat_sprite, "position:y", start_y, 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
+func _is_dialogue_in_progress():
+	return dialogue_in_progress
