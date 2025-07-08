@@ -68,3 +68,21 @@ func animate_cat():
 
 func _is_dialogue_in_progress():
 	return dialogue_in_progress
+
+func extract_sprite_tag(line: String) -> Dictionary:
+	var pattern = r"\((.*?)\)$"  # Matches text in () at the end
+	var regex = RegEx.new()
+	regex.compile(pattern)
+	var result = regex.search(line)
+	
+	var sprite_name = ""
+	if result:
+		sprite_name = result.get_string(1)
+		# Remove the (tag) from the original line
+		line = line.substr(0, result.get_start()).strip_edges()
+	
+	return {
+		"text": line,
+		"sprite": sprite_name
+	}
+

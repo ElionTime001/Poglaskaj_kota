@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbup714ugbgum"]
+[gd_scene load_steps=14 format=3 uid="uid://bbup714ugbgum"]
 
 [ext_resource type="Texture2D" uid="uid://dbdkbcgndgvv3" path="res://assets/test/progress_not_full.PNG" id="1_4n0qk"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_sfkbu"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" path="res://scripts/Quest.gd" id="7_rg5c8"]
 [ext_resource type="Texture2D" uid="uid://c8djaec4nn8gl" path="res://assets/test/buttons/okay_not_check.png" id="8_0gjmt"]
 [ext_resource type="Texture2D" uid="uid://beovtkwcp3h5w" path="res://assets/test/buttons/okay_check.png" id="9_nu0sm"]
+[ext_resource type="Texture2D" uid="uid://33o6ipg22quy" path="res://assets/test/buttons/badge_ease_of_play.PNG" id="10_ltc3o"]
+[ext_resource type="Texture2D" uid="uid://cs4roncvobrdn" path="res://assets/test/buttons/badge_ease_of_play_2.PNG" id="11_u1a56"]
+[ext_resource type="Texture2D" uid="uid://cs40yvwov8o07" path="res://assets/test/buttons/badge_online.PNG" id="12_8opap"]
+[ext_resource type="Texture2D" uid="uid://ccvfhs5l208k1" path="res://assets/test/buttons/badge_randomness.PNG" id="13_au4pm"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -172,6 +176,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -347,5 +352,111 @@ theme_override_colors/font_color = Color(0.908847, 0.748861, 0.779838, 1)
 theme_override_fonts/font = ExtResource("4_ver4h")
 theme_override_font_sizes/font_size = 24
 text = "ZADANIE POBOCZNE"
+
+[node name="badges" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="time-gate" type="TextureRect" parent="badges"]
+modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -259.0
+offset_top = 601.0
+offset_right = -143.0
+offset_bottom = 715.0
+grow_horizontal = 2
+texture = ExtResource("10_ltc3o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="badges/time-gate"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ease_of_play" type="TextureRect" parent="badges"]
+modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 601.0
+offset_right = -12.0
+offset_bottom = 715.0
+grow_horizontal = 2
+texture = ExtResource("11_u1a56")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="badges/ease_of_play"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="online" type="TextureRect" parent="badges"]
+modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 5.0
+offset_top = 601.0
+offset_right = 121.0
+offset_bottom = 715.0
+grow_horizontal = 2
+texture = ExtResource("12_8opap")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="badges/online"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="random" type="TextureRect" parent="badges"]
+modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 136.0
+offset_top = 601.0
+offset_right = 252.0
+offset_bottom = 715.0
+grow_horizontal = 2
+texture = ExtResource("13_au4pm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="badges/random"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]

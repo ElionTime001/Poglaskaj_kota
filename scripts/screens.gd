@@ -107,8 +107,6 @@ func shop_active_function():
 					interface.show_menu()
 					interface.hide_back_to_shop()
 					await get_tree().create_timer(0.5).timeout
-					await add_statistics(button.name)
-					shop.make_panel_visible(panel.name)
 					match button.name:
 						"gatcha":
 							await add_statistics("gatcha_shop")
@@ -118,6 +116,7 @@ func shop_active_function():
 							await add_statistics("paid_currency_shop")
 						"energy":
 							await add_statistics("energy_shop")
+					shop.make_panel_visible(panel.name)
 					Flags.is_shop_active = false
 					chapter1_controller.story_proceed(panel.name) #what's this??
 					found = true
@@ -146,7 +145,6 @@ func gatcha_active_function():
 					interface.show_menu()
 					interface.hide_back_to_shop()
 					await get_tree().create_timer(0.5).timeout
-					gatcha.make_panel_visible(panel.name)
 					match panel.name:
 						"skinCollection":
 							await add_statistics("gatcha_skin")
@@ -154,6 +152,7 @@ func gatcha_active_function():
 						"catCollection":
 							await add_statistics("gatcha_cat")
 							Flags.change_flag("characters_gatcha",true)
+					gatcha.make_panel_visible(panel.name)
 					Flags.is_gatcha_active = false
 					chapter1_controller.gatcha_sidequest_proceed(panel.name)
 					found = true

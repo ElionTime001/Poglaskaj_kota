@@ -64,7 +64,6 @@ claim_window = NodePath("claim")
 login = NodePath("login")
 
 [node name="dailies" type="TextureRect" parent="." node_paths=PackedStringArray("quest_finished_1", "quest_finished_2", "quest_finished_3", "claim") groups=["windows"]]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

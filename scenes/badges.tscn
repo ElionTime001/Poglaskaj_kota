@@ -1,0 +1,231 @@
+[gd_scene load_steps=11 format=3 uid="uid://crwr8058lbni0"]
+
+[ext_resource type="Script" path="res://scripts/badges.gd" id="1_ab2l8"]
+[ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="2_fsoxn"]
+[ext_resource type="Texture2D" uid="uid://33o6ipg22quy" path="res://assets/test/buttons/badge_ease_of_play.PNG" id="3_knrmn"]
+[ext_resource type="Texture2D" uid="uid://cs40yvwov8o07" path="res://assets/test/buttons/badge_online.PNG" id="4_qe6sv"]
+[ext_resource type="Texture2D" uid="uid://ccvfhs5l208k1" path="res://assets/test/buttons/badge_randomness.PNG" id="5_fecja"]
+[ext_resource type="Texture2D" uid="uid://cs4roncvobrdn" path="res://assets/test/buttons/badge_ease_of_play_2.PNG" id="6_krv5o"]
+[ext_resource type="Texture2D" uid="uid://cjj0vsx33faqc" path="res://assets/test/buttons/badge_bad_consumer_practicies.PNG" id="7_iel57"]
+[ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="8_7fgf3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mymc7"]
+bg_color = Color(0.737486, 0.475479, 0.568638, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.483549, 0.272595, 0.351127, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_earbl"]
+bg_color = Color(0.84375, 0.631385, 0.702994, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="badges" type="Control" node_paths=PackedStringArray("description_label", "name_label", "badges_control")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ab2l8")
+description_label = NodePath("Panel/Panel/MarginContainer/desc")
+name_label = NodePath("Panel/name")
+badges_control = NodePath("Panel/badges")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -281.0
+offset_right = 209.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mymc7")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = 17.0
+offset_right = 170.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_earbl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="desc" type="Label" parent="Panel/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.482353, 0.27451, 0.352941, 1)
+theme_override_fonts/font = ExtResource("2_fsoxn")
+theme_override_font_sizes/font_size = 21
+text = "Typ monetyzacji polegający na wprowadzaniu do gry mechanik pozwalających na porównywanie się z innymi graczami, co napędza rywalizację i osoby podatne na to."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="badges" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="time" type="TextureRect" parent="Panel/badges" groups=["badges"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -259.0
+offset_right = 104.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_knrmn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="online" type="TextureRect" parent="Panel/badges" groups=["badges"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -259.0
+offset_right = 104.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_qe6sv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="random" type="TextureRect" parent="Panel/badges" groups=["badges"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -259.0
+offset_right = 104.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_fecja")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ease" type="TextureRect" parent="Panel/badges" groups=["badges"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -259.0
+offset_right = 104.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_krv5o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="final" type="TextureRect" parent="Panel/badges" groups=["badges"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -259.0
+offset_right = 104.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_iel57")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="name" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -46.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.483549, 0.272595, 0.351127, 1)
+theme_override_fonts/font = ExtResource("2_fsoxn")
+theme_override_font_sizes/font_size = 26
+text = "TIME GATED
+ PROGRESSION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseWindow" type="TextureButton" parent="."]
+modulate = Color(1, 0.189276, 0.947632, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 194.0
+offset_top = -312.0
+offset_right = 265.0
+offset_bottom = -243.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.864777
+texture_normal = ExtResource("8_7fgf3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="CloseWindow" to="." method="_on_close_window_pressed"]

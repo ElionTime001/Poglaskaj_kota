@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://0k0k60spe7c0"]
+[gd_scene load_steps=7 format=3 uid="uid://0k0k60spe7c0"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_player.gd" id="1_gc8xu"]
 [ext_resource type="PackedScene" uid="uid://d2wfcuapvsfy" path="res://scenes/dialogue_window.tscn" id="2_dpqs6"]
 [ext_resource type="Texture2D" uid="uid://cac83wohoae7f" path="res://assets/IMG_6394.PNG" id="2_y6j34"]
+[ext_resource type="Texture2D" uid="uid://cy5tcybv15doq" path="res://assets/excited.PNG" id="3_xnhn8"]
+[ext_resource type="Texture2D" uid="uid://cgjblws02p1f5" path="res://assets/happy.PNG" id="4_yxc0m"]
+[ext_resource type="Texture2D" uid="uid://k46d567a2ccr" path="res://assets/angry.PNG" id="5_1eknw"]
 
 [node name="dialogue_player" type="Control"]
 layout_mode = 3
@@ -37,12 +40,36 @@ offset_bottom = -639.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="sprite"]
+[node name="annoyed" type="Sprite2D" parent="sprite"]
 position = Vector2(15, 296)
 scale = Vector2(0.421429, 0.416002)
 texture = ExtResource("2_y6j34")
 region_enabled = true
 region_rect = Rect2(2.27258, 856.02, 1435.75, 1073.35)
+
+[node name="proud" type="Sprite2D" parent="sprite"]
+visible = false
+position = Vector2(19, 275)
+scale = Vector2(0.421429, 0.416002)
+texture = ExtResource("3_xnhn8")
+region_enabled = true
+region_rect = Rect2(2.27258, 784.415, 1435.75, 1144.95)
+
+[node name="excited" type="Sprite2D" parent="sprite"]
+visible = false
+position = Vector2(16, 251)
+scale = Vector2(0.421429, 0.416002)
+texture = ExtResource("4_yxc0m")
+region_enabled = true
+region_rect = Rect2(2.27258, 636.622, 1435.75, 1292.75)
+
+[node name="angry" type="Sprite2D" parent="sprite"]
+visible = false
+position = Vector2(15, 275)
+scale = Vector2(0.421429, 0.416002)
+texture = ExtResource("5_1eknw")
+region_enabled = true
+region_rect = Rect2(2.27258, 774.713, 1435.75, 1154.66)
 
 [node name="dialogue_window" parent="." instance=ExtResource("2_dpqs6")]
 layout_mode = 1

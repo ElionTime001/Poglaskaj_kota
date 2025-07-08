@@ -259,6 +259,7 @@ func check_if_proceed(button):
 						menu.make_quest_change(increment_quest_progress(menu.get_quest_text()),true, true)
 						dialogue_player.play_dialogue("dailies_not_login")
 						#O wyrabianiu nawyków
+						
 						await windows.window_closed
 						await get_tree().create_timer(0.2).timeout
 						dialogue_player.play_dialogue("wyrabianie_nawyku")
@@ -295,20 +296,25 @@ func check_if_proceed(button):
 			match button.name: 
 				"paidCurrency":
 					await add_statistics(button.name)
+					windows.open_window(button.name)
+					#await windows.window_closed
 					dialogue_player.play_dialogue("paid_currency")
 					await dialogue_player.dialogue_finished
 				"energy":
 					await add_statistics(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
+					windows.open_window(button.name)
 					dialogue_player.play_dialogue("energy")
 					await dialogue_player.dialogue_finished
 				"skinCollection":
 					await add_statistics(button.name)
 					dialogue_player.play_dialogue("skin_collection")
+					windows.open_window(button.name)
 					await dialogue_player.dialogue_finished
 				"gatcha":
 					await add_statistics(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
+					windows.open_window(button.name)
 					dialogue_player.play_dialogue("gatcha_added")
 					await dialogue_player.dialogue_finished
 				"gatchaAd":
@@ -316,6 +322,7 @@ func check_if_proceed(button):
 					var is_gatcha_finished = Flags.get_flag("gatcha_quest_finished")
 					if is_gatcha_finished:
 						await add_statistics(button.name)
+						windows.open_window(button.name)
 						dialogue_player.play_dialogue("gatcha_ad_yes")
 					else:
 						dialogue_player.play_dialogue("gatcha_ad_no")
@@ -323,6 +330,7 @@ func check_if_proceed(button):
 						interface.return_button(button)
 				"pig":
 					await add_statistics(button.name)
+					windows.open_window(button.name)
 					var sunk_cost = Flags.get_flag("sunk_cost_fallacy_explained")
 					
 					if !sunk_cost:
@@ -375,21 +383,25 @@ func check_if_proceed(button):
 					await dialogue_player.dialogue_finished
 				"achievements":
 					await add_statistics(button.name)
+					windows.open_window(button.name)
 					dialogue_player.play_dialogue("achievements")
 					await dialogue_player.dialogue_finished
 				"catCollection":
 					await add_statistics(button.name)
+					windows.open_window(button.name)
 					dialogue_player.play_dialogue("cat_collection")
 					await dialogue_player.dialogue_finished
 				"specialOffer":
 					var is_shop_finished = Flags.get_flag("shop_completed")
 					if is_shop_finished:
+						windows.open_window(button.name)
 						await add_statistics(button.name)
 						buttons_recquired_for_loss_aversion[button.name] = false
 						dialogue_player.play_dialogue("special_offer_yes")
 						#tu może jeszcze pytanie o Sunk Cost?
 						await dialogue_player.dialogue_finished
-						await get_tree().create_timer(1).timeout
+						await windows.window_closed
+						await get_tree().create_timer(0.5).timeout
 						dialogue_player.play_dialogue("free_reward")
 						await dialogue_player.dialogue_finished
 						#should have a flag for not activating buttons??!!!
@@ -412,13 +424,16 @@ func check_if_proceed(button):
 						await dialogue_player.dialogue_finished
 						interface.return_button(button)
 				"battlePass":
+					
 					await add_statistics(button.name)
+					windows.open_window(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
 					dialogue_player.play_dialogue("battle_pass")
 					await dialogue_player.dialogue_finished
 					#LOSS AVERSION
 					#loss_aversion
-					await get_tree().create_timer(1).timeout
+					await windows.window_closed
+					await get_tree().create_timer(0.5).timeout
 					dialogue_player.play_dialogue("loss_aversion")
 					await dialogue_player.dialogue_finished
 					#które elementy mogą wywołać loss aversion?
@@ -469,6 +484,7 @@ func check_if_proceed(button):
 					await dialogue_player.dialogue_finished
 				"onlineLeaderboard":
 					await add_statistics(button.name)
+					windows.open_window(button.name)
 					dialogue_player.play_dialogue("online_leaderboard")
 					await dialogue_player.dialogue_finished
 		_:
