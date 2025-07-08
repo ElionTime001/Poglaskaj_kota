@@ -1,7 +1,11 @@
 extends Control
 
+@export var screens : CanvasLayer
+
 @export var energy_bar: Control
 @export var energy_value: TextureProgressBar
+
+@export var cat: Node2D
 
 var current_energy_maximum := 5
 
@@ -11,7 +15,11 @@ signal no_energy_left
 func _ready():
 	energy_bar.visible = false
 	energy_value.value = 5
+	
+	screens.catto_patted.connect(play_cat_animation)
 
+func animate_cat():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func energy_depleat():
@@ -30,3 +38,6 @@ func energy_added(how_much: int):
 
 func _get_energy():
 	return energy_value.value
+
+func play_cat_animation():
+	cat.switch_sprite_temporarily()

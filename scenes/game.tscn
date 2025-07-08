@@ -5,6 +5,7 @@
 
 [node name="Game" type="Node"]
 
-[node name="background_things" parent="." instance=ExtResource("1_dsoq3")]
+[node name="background_things" parent="." node_paths=PackedStringArray("screens") instance=ExtResource("1_dsoq3")]
+screens = NodePath("../SCREENS")
 
 [node name="SCREENS" parent="." instance=ExtResource("2_rnqqm")]

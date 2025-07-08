@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbup714ugbgum"]
+[gd_scene load_steps=15 format=3 uid="uid://bbup714ugbgum"]
 
 [ext_resource type="Texture2D" uid="uid://dbdkbcgndgvv3" path="res://assets/test/progress_not_full.PNG" id="1_4n0qk"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_sfkbu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c8djaec4nn8gl" path="res://assets/test/buttons/okay_not_check.png" id="8_0gjmt"]
 [ext_resource type="Texture2D" uid="uid://beovtkwcp3h5w" path="res://assets/test/buttons/okay_check.png" id="9_nu0sm"]
 [ext_resource type="Texture2D" uid="uid://33o6ipg22quy" path="res://assets/test/buttons/badge_ease_of_play.PNG" id="10_ltc3o"]
+[ext_resource type="Script" path="res://scripts/menubuttondefault.gd" id="11_g6gru"]
 [ext_resource type="Texture2D" uid="uid://cs4roncvobrdn" path="res://assets/test/buttons/badge_ease_of_play_2.PNG" id="11_u1a56"]
 [ext_resource type="Texture2D" uid="uid://cs40yvwov8o07" path="res://assets/test/buttons/badge_online.PNG" id="12_8opap"]
 [ext_resource type="Texture2D" uid="uid://ccvfhs5l208k1" path="res://assets/test/buttons/badge_randomness.PNG" id="13_au4pm"]
@@ -363,7 +364,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="time-gate" type="TextureRect" parent="badges"]
+[node name="time" type="TextureRect" parent="badges" groups=["badges_menu"]]
 modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
 layout_mode = 1
 anchors_preset = 5
@@ -378,7 +379,7 @@ texture = ExtResource("10_ltc3o")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="badges/time-gate"]
+[node name="Button" type="Button" parent="badges/time" groups=["buttons_in_menu"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -386,8 +387,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_g6gru")
 
-[node name="ease_of_play" type="TextureRect" parent="badges"]
+[node name="ease" type="TextureRect" parent="badges" groups=["badges_menu"]]
 modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
 layout_mode = 1
 anchors_preset = 5
@@ -402,7 +404,7 @@ texture = ExtResource("11_u1a56")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="badges/ease_of_play"]
+[node name="Button" type="Button" parent="badges/ease" groups=["buttons_in_menu"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -410,8 +412,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_g6gru")
 
-[node name="online" type="TextureRect" parent="badges"]
+[node name="online" type="TextureRect" parent="badges" groups=["badges_menu"]]
 modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
 layout_mode = 1
 anchors_preset = 5
@@ -426,7 +429,7 @@ texture = ExtResource("12_8opap")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="badges/online"]
+[node name="Button" type="Button" parent="badges/online" groups=["buttons_in_menu"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -434,8 +437,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_g6gru")
 
-[node name="random" type="TextureRect" parent="badges"]
+[node name="random" type="TextureRect" parent="badges" groups=["badges_menu"]]
 modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
 layout_mode = 1
 anchors_preset = 5
@@ -450,7 +454,7 @@ texture = ExtResource("13_au4pm")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="badges/random"]
+[node name="Button" type="Button" parent="badges/random" groups=["buttons_in_menu"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -458,5 +462,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_g6gru")
 
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]

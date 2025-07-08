@@ -2,12 +2,18 @@ extends Control
 
 signal quest_done(quest_name)
 
+@export var badges_interface : Control
+
 var quest_current: Control
 var quest_persistent: Control
 
 var money_label: TextureProgressBar
 var clients_label: TextureProgressBar
 var annoyance_label: TextureProgressBar
+
+var badges = []
+var unlocked = {"time": false, "ease" : false, "online" : false, "random" : false}
+var badge_buttons
 
 func _ready():
 	quest_current = $Quest_current
@@ -16,6 +22,12 @@ func _ready():
 	money_label = $money
 	clients_label = $money/clients
 	annoyance_label = $money/annoyance
+	
+	badges = get_tree().get_nodes_in_group("badges_menu")
+	badge_buttons = get_tree().get_nodes_in_group("buttons_in_menu")
+	
+	for button in badge_buttons:
+		button.clicked.connect(badge_clicked)
 
 func add_values_to_progress_bars(mon, hab, ir):
 	money_label.value += mon
@@ -58,3 +70,15 @@ func get_quest_text(is_current:= true):
 
 func _on_close_item_box_pressed():
 	self.visible = false
+
+func unlock_badge(badge_name):
+	for badge in badges:
+		badge.modulate = Color.WHITE
+		unlocked[badge_name] = true
+
+func badge_clicked(name_badge):
+	if unlocked[name_badge]:
+		badges_interface.appear(name_badge)
+	else:
+		pass
+		

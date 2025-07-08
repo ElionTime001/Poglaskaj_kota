@@ -101,6 +101,7 @@ theme_override_font_sizes/font_size = 20
 text = "9.99"
 
 [node name="PLN" type="Label" parent="paidCurrency/price_1"]
+layout_mode = 0
 offset_left = 46.0
 offset_top = 16.0
 offset_right = 86.0
@@ -109,6 +110,7 @@ theme_override_font_sizes/font_size = 12
 text = "PLN"
 
 [node name="price_2" type="Panel" parent="paidCurrency"]
+layout_mode = 0
 offset_left = 169.0
 offset_top = 82.0
 offset_right = 265.0
@@ -125,6 +127,7 @@ theme_override_font_sizes/font_size = 20
 text = "24.99"
 
 [node name="PLN" type="Label" parent="paidCurrency/price_2"]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
@@ -133,6 +136,7 @@ theme_override_font_sizes/font_size = 12
 text = "PLN"
 
 [node name="price_3" type="Panel" parent="paidCurrency"]
+layout_mode = 0
 offset_left = 287.0
 offset_top = 81.0
 offset_right = 389.0
@@ -149,6 +153,7 @@ theme_override_font_sizes/font_size = 20
 text = "49.99"
 
 [node name="PLN" type="Label" parent="paidCurrency/price_3"]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
@@ -157,6 +162,7 @@ theme_override_font_sizes/font_size = 12
 text = "PLN"
 
 [node name="price_4" type="Panel" parent="paidCurrency"]
+layout_mode = 0
 offset_left = 408.0
 offset_top = 82.0
 offset_right = 518.0
@@ -173,6 +179,7 @@ theme_override_font_sizes/font_size = 20
 text = "119.99"
 
 [node name="PLN" type="Label" parent="paidCurrency/price_4"]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 16.0
 offset_right = 112.0
@@ -221,6 +228,7 @@ text = "energy"
 script = ExtResource("2_ckr77")
 
 [node name="price_1" type="Panel" parent="energy"]
+layout_mode = 0
 offset_left = 34.0
 offset_top = 83.0
 offset_right = 112.0
@@ -237,6 +245,7 @@ theme_override_font_sizes/font_size = 20
 text = "9.99"
 
 [node name="Label2" type="Label" parent="energy/price_1" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0
@@ -245,6 +254,7 @@ theme_override_font_sizes/font_size = 20
 text = "5"
 
 [node name="PLN" type="Label" parent="energy/price_1" groups=["pln"]]
+layout_mode = 0
 offset_left = 46.0
 offset_top = 16.0
 offset_right = 86.0
@@ -263,6 +273,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="price_2" type="Panel" parent="energy"]
+layout_mode = 0
 offset_left = 169.0
 offset_top = 87.0
 offset_right = 265.0
@@ -279,6 +290,7 @@ theme_override_font_sizes/font_size = 20
 text = "24.99"
 
 [node name="PLN" type="Label" parent="energy/price_2" groups=["pln"]]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
@@ -297,6 +309,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="energy/price_2" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0
@@ -305,6 +318,7 @@ theme_override_font_sizes/font_size = 20
 text = "25"
 
 [node name="price_3" type="Panel" parent="energy"]
+layout_mode = 0
 offset_left = 287.0
 offset_top = 86.0
 offset_right = 389.0
@@ -321,6 +335,7 @@ theme_override_font_sizes/font_size = 20
 text = "49.99"
 
 [node name="PLN" type="Label" parent="energy/price_3" groups=["pln"]]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
@@ -339,6 +354,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="energy/price_3" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0
@@ -347,6 +363,7 @@ theme_override_font_sizes/font_size = 20
 text = "60"
 
 [node name="price_4" type="Panel" parent="energy"]
+layout_mode = 0
 offset_left = 408.0
 offset_top = 87.0
 offset_right = 518.0
@@ -363,6 +380,7 @@ theme_override_font_sizes/font_size = 20
 text = "119.99"
 
 [node name="PLN" type="Label" parent="energy/price_4" groups=["pln"]]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 16.0
 offset_right = 112.0
@@ -381,6 +399,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="energy/price_4" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0
@@ -429,6 +448,7 @@ text = "skins"
 script = ExtResource("2_ckr77")
 
 [node name="price_2" type="Panel" parent="skinCollection"]
+layout_mode = 0
 offset_left = 221.0
 offset_top = 92.0
 offset_right = 317.0
@@ -445,6 +465,7 @@ theme_override_font_sizes/font_size = 20
 text = "24.99"
 
 [node name="PLN" type="Label" parent="skinCollection/price_2" groups=["pln"]]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
@@ -463,6 +484,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="skinCollection/price_2" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0
@@ -471,6 +493,7 @@ theme_override_font_sizes/font_size = 20
 text = "40"
 
 [node name="price_3" type="Panel" parent="skinCollection"]
+layout_mode = 0
 offset_left = 420.0
 offset_top = 91.0
 offset_right = 522.0
@@ -487,6 +510,7 @@ theme_override_font_sizes/font_size = 20
 text = "49.99"
 
 [node name="PLN" type="Label" parent="skinCollection/price_3" groups=["pln"]]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
@@ -505,6 +529,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="skinCollection/price_3" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0
@@ -555,6 +580,7 @@ text = "skins"
 script = ExtResource("2_ckr77")
 
 [node name="price_2" type="Panel" parent="gatcha"]
+layout_mode = 0
 offset_left = 122.0
 offset_top = 86.0
 offset_right = 218.0
@@ -571,6 +597,7 @@ theme_override_font_sizes/font_size = 20
 text = "24.99"
 
 [node name="PLN" type="Label" parent="gatcha/price_2" groups=["pln"]]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
@@ -589,6 +616,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="gatcha/price_2" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0
@@ -597,6 +625,7 @@ theme_override_font_sizes/font_size = 20
 text = "25"
 
 [node name="price_3" type="Panel" parent="gatcha"]
+layout_mode = 0
 offset_left = 240.0
 offset_top = 85.0
 offset_right = 342.0
@@ -613,6 +642,7 @@ theme_override_font_sizes/font_size = 20
 text = "49.99"
 
 [node name="PLN" type="Label" parent="gatcha/price_3" groups=["pln"]]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 100.0
@@ -631,6 +661,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="gatcha/price_3" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0
@@ -639,6 +670,7 @@ theme_override_font_sizes/font_size = 20
 text = "60"
 
 [node name="price_4" type="Panel" parent="gatcha"]
+layout_mode = 0
 offset_left = 361.0
 offset_top = 86.0
 offset_right = 471.0
@@ -655,6 +687,7 @@ theme_override_font_sizes/font_size = 20
 text = "119.99"
 
 [node name="PLN" type="Label" parent="gatcha/price_4" groups=["pln"]]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 16.0
 offset_right = 112.0
@@ -673,6 +706,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="gatcha/price_4" groups=["coin_price"]]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 7.0
 offset_right = 62.0

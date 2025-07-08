@@ -28,7 +28,7 @@ func _ready():
 	badges = get_tree().get_nodes_in_group("badges")
 	make_invisible_badges()
 	animate_panel(badges_control)
-	appear("time")
+	self.visible = false
 
 
 func make_invisible_badges():

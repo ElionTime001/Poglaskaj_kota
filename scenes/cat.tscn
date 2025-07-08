@@ -1,11 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4doai0buhwl4"]
+[gd_scene load_steps=4 format=3 uid="uid://b4doai0buhwl4"]
 
+[ext_resource type="Script" path="res://scripts/cat.gd" id="1_gvsum"]
 [ext_resource type="Texture2D" uid="uid://bvbc5vkp7kyje" path="res://assets/IMG_6396.PNG" id="1_tsv8g"]
+[ext_resource type="Texture2D" uid="uid://dcxdqudf4iqdo" path="res://assets/IMG_6615.PNG" id="3_ibf88"]
 
-[node name="cat" type="Node2D"]
+[node name="cat" type="Node2D" node_paths=PackedStringArray("sprite_1", "sprite_2")]
+script = ExtResource("1_gvsum")
+sprite_1 = NodePath("cat_sprite")
+sprite_2 = NodePath("cat_sprite2")
 
 [node name="cat_sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.564006, 0.564006)
 texture = ExtResource("1_tsv8g")
+region_enabled = true
+region_rect = Rect2(216.62, 930.953, 956.97, 1192.42)
+
+[node name="cat_sprite2" type="Sprite2D" parent="."]
+scale = Vector2(0.564006, 0.564006)
+texture = ExtResource("3_ibf88")
 region_enabled = true
 region_rect = Rect2(216.62, 930.953, 956.97, 1192.42)

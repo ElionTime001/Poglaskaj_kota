@@ -11,6 +11,7 @@ extends Node
 @export var for_the_player : Control
 @export var windows: Control
 @export var show_numbers: Control
+@export var badges : Control
 
 var current_moment : String
 
@@ -27,6 +28,7 @@ func story_proceed(button_name:=""):
 			#intro logic
 			#aktywowanie po kliknięciu kłota
 			if Flags.get_flag("intro_dialogue_completed"):
+				await get_tree().create_timer(1).timeout
 				Flags.change_flag("cat_clickable", false)
 				dialogue_player.play_dialogue("intro_after_clicked")
 				await dialogue_player.dialogue_finished
@@ -143,7 +145,7 @@ func story_proceed(button_name:=""):
 					dialogue_player.play_dialogue("fomo_answer_2_no", false)
 				await dialogue_player.dialogue_finished
 				await get_tree().create_timer(0.2).timeout
-				dialogue_player.play_dialogue("fomo_end")
+				dialogue_player.play_dialogue("fomo_end", false)
 				Flags.change_state("second_quest")
 				await dialogue_player.dialogue_finished
 				story_proceed()
@@ -170,6 +172,11 @@ func story_proceed(button_name:=""):
 				await get_tree().create_timer(0.2).timeout
 				speech_bubble.play_dialogue("story_2")
 				await speech_bubble.dialogue_finished
+				for_the_player.node_appear_ingame("arrow_add", false)
+				await get_tree().create_timer(0.2).timeout
+				speech_bubble.play_dialogue("shop_tutorial")
+				await speech_bubble.dialogue_finished
+				for_the_player.node_disappear_ingame("arrow_add", false)
 				display_quest_change("Spróbuj wypełnić sklep przynajmniej trzema produktami (0/3)")
 				await quest_alert.quest_closed
 				
@@ -193,11 +200,12 @@ func story_proceed(button_name:=""):
 				await wait_for_specific_button_dropped("paidCurrencyButton", false, true)
 				dialogue_player.play_dialogue("paid_currency_chosen")
 				shop.change_for_coins()
+				await appear_badge("ease")
 				await shop.shop_closed
 				await get_tree().create_timer(0.2).timeout
 				dialogue_player.play_dialogue("story_almost_end")
 				await dialogue_player.dialogue_finished
-				display_quest_change("Spróbuj powiększyć dochody (0/500)")
+				display_quest_change("Spróbuj wypełnić do końca wszystkie statystyki w menu.")
 		_:
 			print("Story has nowhere to proceed")
 
@@ -306,6 +314,8 @@ func check_if_proceed(button):
 					windows.open_window(button.name)
 					dialogue_player.play_dialogue("energy")
 					await dialogue_player.dialogue_finished
+					await appear_badge("time")
+					#BADGE APPEAR
 				"skinCollection":
 					await add_statistics(button.name)
 					dialogue_player.play_dialogue("skin_collection")
@@ -487,6 +497,7 @@ func check_if_proceed(button):
 					windows.open_window(button.name)
 					dialogue_player.play_dialogue("online_leaderboard")
 					await dialogue_player.dialogue_finished
+					await appear_badge("online")
 		_:
 			print("Nothing of note")
 
@@ -548,6 +559,7 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 		dialogue_player.play_dialogue("gatcha_finished_explanation", true)
 		Flags.change_flag("gatcha_quest_finished", true)
 		await dialogue_player.dialogue_finished
+		await appear_badge("random")
 	
 func display_quest_change(new_line: String, is_current:= true):
 	menu.make_quest_change(new_line, is_current)
@@ -598,3 +610,7 @@ func add_statistics(panel_name):
 	menu.add_values_to_progress_bars(int(mon),int(hab),int(ir))
 	await show_numbers.appear_disappear(str(mon),str(hab),str(ir))
 	
+func appear_badge(name_badge: String):
+	menu.unlock_badge(name_badge)
+	badges.appear(name_badge)
+	await badges.badge_window_closed

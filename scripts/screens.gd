@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal catto_patted
+
 var dialogue_player : Control
 var item_box: Control
 var drag_preview 
@@ -174,6 +176,7 @@ func interface_change(button):
 				
 			"petButton":
 				var clicability = Flags.get_flag("cat_clickable")
+				catto_patted.emit()
 				
 				if clicability:
 					chapter1_controller.story_proceed()
