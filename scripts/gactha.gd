@@ -32,6 +32,10 @@ func make_panel_visible(panel_name):
 	for panel in gatcha_panels:
 		if panel.name == panel_name:
 			panel.visible = true
+			if panel.name == "skinCollection":
+				for panel2 in gatcha_panels:
+					if panel2.name == "gatcha_character_rate":
+						panel2.visible = true
 			break
 			
 func _on_add_element_button_pressed():

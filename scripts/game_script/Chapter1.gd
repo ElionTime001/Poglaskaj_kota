@@ -10,6 +10,7 @@ extends Node
 @export var quest_alert: Control
 @export var for_the_player : Control
 @export var windows: Control
+@export var show_numbers: Control
 
 var current_moment : String
 
@@ -18,7 +19,6 @@ var buttons_recquired_for_loss_aversion = {}
 
 func _ready():
 	interface.button_dropped.connect(check_if_proceed)
-	
 	
 func story_proceed(button_name:=""):
 	current_moment = Flags.get_state_name()
@@ -67,9 +67,11 @@ func story_proceed(button_name:=""):
 				display_quest_change("Dodaj do interfejsu darmową walutę (0/1)")
 				
 				#czekanie na drop
+				
 				await wait_for_specific_button_dropped("freeCurrency")
 				#for_the_player.node_disappear_ingame("coin")
-				await get_tree().create_timer(0.5).timeout
+				await add_statistics("freeCurrency")
+				#await get_tree().create_timer(0.5).timeout
 				dialogue_player.play_dialogue("tutorial_1_dragged")
 				Flags.change_state("first_quest")
 				await dialogue_player.dialogue_finished
@@ -190,6 +192,7 @@ func story_proceed(button_name:=""):
 				await dialogue_player.dialogue_finished
 				await wait_for_specific_button_dropped("paidCurrencyButton", false, true)
 				dialogue_player.play_dialogue("paid_currency_chosen")
+				shop.change_for_coins()
 				await shop.shop_closed
 				await get_tree().create_timer(0.2).timeout
 				dialogue_player.play_dialogue("story_almost_end")
@@ -197,7 +200,6 @@ func story_proceed(button_name:=""):
 				display_quest_change("Spróbuj powiększyć dochody (0/500)")
 		_:
 			print("Story has nowhere to proceed")
-
 
 func value_change():
 	pass
@@ -230,6 +232,7 @@ func check_if_proceed(button):
 		"tutorial_interface":
 				match button.name:
 					"freeCurrency":
+						#await add_statistics(button.name)
 						pass
 					_:
 						dialogue_player.play_dialogue("incorrect_auto_response_interface")
@@ -243,6 +246,7 @@ func check_if_proceed(button):
 					buttons_recquired_for_loss_aversion[button.name] = false
 					Flags.change_flag("dailies_added",true)
 					
+					await add_statistics(button.name)
 					windows.open_window(button.name)
 					
 					if was_login_added:
@@ -256,7 +260,7 @@ func check_if_proceed(button):
 						dialogue_player.play_dialogue("dailies_not_login")
 						#O wyrabianiu nawyków
 						await windows.window_closed
-						await get_tree().create_timer(1).timeout
+						await get_tree().create_timer(0.2).timeout
 						dialogue_player.play_dialogue("wyrabianie_nawyku")
 						await dialogue_player.dialogue_finished
 						
@@ -264,6 +268,7 @@ func check_if_proceed(button):
 					buttons_recquired_for_loss_aversion[button.name] = false
 					Flags.change_flag("login_added",true)
 					
+					await add_statistics(button.name)
 					windows.open_window(button.name)
 					
 					if were_dailies_added:
@@ -277,7 +282,7 @@ func check_if_proceed(button):
 						dialogue_player.play_dialogue("login_not_dailies")
 						#O wyrabianiu nawyku
 						await windows.window_closed
-						await get_tree().create_timer(1).timeout
+						await get_tree().create_timer(0.2).timeout
 						dialogue_player.play_dialogue("wyrabianie_nawyku")
 						await dialogue_player.dialogue_finished
 				_:
@@ -289,16 +294,20 @@ func check_if_proceed(button):
 		"second_quest":
 			match button.name: 
 				"paidCurrency":
+					await add_statistics(button.name)
 					dialogue_player.play_dialogue("paid_currency")
 					await dialogue_player.dialogue_finished
 				"energy":
+					await add_statistics(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
 					dialogue_player.play_dialogue("energy")
 					await dialogue_player.dialogue_finished
 				"skinCollection":
+					await add_statistics(button.name)
 					dialogue_player.play_dialogue("skin_collection")
 					await dialogue_player.dialogue_finished
 				"gatcha":
+					await add_statistics(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
 					dialogue_player.play_dialogue("gatcha_added")
 					await dialogue_player.dialogue_finished
@@ -306,12 +315,14 @@ func check_if_proceed(button):
 					buttons_recquired_for_loss_aversion[button.name] = false
 					var is_gatcha_finished = Flags.get_flag("gatcha_quest_finished")
 					if is_gatcha_finished:
+						await add_statistics(button.name)
 						dialogue_player.play_dialogue("gatcha_ad_yes")
 					else:
 						dialogue_player.play_dialogue("gatcha_ad_no")
 						await dialogue_player.dialogue_finished
 						interface.return_button(button)
 				"pig":
+					await add_statistics(button.name)
 					var sunk_cost = Flags.get_flag("sunk_cost_fallacy_explained")
 					
 					if !sunk_cost:
@@ -363,14 +374,17 @@ func check_if_proceed(button):
 					dialogue_player.play_dialogue("pig_sunk_cost_after")
 					await dialogue_player.dialogue_finished
 				"achievements":
+					await add_statistics(button.name)
 					dialogue_player.play_dialogue("achievements")
 					await dialogue_player.dialogue_finished
 				"catCollection":
+					await add_statistics(button.name)
 					dialogue_player.play_dialogue("cat_collection")
 					await dialogue_player.dialogue_finished
 				"specialOffer":
 					var is_shop_finished = Flags.get_flag("shop_completed")
 					if is_shop_finished:
+						await add_statistics(button.name)
 						buttons_recquired_for_loss_aversion[button.name] = false
 						dialogue_player.play_dialogue("special_offer_yes")
 						#tu może jeszcze pytanie o Sunk Cost?
@@ -398,6 +412,7 @@ func check_if_proceed(button):
 						await dialogue_player.dialogue_finished
 						interface.return_button(button)
 				"battlePass":
+					await add_statistics(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
 					dialogue_player.play_dialogue("battle_pass")
 					await dialogue_player.dialogue_finished
@@ -453,6 +468,7 @@ func check_if_proceed(button):
 					dialogue_player.play_dialogue("loss_eversion_end")
 					await dialogue_player.dialogue_finished
 				"onlineLeaderboard":
+					await add_statistics(button.name)
 					dialogue_player.play_dialogue("online_leaderboard")
 					await dialogue_player.dialogue_finished
 		_:
@@ -557,3 +573,12 @@ func all_clicked(flags):
 		if !flags[key]:
 			return false
 	return true
+
+func add_statistics(panel_name):
+	var panel_data = DataFiles.read_panel_data(panel_name)
+	var mon = panel_data["money"]
+	var hab = panel_data["habit"]
+	var ir = panel_data["annoyance"]
+	menu.add_values_to_progress_bars(int(mon),int(hab),int(ir))
+	await show_numbers.appear_disappear(str(mon),str(hab),str(ir))
+	

@@ -17,6 +17,15 @@ func _ready():
 	clients_label = $money/clients
 	annoyance_label = $money/annoyance
 
+func add_values_to_progress_bars(mon, hab, ir):
+	money_label.value += mon
+	clients_label.value += hab
+	annoyance_label.value += ir
+
+	money_label.value = clamp(money_label.value, money_label.min_value, money_label.max_value)
+	clients_label.value = clamp(clients_label.value, clients_label.min_value, clients_label.max_value)
+	annoyance_label.value = clamp(annoyance_label.value, annoyance_label.min_value, annoyance_label.max_value)
+
 func make_quest_finished(quest_name: String, is_current:= true):
 	var quest 
 	if is_current:

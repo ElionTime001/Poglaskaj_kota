@@ -7,6 +7,9 @@ var drag_texture
 @export var shop_button: TextureButton
 @export var interface: Control
 
+@export var description_label: Label
+@export var name_label: Label
+
 signal item_dropped(item)
 signal item_picked(button)
 signal item_clicked(button)
@@ -22,6 +25,12 @@ func _ready():
 
 func _on_button_pressed(button):
 	print("Clicked:", button.name)
+	var panel_data = DataFiles.read_panel_data(button.name)
+	var new_name = panel_data["name"]["eng"]
+	var new_description = panel_data["description"]["eng"]
+	print(new_name + " " + new_description)
+	description_label.text = new_description
+	name_label.text = new_name
 	item_clicked.emit(button)
 
 func _on_button_down(texture):

@@ -7,11 +7,27 @@ signal shop_active
 signal button_has_been_clicked(button)
 signal shop_closed
 
+var pln_labels = []
+var coin_textures = []
+var pln_price = []
+var coin_price = []
+
 @export var interface: Control
 
 func _ready():
 	shop_elements = get_tree().get_nodes_in_group("shop_elements")
 	shop_buttons = get_tree().get_nodes_in_group("shop_button")
+	
+	pln_labels = get_tree().get_nodes_in_group("pln")
+	coin_textures = get_tree().get_nodes_in_group("paid")
+	pln_price = get_tree().get_nodes_in_group("pln_price")
+	coin_price = get_tree().get_nodes_in_group("coin_price")
+	
+	for texture in coin_textures:
+		texture.visible = false
+	for coin in coin_price:
+		coin.visible = false
+	
 	for panel in shop_elements:
 			panel.visible = false
 	for button in shop_buttons:
@@ -20,6 +36,15 @@ func _ready():
 func _process(delta):
 	pass
 
+func change_for_coins():
+	for pln in pln_labels:
+		pln.visible = false
+	for pln in pln_price:
+		pln.visible = false
+	for texture in coin_textures:
+		texture.visible = true
+	for coin in coin_price:
+		coin.visible = true
 
 func _on_add_element_button_pressed():
 	Flags.is_shop_active = true

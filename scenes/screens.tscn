@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=20 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dk4uscudbb33m" path="res://assets/test/buttons/arrow.PNG" id="13_1vmb6"]
 [ext_resource type="Texture2D" uid="uid://5y2qxa75jiot" path="res://assets/test/buttons/energy_not_filled.PNG" id="15_fs6xx"]
 [ext_resource type="Texture2D" uid="uid://xuyefy5llhmm" path="res://assets/test/buttons/energy_filled.PNG" id="16_n3xn5"]
+[ext_resource type="PackedScene" uid="uid://evvnjdmdgriy" path="res://scenes/just_number_showing_labels.tscn" id="17_sj4m1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ukbv"]
 bg_color = Color(1, 1, 1, 1)
@@ -165,7 +166,10 @@ texture = ExtResource("13_1vmb6")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop", "menu", "quest_alert", "for_the_player", "windows")]
+[node name="just_number_showing_labels" parent="." instance=ExtResource("17_sj4m1")]
+visible = false
+
+[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop", "menu", "quest_alert", "for_the_player", "windows", "show_numbers")]
 script = ExtResource("7_7eaxb")
 dialogue_player = NodePath("../dialogue_player")
 speech_bubble = NodePath("../speechBubble")
@@ -177,3 +181,4 @@ menu = NodePath("../menu")
 quest_alert = NodePath("../quest_alert")
 for_the_player = NodePath("../for_the_player")
 windows = NodePath("../windows")
+show_numbers = NodePath("../just_number_showing_labels")

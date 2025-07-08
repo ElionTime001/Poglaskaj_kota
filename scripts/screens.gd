@@ -9,6 +9,7 @@ var interface: Control
 var shop: Control
 var gatcha: Control
 var windows: Control
+var show_numbers: Control
 
 var energy_bar: Control
 
@@ -24,6 +25,7 @@ func _ready():
 	gatcha = $gatcha
 	energy_bar = $energy_bar
 	windows = $windows
+	show_numbers = $just_number_showing_labels
 	
 	interface.button_clicked.connect(interface_change)
 	interface.interface_button_clicked.connect(interface_change)
@@ -39,9 +41,9 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	
 	#TO JEST DO USUNIĘCIA PÓŹNIEJ!!!!
-	Flags.change_state("tutorial_interface")
-	interface.show_menu()
-	Flags.change_flag("dragging_locked",false)
+	#Flags.change_state("tutorial_interface")
+	#interface.show_menu()
+	#Flags.change_flag("dragging_locked",false)
 	
 	chapter1_controller.story_proceed()
 	#dialogue_player.play_dialogue("test_dialogue")
@@ -101,13 +103,23 @@ func shop_active_function():
 			var panels = shop.get_panels()
 			for panel in panels:
 				if button.name == panel.name:
-					Flags.is_shop_active = false
 					shop.visible = true
 					interface.show_menu()
 					interface.hide_back_to_shop()
 					await get_tree().create_timer(0.5).timeout
+					await add_statistics(button.name)
 					shop.make_panel_visible(panel.name)
-					chapter1_controller.story_proceed(panel.name)
+					match button.name:
+						"gatcha":
+							await add_statistics("gatcha_shop")
+						"skinCollection":
+							await add_statistics("skins_shop")
+						"paidCurrency":
+							await add_statistics("paid_currency_shop")
+						"energy":
+							await add_statistics("energy_shop")
+					Flags.is_shop_active = false
+					chapter1_controller.story_proceed(panel.name) #what's this??
 					found = true
 					break
 			if found:
@@ -130,7 +142,6 @@ func gatcha_active_function():
 			var panels = gatcha.get_panels()
 			for panel in panels:
 				if button.name == panel.name:
-					Flags.is_gatcha_active = false
 					gatcha.visible = true
 					interface.show_menu()
 					interface.hide_back_to_shop()
@@ -138,9 +149,12 @@ func gatcha_active_function():
 					gatcha.make_panel_visible(panel.name)
 					match panel.name:
 						"skinCollection":
+							await add_statistics("gatcha_skin")
 							Flags.change_flag("skins_gatcha", true)
 						"catCollection":
+							await add_statistics("gatcha_cat")
 							Flags.change_flag("characters_gatcha",true)
+					Flags.is_gatcha_active = false
 					chapter1_controller.gatcha_sidequest_proceed(panel.name)
 					found = true
 					break
@@ -184,3 +198,11 @@ func interface_change(button):
 				gatcha.visible = true
 				if !Flags.get_flag("gatcha_quest_finished"):
 					chapter1_controller.gatcha_sidequest_proceed()
+
+func add_statistics(panel_name):
+	var panel_data = DataFiles.read_panel_data(panel_name)
+	var mon = panel_data["money"]
+	var hab = panel_data["habit"]
+	var ir = panel_data["annoyance"]
+	menu.add_values_to_progress_bars(int(mon),int(hab),int(ir))
+	await show_numbers.appear_disappear(str(mon),str(hab),str(ir))

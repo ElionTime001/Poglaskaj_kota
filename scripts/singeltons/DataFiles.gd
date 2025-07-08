@@ -2,6 +2,7 @@ extends Node
 
 var language = "eng"
 var gameDataFileFath = "res://jasons/ui_elements_dialogue.json"
+var gameDataFileFath_2 = "res://jasons/ui_elements.json"
 
 #JUST THE LOADED DATA
 var gameData = {}
@@ -10,9 +11,12 @@ var gameData = {}
 var itemData = {}
 var dialogueData = {}
 
+var panelData = {}
+
 #
 func _ready():
 	gameData = load_json_file(gameDataFileFath)
+	panelData = load_json_file(gameDataFileFath_2)
 	
 	for key in gameData.keys():
 		var type = gameData[key]["type"][language]
@@ -49,6 +53,12 @@ func read_item_data(key:String, type: String):
 		return itemData[key][type]
 	else:
 		print("Failed to load the data!: ", key, " , ", type)
+	
+func read_panel_data(key:String):
+	if panelData.has(key):
+		return panelData[key]
+	else:
+		print("Failed to load the data!: ", key)
 		
 func read_dialogue_data(key:String, type: String):
 	if dialogueData.has(key):

@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://evvnjdmdgriy"]
+
+[ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="1_bofk4"]
+[ext_resource type="Script" path="res://scripts/just_number_showing_labels.gd" id="1_qqyph"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gd60g"]
+bg_color = Color(0.519563, 0.364503, 0.423776, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ietg8"]
+bg_color = Color(0.420653, 0.288907, 0.339858, 1)
+
+[node name="just_number_showing_labels" type="Control" node_paths=PackedStringArray("labels", "mon_ile", "hab_ile", "ir_ile")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qqyph")
+labels = NodePath("Control")
+mon_ile = NodePath("Control/monetyzacja/monetyzacja_ile")
+hab_ile = NodePath("Control/habit/habit_ile")
+ir_ile = NodePath("Control/irytacja/irytacja_ile")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -147.0
+offset_top = -101.0
+offset_right = 187.0
+offset_bottom = 141.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gd60g")
+
+[node name="Panel" type="Panel" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = -92.0
+offset_right = 93.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ietg8")
+
+[node name="monetyzacja" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -139.0
+offset_top = -55.0
+offset_right = 39.0
+offset_bottom = -19.0
+theme_override_colors/font_color = Color(0.780102, 0.632632, 0.686691, 1)
+theme_override_fonts/font = ExtResource("1_bofk4")
+theme_override_font_sizes/font_size = 36
+text = "ZAROBKI"
+
+[node name="monetyzacja_ile" type="Label" parent="Control/monetyzacja"]
+offset_left = 252.0
+offset_top = -3.0
+offset_right = 430.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.974831, 0.954469, 0.961397, 1)
+theme_override_fonts/font = ExtResource("1_bofk4")
+theme_override_font_sizes/font_size = 36
+text = "+30"
+
+[node name="habit" type="Label" parent="Control"]
+offset_left = -143.0
+offset_top = 1.0
+offset_right = 109.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0.780102, 0.632632, 0.686691, 1)
+theme_override_fonts/font = ExtResource("1_bofk4")
+theme_override_font_sizes/font_size = 36
+text = "AKTYWNOŚĆ"
+
+[node name="habit_ile" type="Label" parent="Control/habit"]
+offset_left = 258.0
+offset_top = -3.0
+offset_right = 436.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.974831, 0.954469, 0.961397, 1)
+theme_override_fonts/font = ExtResource("1_bofk4")
+theme_override_font_sizes/font_size = 36
+text = "+30"
+
+[node name="irytacja" type="Label" parent="Control"]
+offset_left = -137.0
+offset_top = 61.0
+offset_right = 55.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.780102, 0.632632, 0.686691, 1)
+theme_override_fonts/font = ExtResource("1_bofk4")
+theme_override_font_sizes/font_size = 36
+text = "IRYTACJA"
+
+[node name="irytacja_ile" type="Label" parent="Control/irytacja"]
+offset_left = 251.0
+offset_top = -6.0
+offset_right = 429.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.974831, 0.954469, 0.961397, 1)
+theme_override_fonts/font = ExtResource("1_bofk4")
+theme_override_font_sizes/font_size = 36
+text = "+30"
