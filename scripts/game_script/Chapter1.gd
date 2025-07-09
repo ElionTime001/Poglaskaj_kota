@@ -12,10 +12,17 @@ extends Node
 @export var windows: Control
 @export var show_numbers: Control
 @export var badges : Control
+@export var gatcha : Control
 
 var current_moment : String
 
 var buttons_recquired_for_loss_aversion = {}
+
+var buttons_recquired_for_habit = {
+	"energy" : false,
+	"login" : false,
+	"dailies" : false
+}
 
 
 func _ready():
@@ -85,6 +92,8 @@ func story_proceed(button_name:=""):
 				for_the_player.node_appear_ingame("arrow_menu", false)
 				await interface.menu_clicked
 				for_the_player.node_disappear_ingame("arrow_menu", false)
+				speech_bubble.play_dialogue("menu_explain")
+				await speech_bubble.dialogue_finished
 				
 			elif was_currency_clicked:
 				pass
@@ -188,24 +197,38 @@ func story_proceed(button_name:=""):
 						Flags.change_flag("energy_added",true)
 					"skinCollection":
 						Flags.change_flag("outfits_added",true)
+					"gatcha":
+						Flags.change_flag("gatcha_added_to_shop",true)
 						
 			var currency_flag = Flags.get_flag("currency_added")
 			var energy_flag = Flags.get_flag("energy_added")
 			var outfits_flag = Flags.get_flag("outfits_added")
+			var gatcha_flag = Flags.get_flag("gatcha_added_to_shop")
 			
-			if currency_flag and energy_flag and outfits_flag:
+			if (currency_flag and energy_flag and outfits_flag and !Flags.get_flag("shop_completed")) or (currency_flag and energy_flag and gatcha_flag and !Flags.get_flag("shop_completed")):
 				Flags.change_flag("shop_completed",true)
 				dialogue_player.play_dialogue("shop_after_all_gathered")
 				await dialogue_player.dialogue_finished
+				for_the_player.appear_info("shop",true)
 				await wait_for_specific_button_dropped("paidCurrencyButton", false, true)
-				dialogue_player.play_dialogue("paid_currency_chosen")
+				for_the_player.hide_info()
 				shop.change_for_coins()
+				dialogue_player.play_dialogue("paid_currency_chosen", false)
+				await dialogue_player.dialogue_finished
+				shop.special_offer_appear()
+				await get_tree().create_timer(0.5).timeout
+				dialogue_player.play_dialogue("paid_currency_chosen_2")
+				#HERE CHANGE MAYBE?
+				await dialogue_player.dialogue_finished
+				await get_tree().create_timer(0.6).timeout
 				await appear_badge("ease")
+				Flags.change_flag("shop_completed", true)
 				await shop.shop_closed
 				await get_tree().create_timer(0.2).timeout
 				dialogue_player.play_dialogue("story_almost_end")
 				await dialogue_player.dialogue_finished
 				display_quest_change("Spróbuj wypełnić do końca wszystkie statystyki w menu.")
+				menu.check_if_game_finished()
 		_:
 			print("Story has nowhere to proceed")
 
@@ -308,6 +331,7 @@ func check_if_proceed(button):
 					#await windows.window_closed
 					dialogue_player.play_dialogue("paid_currency")
 					await dialogue_player.dialogue_finished
+					menu.check_if_game_finished()
 				"energy":
 					await add_statistics(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
@@ -315,18 +339,64 @@ func check_if_proceed(button):
 					dialogue_player.play_dialogue("energy")
 					await dialogue_player.dialogue_finished
 					await appear_badge("time")
+					#UUUU HABITS
+					await get_tree().create_timer(0.3).timeout
+					dialogue_player.play_dialogue("habit_question")
+					await dialogue_player.dialogue_finished
+					Flags.is_choosing_answer = true
+					for_the_player.appear_info("habit")
+					while !all_clicked(buttons_recquired_for_habit):
+							var clicked_button = await interface.interface_button_clicked
+							print(button.name)
+							if buttons_recquired_for_habit.has(clicked_button.name):
+								if buttons_recquired_for_habit[clicked_button.name]:
+									speech_bubble.play_dialogue("loss_aversion_again")
+									await speech_bubble.dialogue_finished
+								else:
+									match clicked_button.name:
+										"login":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_habit[clicked_button.name] = true
+										 	#DODAĆ RESZTĘ dailies, login, ads x2, battle_pass, energia i opisy
+										"dailies":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_habit[clicked_button.name] = true
+
+										"energy":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_habit[clicked_button.name] = true
+										"battlePass":
+											speech_bubble.play_dialogue("loss_version_default")
+											await speech_bubble.dialogue_finished
+											buttons_recquired_for_habit[clicked_button.name] = true
+							else:
+								speech_bubble.play_dialogue("loss_aversion_wrong")
+								await speech_bubble.dialogue_finished
+					Flags.is_choosing_answer = false
+					for_the_player.hide_info()
+					await get_tree().create_timer(0.5).timeout
+					dialogue_player.play_dialogue("habit_question_right")
+					await dialogue_player.dialogue_finished
+					#---------------------
+					menu.check_if_game_finished()
 					#BADGE APPEAR
 				"skinCollection":
 					await add_statistics(button.name)
 					dialogue_player.play_dialogue("skin_collection")
 					windows.open_window(button.name)
 					await dialogue_player.dialogue_finished
+					await windows.window_closed
+					menu.check_if_game_finished()
 				"gatcha":
 					await add_statistics(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
 					windows.open_window(button.name)
 					dialogue_player.play_dialogue("gatcha_added")
 					await dialogue_player.dialogue_finished
+					menu.check_if_game_finished()
 				"gatchaAd":
 					buttons_recquired_for_loss_aversion[button.name] = false
 					var is_gatcha_finished = Flags.get_flag("gatcha_quest_finished")
@@ -334,6 +404,8 @@ func check_if_proceed(button):
 						await add_statistics(button.name)
 						windows.open_window(button.name)
 						dialogue_player.play_dialogue("gatcha_ad_yes")
+						await dialogue_player.dialogue_finished
+						menu.check_if_game_finished()
 					else:
 						dialogue_player.play_dialogue("gatcha_ad_no")
 						await dialogue_player.dialogue_finished
@@ -344,6 +416,7 @@ func check_if_proceed(button):
 					var sunk_cost = Flags.get_flag("sunk_cost_fallacy_explained")
 					
 					if !sunk_cost:
+						Flags.change_flag("sunk_cost_fallacy_explained_here", true)
 						await get_tree().create_timer(0.2).timeout
 						dialogue_player.play_dialogue("sunk_cost_fallacy", false)
 						await dialogue_player.dialogue_finished
@@ -391,21 +464,51 @@ func check_if_proceed(button):
 					await get_tree().create_timer(0.2).timeout
 					dialogue_player.play_dialogue("pig_sunk_cost_after")
 					await dialogue_player.dialogue_finished
+					await windows.window_closed
+					#dodatkowe pytanie
+					var sunk_cost_here = Flags.get_flag("sunk_cost_fallacy_explained_here")
+					if !sunk_cost_here:
+						dialogue_player.play_dialogue("fomo_which_else")
+						await dialogue_player.dialogue_finished
+						Flags.is_choosing_answer = true
+						while true:
+							var clicked_button = await interface.interface_button_clicked
+							print(button.name)
+							match clicked_button.name:
+								"gatcha":
+									dialogue_player.play_dialogue("fomo_which_else_good")
+									await dialogue_player.dialogue_finished
+									break
+								"shop":
+									dialogue_player.play_dialogue("fomo_which_else_good")
+									await dialogue_player.dialogue_finished
+									break
+								_:
+									speech_bubble.play_dialogue("fomo_which_else_wrong")
+									await speech_bubble.dialogue_finished
+									continue
+						Flags.is_choosing_answer = false
+					Flags.change_flag("sunk_cost_fallacy_explained_here", false)
+					menu.check_if_game_finished()
 				"achievements":
 					await add_statistics(button.name)
 					windows.open_window(button.name)
 					dialogue_player.play_dialogue("achievements")
 					await dialogue_player.dialogue_finished
+					await windows.window_closed
+					menu.check_if_game_finished()
 				"catCollection":
 					await add_statistics(button.name)
 					windows.open_window(button.name)
 					dialogue_player.play_dialogue("cat_collection")
 					await dialogue_player.dialogue_finished
+					await windows.window_closed
+					menu.check_if_game_finished()
 				"specialOffer":
 					var is_shop_finished = Flags.get_flag("shop_completed")
 					if is_shop_finished:
-						windows.open_window(button.name)
 						await add_statistics(button.name)
+						windows.open_window(button.name)
 						buttons_recquired_for_loss_aversion[button.name] = false
 						dialogue_player.play_dialogue("special_offer_yes")
 						#tu może jeszcze pytanie o Sunk Cost?
@@ -416,19 +519,31 @@ func check_if_proceed(button):
 						await dialogue_player.dialogue_finished
 						#should have a flag for not activating buttons??!!!
 						Flags.is_choosing_answer = true
+						for_the_player.appear_info("free_reward")
 						while true:
 							var clicked_button = await interface.interface_button_clicked
 							print(button.name)
 							match clicked_button.name:
 								"shop":
+									shop.visible = true
+									await get_tree().create_timer(0.5).timeout
+									shop.free_offer_appear()
+									await get_tree().create_timer(0.2).timeout
 									dialogue_player.play_dialogue("free_reward_correct")
 									await dialogue_player.dialogue_finished
+									await shop.shop_closed
+									await get_tree().create_timer(0.2).timeout
+									windows.open_window("specialForNew")
+									await windows.window_closed
+									menu.check_if_game_finished()
 									#SHOULD OPEN SHOP HERE!!!
 									break
 								_:
 									dialogue_player.play_dialogue("free_reward_again")
 									await dialogue_player.dialogue_finished
+									continue
 						Flags.is_choosing_answer = false
+						for_the_player.hide_info()
 					else:
 						dialogue_player.play_dialogue("special_offer_no")
 						await dialogue_player.dialogue_finished
@@ -438,6 +553,7 @@ func check_if_proceed(button):
 					await add_statistics(button.name)
 					windows.open_window(button.name)
 					buttons_recquired_for_loss_aversion[button.name] = false
+					buttons_recquired_for_habit[button.name] = false
 					dialogue_player.play_dialogue("battle_pass")
 					await dialogue_player.dialogue_finished
 					#LOSS AVERSION
@@ -449,12 +565,14 @@ func check_if_proceed(button):
 					#które elementy mogą wywołać loss aversion?
 					#choosing
 					Flags.is_choosing_answer = true
+					for_the_player.appear_info("loss_aversion")
 					while !all_clicked(buttons_recquired_for_loss_aversion):
 							var clicked_button = await interface.interface_button_clicked
 							print(button.name)
 							if buttons_recquired_for_loss_aversion.has(clicked_button.name):
 								if buttons_recquired_for_loss_aversion[clicked_button.name]:
-									pass #play "To już było, wybierz coś innego
+									speech_bubble.play_dialogue("loss_aversion_again")
+									await speech_bubble.dialogue_finished
 								else:
 									match clicked_button.name:
 										"login":
@@ -463,41 +581,56 @@ func check_if_proceed(button):
 											buttons_recquired_for_loss_aversion[clicked_button.name] = true
 										 	#DODAĆ RESZTĘ dailies, login, ads x2, battle_pass, energia i opisy
 										"dailies":
+										
 											speech_bubble.play_dialogue("loss_version_default")
 											await speech_bubble.dialogue_finished
 											buttons_recquired_for_loss_aversion[clicked_button.name] = true
 										"gatchaAd":
+											
 											speech_bubble.play_dialogue("loss_version_default")
 											await speech_bubble.dialogue_finished
 											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+								
 										"specialOffer":
+											
 											speech_bubble.play_dialogue("loss_version_default")
 											await speech_bubble.dialogue_finished
 											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+											
 										"gatcha":
+											
 											speech_bubble.play_dialogue("loss_version_default")
 											await speech_bubble.dialogue_finished
 											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+											
 										"energy":
+											
 											dialogue_player.play_dialogue("loss_aversion_energy")
 											await dialogue_player.dialogue_finished
 											buttons_recquired_for_loss_aversion[clicked_button.name] = true
+											
 										"battlePass":
+											
 											speech_bubble.play_dialogue("loss_aversion_battle_pass")
 											await speech_bubble.dialogue_finished
 											buttons_recquired_for_loss_aversion[clicked_button.name] = true
 							else:
-								pass # Tutaj daj coś jak "hmmm, inne"
+								speech_bubble.play_dialogue("loss_aversion_wrong")
+								await speech_bubble.dialogue_finished
 					Flags.is_choosing_answer = false
+					for_the_player.hide_info()
 					await get_tree().create_timer(0.2).timeout
 					dialogue_player.play_dialogue("loss_eversion_end")
 					await dialogue_player.dialogue_finished
+					menu.check_if_game_finished()
 				"onlineLeaderboard":
 					await add_statistics(button.name)
 					windows.open_window(button.name)
 					dialogue_player.play_dialogue("online_leaderboard")
 					await dialogue_player.dialogue_finished
 					await appear_badge("online")
+					await windows.window_closed
+					menu.check_if_game_finished()
 		_:
 			print("Nothing of note")
 
@@ -511,6 +644,7 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 	if !skins_gatcha or !characters_gatcha:
 		if !first_entered:
 			if !sunk_cost_fallacy_explained:
+				Flags.change_flag("sunk_cost_fallacy_explained_here", true)
 				await get_tree().create_timer(0.2).timeout
 				dialogue_player.play_dialogue("sunk_cost_fallacy", false)
 				await dialogue_player.dialogue_finished
@@ -539,6 +673,35 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 			display_quest_change("Dodaj dwa elementy do gatcha (0/2)", false)
 			Flags.change_flag("gatcha_first_entered", true)
 			await quest_alert.quest_closed
+			await gatcha.gatcha_closed
+			print("gatcha was closed")
+			#dodatkowe pytanie
+			var sunk_cost_here = Flags.get_flag("sunk_cost_fallacy_explained_here")
+			if !sunk_cost_here:
+				dialogue_player.play_dialogue("fomo_which_else")
+				await dialogue_player.dialogue_finished
+				Flags.is_choosing_answer = true
+				for_the_player.appear_info("sunk_cost")
+				while true:
+					var clicked_button = await interface.interface_button_clicked
+					print(clicked_button.name)
+					match clicked_button.name:
+						"pig":
+									
+							dialogue_player.play_dialogue("fomo_which_else_good")
+							await dialogue_player.dialogue_finished
+							break
+						"shop":
+							dialogue_player.play_dialogue("fomo_which_else_good")
+							await dialogue_player.dialogue_finished
+							break
+						_:
+							speech_bubble.play_dialogue("fomo_which_else_wrong")
+							await speech_bubble.dialogue_finished
+							continue
+				Flags.is_choosing_answer = false
+			Flags.change_flag("sunk_cost_fallacy_explained_here", false)
+			for_the_player.hide_info()
 	else:
 		await get_tree().create_timer(0.2).timeout
 		dialogue_player.play_dialogue("gatcha_finished", false)
@@ -558,8 +721,12 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 		await get_tree().create_timer(0.2).timeout
 		dialogue_player.play_dialogue("gatcha_finished_explanation", true)
 		Flags.change_flag("gatcha_quest_finished", true)
+		menu.make_quest_finished("gatcha",false)
 		await dialogue_player.dialogue_finished
+		gatcha.screen_after_gatcha_finish()
+		await get_tree().create_timer(0.6).timeout
 		await appear_badge("random")
+		menu.check_if_game_finished()
 	
 func display_quest_change(new_line: String, is_current:= true):
 	menu.make_quest_change(new_line, is_current)
@@ -614,3 +781,12 @@ func appear_badge(name_badge: String):
 	menu.unlock_badge(name_badge)
 	badges.appear(name_badge)
 	await badges.badge_window_closed
+
+func story_end():
+	await get_tree().create_timer(0.2).timeout
+	dialogue_player.play_dialogue("end")
+	await dialogue_player.dialogue_finished
+	await get_tree().create_timer(0.3).timeout
+	badges.appear("final")
+	await badges.badge_window_closed
+	menu.make_quest_finished("final")

@@ -14,7 +14,7 @@ func _ready():
 func change_label(button_name, new_label):
 	for answer in answers:
 		if answer.name == button_name:
-			answer.text = new_label
+			answer.text = new_label.to_upper()
 			print("Answer changed")
 			break
 

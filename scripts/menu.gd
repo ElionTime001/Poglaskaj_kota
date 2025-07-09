@@ -3,6 +3,7 @@ extends Control
 signal quest_done(quest_name)
 
 @export var badges_interface : Control
+@export var controller : Node
 
 var quest_current: Control
 var quest_persistent: Control
@@ -73,12 +74,33 @@ func _on_close_item_box_pressed():
 
 func unlock_badge(badge_name):
 	for badge in badges:
-		badge.modulate = Color.WHITE
-		unlocked[badge_name] = true
+		if badge.name == badge_name:
+			badge.modulate = Color.WHITE
+			unlocked[badge_name] = true
 
 func badge_clicked(name_badge):
-	if unlocked[name_badge]:
-		badges_interface.appear(name_badge)
+	if unlocked[name_badge.name]:
+		badges_interface.appear(name_badge.name)
 	else:
 		pass
+
+func check_if_game_finished():
+	var money_maxed := false
+	var clinets_maxed := false
+	var annoyance_maxed := false
+	if money_label.value >= money_label.max_value:
+		money_maxed = true
+	if clients_label.value >= clients_label.max_value:
+		clinets_maxed = true
+	if annoyance_label.value >= annoyance_label.max_value:
+		annoyance_maxed = true
+	
+	if annoyance_maxed and clinets_maxed and money_maxed:
+		print("Game has finished")
+		controller.story_end()
+	else:
+		print("Game hasn't finished yet")
 		
+func erase_the_cat_traces():
+	money_label.value -= 40
+	annoyance_label.value -= 5

@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://xr7y6lmaqwfl"]
+[gd_scene load_steps=17 format=3 uid="uid://xr7y6lmaqwfl"]
 
 [ext_resource type="Script" path="res://scripts/gactha.gd" id="1_4dtlp"]
 [ext_resource type="Texture2D" uid="uid://c66s472lp85r5" path="res://assets/test/buttons/free_currency.PNG" id="1_dwwvk"]
 [ext_resource type="Texture2D" uid="uid://xg5nnqndlkkd" path="res://assets/test/bg/IMG_6611.PNG" id="2_j2ob8"]
 [ext_resource type="Texture2D" uid="uid://c0j4p8tdr2dhb" path="res://assets/test/cats/ogcat_alien.PNG" id="3_a1ywb"]
-[ext_resource type="Script" path="res://scripts/mainscreenbutton.gd" id="3_jbsfd"]
 [ext_resource type="Texture2D" uid="uid://g1qv2nqvx62f" path="res://assets/test/cats/ogcat_arctic.PNG" id="4_1n3gs"]
 [ext_resource type="Texture2D" uid="uid://b375mryp1vyxx" path="res://assets/test/bg/IMG_6609.PNG" id="5_8ftx4"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="5_flo1h"]
@@ -13,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b174kl7rhq6fc" path="res://assets/test/cats/darkcat.PNG" id="8_7orhg"]
 [ext_resource type="Texture2D" uid="uid://ddjdxuidfguen" path="res://assets/test/cats/fluffcat.PNG" id="9_elmrv"]
 [ext_resource type="Texture2D" uid="uid://dvbcyvwnk0sc" path="res://assets/test/buttons/gatcha_currency.PNG" id="10_w2nur"]
+[ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="11_ckij8"]
+[ext_resource type="Texture2D" uid="uid://bvoy00qe4uvdf" path="res://assets/test/interface/shop_gatcha.PNG" id="15_xqha1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lf2ic"]
 bg_color = Color(0.933333, 0.776471, 0.811765, 1)
@@ -21,7 +22,14 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Gactha" type="Control" node_paths=PackedStringArray("bg_basic", "bg_featured", "bg_skin", "cat_basic", "cat_basic2", "cat_featured", "cat_skin", "cat_skin2")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6osdn"]
+bg_color = Color(0.30532, 0.159674, 0.216693, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Gactha" type="Control" node_paths=PackedStringArray("bg_basic", "bg_featured", "bg_skin", "cat_basic", "cat_basic2", "cat_featured", "cat_skin", "cat_skin2", "gatcha_currency", "losowanie")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +45,8 @@ cat_basic2 = NodePath("ColorRect/Panel/cat_basic")
 cat_featured = NodePath("ColorRect/Panel/cat_featured")
 cat_skin = NodePath("ColorRect/Panel/cat_skin")
 cat_skin2 = NodePath("ColorRect/Panel/cat_skin2")
+gatcha_currency = NodePath("changed_currency")
+losowanie = NodePath("losowanie")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -45,7 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.483549, 0.272595, 0.351127, 1)
+color = Color(0.433594, 0.293015, 0.401744, 1)
 
 [node name="Panel" type="Panel" parent="ColorRect"]
 self_modulate = Color(1, 1, 1, 0)
@@ -444,29 +454,37 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="changed_currency" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -233.0
-offset_top = 7.0
-offset_right = -93.0
-offset_bottom = 83.0
+offset_left = -218.0
+offset_top = 10.0
+offset_right = -96.0
+offset_bottom = 78.0
 grow_horizontal = 2
 texture = ExtResource("10_w2nur")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="freeCurrency" type="TextureButton" parent="."]
+[node name="ColorRect" type="ColorRect" parent="changed_currency"]
 layout_mode = 0
-offset_left = 197.0
-offset_top = 12.0
-offset_right = 308.0
-offset_bottom = 85.0
-texture_normal = ExtResource("1_dwwvk")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_jbsfd")
+offset_left = 14.0
+offset_top = 18.0
+offset_right = 59.0
+offset_bottom = 49.0
+color = Color(0.964706, 0.819608, 0.815686, 1)
+
+[node name="free" type="Label" parent="changed_currency"]
+offset_left = 21.0
+offset_top = 19.0
+offset_right = 69.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("11_ckij8")
+theme_override_font_sizes/font_size = 36
+text = "0"
 
 [node name="AddElementButton" type="TextureButton" parent="."]
 layout_mode = 1
@@ -501,9 +519,88 @@ texture_normal = ExtResource("5_flo1h")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="freeCurrency" type="TextureButton" parent="."]
+offset_left = 200.0
+offset_top = 10.0
+offset_right = 301.0
+offset_bottom = 74.0
+texture_normal = ExtResource("1_dwwvk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="freeCurrency"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 54.0
+offset_bottom = 50.0
+mouse_filter = 2
+color = Color(0.964706, 0.819608, 0.815686, 1)
+
+[node name="free" type="Label" parent="freeCurrency"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 21.0
+offset_right = 65.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("11_ckij8")
+theme_override_font_sizes/font_size = 36
+text = "10"
+
+[node name="losowanie" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 334.0
+offset_right = 183.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6osdn")
+
+[node name="Label" type="Label" parent="losowanie"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = -20.5
+offset_right = 76.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.964706, 0.819608, 0.815686, 1)
+theme_override_fonts/font = ExtResource("11_ckij8")
+theme_override_font_sizes/font_size = 52
+text = "LOSUJ"
+
+[node name="Sprite2D" type="Sprite2D" parent="losowanie"]
+position = Vector2(264, 47)
+scale = Vector2(0.246815, 0.246815)
+texture = ExtResource("15_xqha1")
+region_enabled = true
+region_rect = Rect2(0, 0, 314.697, 395)
+
+[node name="losowanie" type="Button" parent="losowanie"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="pressed" from="skinCollection/skin_button" to="." method="_on_skin_button_pressed"]
 [connection signal="pressed" from="catCollection/featured_button" to="." method="_on_featured_button_pressed"]
 [connection signal="pressed" from="gatcha_character_rate/basic_button" to="." method="_on_basic_button_pressed"]
-[connection signal="pressed" from="freeCurrency" to="freeCurrency" method="_on_pressed"]
 [connection signal="pressed" from="AddElementButton" to="." method="_on_add_element_button_pressed"]
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]
+[connection signal="pressed" from="losowanie/losowanie" to="." method="_on_losowanie_pressed"]

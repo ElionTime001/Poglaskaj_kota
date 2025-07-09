@@ -7,8 +7,8 @@
 [ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="4_ver4h"]
 [ext_resource type="Texture2D" uid="uid://bxbkhlq0fnu7l" path="res://assets/test/progress.PNG" id="5_gf3ra"]
 [ext_resource type="Script" path="res://scripts/Quest.gd" id="7_rg5c8"]
-[ext_resource type="Texture2D" uid="uid://c8djaec4nn8gl" path="res://assets/test/buttons/okay_not_check.png" id="8_0gjmt"]
-[ext_resource type="Texture2D" uid="uid://beovtkwcp3h5w" path="res://assets/test/buttons/okay_check.png" id="9_nu0sm"]
+[ext_resource type="Texture2D" uid="uid://cbkgp1sxlsdbs" path="res://assets/test/interface/checkmark_under.PNG" id="8_umrhk"]
+[ext_resource type="Texture2D" uid="uid://dulyv1mnyand" path="res://assets/test/interface/checkmark.PNG" id="9_77fct"]
 [ext_resource type="Texture2D" uid="uid://33o6ipg22quy" path="res://assets/test/buttons/badge_ease_of_play.PNG" id="10_ltc3o"]
 [ext_resource type="Script" path="res://scripts/menubuttondefault.gd" id="11_g6gru"]
 [ext_resource type="Texture2D" uid="uid://cs4roncvobrdn" path="res://assets/test/buttons/badge_ease_of_play_2.PNG" id="11_u1a56"]
@@ -232,7 +232,7 @@ offset_top = 43.0
 offset_right = 93.0
 offset_bottom = 83.0
 grow_vertical = 2
-texture = ExtResource("8_0gjmt")
+texture = ExtResource("8_umrhk")
 expand_mode = 1
 stretch_mode = 4
 
@@ -242,12 +242,12 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 53.0
-offset_top = 43.0
-offset_right = 93.0
-offset_bottom = 83.0
+offset_left = 48.0
+offset_top = 28.0
+offset_right = 115.0
+offset_bottom = 85.0
 grow_vertical = 2
-texture = ExtResource("9_nu0sm")
+texture = ExtResource("9_77fct")
 expand_mode = 1
 stretch_mode = 4
 
@@ -306,35 +306,6 @@ theme_override_font_sizes/font_size = 24
 text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2) aaaaaaaaaaaanoajsd alskdj laksjda"
 autowrap_mode = 2
 
-[node name="check_not_ok" type="TextureRect" parent="Quest_persistent"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 53.0
-offset_top = 43.0
-offset_right = 93.0
-offset_bottom = 83.0
-grow_vertical = 2
-texture = ExtResource("8_0gjmt")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="check_ok" type="TextureRect" parent="Quest_persistent"]
-visible = false
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 53.0
-offset_top = 43.0
-offset_right = 93.0
-offset_bottom = 83.0
-grow_vertical = 2
-texture = ExtResource("9_nu0sm")
-expand_mode = 1
-stretch_mode = 4
-
 [node name="Label" type="Label" parent="Quest_persistent"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 1
@@ -353,6 +324,35 @@ theme_override_colors/font_color = Color(0.908847, 0.748861, 0.779838, 1)
 theme_override_fonts/font = ExtResource("4_ver4h")
 theme_override_font_sizes/font_size = 24
 text = "ZADANIE POBOCZNE"
+
+[node name="check_not_ok" type="TextureRect" parent="Quest_persistent"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = 43.0
+offset_right = 93.0
+offset_bottom = 83.0
+grow_vertical = 2
+texture = ExtResource("8_umrhk")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="check_ok" type="TextureRect" parent="Quest_persistent"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = 28.0
+offset_right = 115.0
+offset_bottom = 85.0
+grow_vertical = 2
+texture = ExtResource("9_77fct")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="badges" type="Control" parent="."]
 layout_mode = 1
@@ -379,7 +379,7 @@ texture = ExtResource("10_ltc3o")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="badges/time" groups=["buttons_in_menu"]]
+[node name="time" type="Button" parent="badges/time" groups=["buttons_in_menu"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -404,7 +404,7 @@ texture = ExtResource("11_u1a56")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="badges/ease" groups=["buttons_in_menu"]]
+[node name="ease" type="Button" parent="badges/ease" groups=["buttons_in_menu"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -429,7 +429,7 @@ texture = ExtResource("12_8opap")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="badges/online" groups=["buttons_in_menu"]]
+[node name="online" type="Button" parent="badges/online" groups=["buttons_in_menu"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -454,7 +454,7 @@ texture = ExtResource("13_au4pm")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="badges/random" groups=["buttons_in_menu"]]
+[node name="random" type="Button" parent="badges/random" groups=["buttons_in_menu"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -465,3 +465,7 @@ grow_vertical = 2
 script = ExtResource("11_g6gru")
 
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]
+[connection signal="pressed" from="badges/time/time" to="badges/time/time" method="_on_pressed"]
+[connection signal="pressed" from="badges/ease/ease" to="badges/ease/ease" method="_on_pressed"]
+[connection signal="pressed" from="badges/online/online" to="badges/online/online" method="_on_pressed"]
+[connection signal="pressed" from="badges/random/random" to="badges/random/random" method="_on_pressed"]

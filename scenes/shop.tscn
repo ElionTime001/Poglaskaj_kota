@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b86arcdhu0d2b"]
+[gd_scene load_steps=12 format=3 uid="uid://b86arcdhu0d2b"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_bnh1b"]
 [ext_resource type="Script" path="res://scripts/menubuttondefault.gd" id="2_ckr77"]
@@ -22,14 +22,30 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="shop" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0adhq"]
+bg_color = Color(0.678431, 0.52549, 0.52549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.466667, 0.317647, 0.317647, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="shop" type="Control" node_paths=PackedStringArray("specialOffer", "freeOffer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bnh1b")
+specialOffer = NodePath("specialOffer")
+freeOffer = NodePath("freeOffer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -49,8 +65,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -203.0
-offset_bottom = -85.0
+offset_top = -117.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.678431, 0.52549, 0.52549, 1)
@@ -86,9 +102,10 @@ script = ExtResource("2_ckr77")
 [node name="price_1" type="Panel" parent="paidCurrency"]
 layout_mode = 0
 offset_left = 38.0
-offset_top = 82.0
+offset_top = 96.0
 offset_right = 116.0
-offset_bottom = 122.0
+offset_bottom = 136.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="paidCurrency/price_1"]
@@ -112,9 +129,10 @@ text = "PLN"
 [node name="price_2" type="Panel" parent="paidCurrency"]
 layout_mode = 0
 offset_left = 169.0
-offset_top = 82.0
+offset_top = 96.0
 offset_right = 265.0
-offset_bottom = 122.0
+offset_bottom = 136.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="paidCurrency/price_2"]
@@ -138,9 +156,10 @@ text = "PLN"
 [node name="price_3" type="Panel" parent="paidCurrency"]
 layout_mode = 0
 offset_left = 287.0
-offset_top = 81.0
+offset_top = 95.0
 offset_right = 389.0
-offset_bottom = 121.0
+offset_bottom = 135.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="paidCurrency/price_3"]
@@ -164,9 +183,10 @@ text = "PLN"
 [node name="price_4" type="Panel" parent="paidCurrency"]
 layout_mode = 0
 offset_left = 408.0
-offset_top = 82.0
+offset_top = 96.0
 offset_right = 518.0
-offset_bottom = 122.0
+offset_bottom = 136.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="paidCurrency/price_4"]
@@ -193,8 +213,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -80.0
-offset_bottom = 46.0
+offset_top = 23.0
+offset_bottom = 149.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.678431, 0.52549, 0.52549, 1)
@@ -230,9 +250,9 @@ script = ExtResource("2_ckr77")
 [node name="price_1" type="Panel" parent="energy"]
 layout_mode = 0
 offset_left = 34.0
-offset_top = 83.0
+offset_top = 100.0
 offset_right = 112.0
-offset_bottom = 123.0
+offset_bottom = 140.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="energy/price_1" groups=["pln_price"]]
@@ -275,9 +295,9 @@ stretch_mode = 5
 [node name="price_2" type="Panel" parent="energy"]
 layout_mode = 0
 offset_left = 169.0
-offset_top = 87.0
+offset_top = 104.0
 offset_right = 265.0
-offset_bottom = 127.0
+offset_bottom = 144.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="energy/price_2" groups=["pln_price"]]
@@ -320,9 +340,9 @@ text = "25"
 [node name="price_3" type="Panel" parent="energy"]
 layout_mode = 0
 offset_left = 287.0
-offset_top = 86.0
+offset_top = 103.0
 offset_right = 389.0
-offset_bottom = 126.0
+offset_bottom = 143.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="energy/price_3" groups=["pln_price"]]
@@ -365,9 +385,9 @@ text = "60"
 [node name="price_4" type="Panel" parent="energy"]
 layout_mode = 0
 offset_left = 408.0
-offset_top = 87.0
+offset_top = 104.0
 offset_right = 518.0
-offset_bottom = 127.0
+offset_bottom = 144.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="energy/price_4" groups=["pln_price"]]
@@ -413,8 +433,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 53.0
-offset_bottom = 180.0
+offset_top = 181.0
+offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.678431, 0.52549, 0.52549, 1)
@@ -450,9 +470,9 @@ script = ExtResource("2_ckr77")
 [node name="price_2" type="Panel" parent="skinCollection"]
 layout_mode = 0
 offset_left = 221.0
-offset_top = 92.0
+offset_top = 115.0
 offset_right = 317.0
-offset_bottom = 132.0
+offset_bottom = 155.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="skinCollection/price_2" groups=["pln_price"]]
@@ -495,9 +515,9 @@ text = "40"
 [node name="price_3" type="Panel" parent="skinCollection"]
 layout_mode = 0
 offset_left = 420.0
-offset_top = 91.0
+offset_top = 114.0
 offset_right = 522.0
-offset_bottom = 131.0
+offset_bottom = 154.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="skinCollection/price_3" groups=["pln_price"]]
@@ -538,6 +558,7 @@ theme_override_font_sizes/font_size = 20
 text = "50"
 
 [node name="gatcha" type="ColorRect" parent="." groups=["shop_elements"]]
+visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -582,9 +603,9 @@ script = ExtResource("2_ckr77")
 [node name="price_2" type="Panel" parent="gatcha"]
 layout_mode = 0
 offset_left = 122.0
-offset_top = 86.0
+offset_top = 103.0
 offset_right = 218.0
-offset_bottom = 126.0
+offset_bottom = 143.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="gatcha/price_2" groups=["pln_price"]]
@@ -627,9 +648,9 @@ text = "25"
 [node name="price_3" type="Panel" parent="gatcha"]
 layout_mode = 0
 offset_left = 240.0
-offset_top = 85.0
+offset_top = 102.0
 offset_right = 342.0
-offset_bottom = 125.0
+offset_bottom = 142.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="gatcha/price_3" groups=["pln_price"]]
@@ -672,9 +693,9 @@ text = "60"
 [node name="price_4" type="Panel" parent="gatcha"]
 layout_mode = 0
 offset_left = 361.0
-offset_top = 86.0
+offset_top = 103.0
 offset_right = 471.0
-offset_bottom = 126.0
+offset_bottom = 143.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
 
 [node name="Label" type="Label" parent="gatcha/price_4" groups=["pln_price"]]
@@ -760,6 +781,112 @@ grow_horizontal = 2
 texture = ExtResource("8_h4dph")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="specialOffer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -302.0
+offset_right = 259.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0adhq")
+
+[node name="price_2" type="Panel" parent="specialOffer"]
+offset_left = 176.0
+offset_top = 115.0
+offset_right = 278.0
+offset_bottom = 155.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+
+[node name="Label" type="Label" parent="specialOffer/price_2"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 45.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 20
+text = "49.99"
+
+[node name="PLN" type="Label" parent="specialOffer/price_2"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 16.0
+offset_right = 100.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 12
+text = "PLN"
+
+[node name="Sprite2D" type="Sprite2D" parent="specialOffer"]
+position = Vector2(82, 71)
+scale = Vector2(0.317359, 0.317359)
+texture = ExtResource("2_fafje")
+region_enabled = true
+region_rect = Rect2(255.925, 0, 381.559, 373)
+
+[node name="Sprite2D2" type="Sprite2D" parent="specialOffer"]
+position = Vector2(151, 83)
+scale = Vector2(0.317359, 0.317359)
+texture = ExtResource("4_anfg8")
+region_enabled = true
+region_rect = Rect2(216.484, 0, 306.533, 416.711)
+
+[node name="Sprite2D3" type="Sprite2D" parent="specialOffer"]
+position = Vector2(214, 69)
+scale = Vector2(0.317359, 0.317359)
+texture = ExtResource("4_anfg8")
+region_enabled = true
+region_rect = Rect2(216.484, 0, 306.533, 416.711)
+
+[node name="freeOffer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.0
+offset_top = -302.0
+offset_right = -77.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0adhq")
+
+[node name="price_2" type="Panel" parent="freeOffer"]
+offset_left = 98.0
+offset_top = 115.0
+offset_right = 176.0
+offset_bottom = 155.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+
+[node name="Label" type="Label" parent="freeOffer/price_2"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 59.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 20
+text = "FREE"
+
+[node name="Sprite2D" type="Sprite2D" parent="freeOffer"]
+position = Vector2(63, 77)
+scale = Vector2(0.317359, 0.317359)
+texture = ExtResource("4_anfg8")
+region_enabled = true
+region_rect = Rect2(-26.3, 22.4, 221.348, 385.736)
+
+[node name="Sprite2D2" type="Sprite2D" parent="freeOffer"]
+position = Vector2(124, 60)
+scale = Vector2(0.317359, 0.317359)
+texture = ExtResource("2_fafje")
+region_enabled = true
+region_rect = Rect2(-26.3, 22.4, 287.835, 385.736)
 
 [connection signal="pressed" from="paidCurrency/paidCurrencyButton" to="paidCurrency/paidCurrencyButton" method="_on_pressed"]
 [connection signal="pressed" from="energy/energyButton" to="energy/energyButton" method="_on_pressed"]

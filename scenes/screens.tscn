@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://t8pxjpohp3yi"]
+[gd_scene load_steps=23 format=3 uid="uid://t8pxjpohp3yi"]
 
 [ext_resource type="Script" path="res://scripts/screens.gd" id="1_qe71l"]
 [ext_resource type="PackedScene" uid="uid://0k0k60spe7c0" path="res://scenes/dialogue_player.tscn" id="1_uhk0v"]
@@ -14,10 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://cb7e3uwkpx2s8" path="res://scenes/quest_alert.tscn" id="9_3e1ba"]
 [ext_resource type="Script" path="res://scripts/for_the_player.gd" id="10_7t1yj"]
 [ext_resource type="PackedScene" uid="uid://xr7y6lmaqwfl" path="res://scenes/gactha.tscn" id="10_fwfeg"]
-[ext_resource type="Texture2D" uid="uid://dk4uscudbb33m" path="res://assets/test/buttons/arrow.PNG" id="13_1vmb6"]
 [ext_resource type="Texture2D" uid="uid://5y2qxa75jiot" path="res://assets/test/buttons/energy_not_filled.PNG" id="15_fs6xx"]
 [ext_resource type="Texture2D" uid="uid://xuyefy5llhmm" path="res://assets/test/buttons/energy_filled.PNG" id="16_n3xn5"]
+[ext_resource type="Texture2D" uid="uid://dgflonq4aps4p" path="res://assets/test/buttons/arrow_new.PNG" id="16_vl3aw"]
 [ext_resource type="PackedScene" uid="uid://evvnjdmdgriy" path="res://scenes/just_number_showing_labels.tscn" id="17_sj4m1"]
+[ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="17_xu0xm"]
 [ext_resource type="PackedScene" uid="uid://crwr8058lbni0" path="res://scenes/badges.tscn" id="18_da3l7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ukbv"]
@@ -26,6 +27,18 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if86e"]
+bg_color = Color(0.941176, 0.784314, 0.811765, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.709804, 0.541176, 0.603922, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
@@ -57,15 +70,22 @@ nine_patch_stretch = true
 texture_under = ExtResource("15_fs6xx")
 texture_progress = ExtResource("16_n3xn5")
 
-[node name="interface" parent="." node_paths=PackedStringArray("windows", "energy_bar") instance=ExtResource("3_2ma7d")]
+[node name="interface" parent="." node_paths=PackedStringArray("windows", "energy_bar", "gatcha", "dialogue_player") instance=ExtResource("3_2ma7d")]
 mouse_filter = 1
 windows = NodePath("../windows")
 energy_bar = NodePath("../energy_bar")
+gatcha = NodePath("../gatcha")
+dialogue_player = NodePath("../dialogue_player")
 
 [node name="TextureRect" type="TextureRect" parent="interface"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="gatcha" parent="." node_paths=PackedStringArray("windows", "dialogue_player") instance=ExtResource("10_fwfeg")]
+visible = false
+windows = NodePath("../windows")
+dialogue_player = NodePath("../dialogue_player")
 
 [node name="windows" parent="." node_paths=PackedStringArray("interface", "dialogue_player") instance=ExtResource("3_hywgt")]
 visible = false
@@ -76,9 +96,6 @@ dialogue_player = NodePath("../dialogue_player")
 visible = false
 interface = NodePath("../interface")
 
-[node name="gatcha" parent="." instance=ExtResource("10_fwfeg")]
-visible = false
-
 [node name="dialogue_player" parent="." instance=ExtResource("1_uhk0v")]
 visible = false
 
@@ -86,12 +103,10 @@ visible = false
 visible = false
 interface = NodePath("../interface")
 
-[node name="menu" parent="." node_paths=PackedStringArray("badges_interface") instance=ExtResource("5_1lp3j")]
+[node name="menu" parent="." node_paths=PackedStringArray("badges_interface", "controller") instance=ExtResource("5_1lp3j")]
 visible = false
 badges_interface = NodePath("../badges")
-
-[node name="speechBubble" parent="." instance=ExtResource("6_4dh3q")]
-visible = false
+controller = NodePath("../Chapter1_controller")
 
 [node name="answers" parent="." instance=ExtResource("7_aaxm4")]
 visible = false
@@ -99,7 +114,7 @@ visible = false
 [node name="quest_alert" parent="." instance=ExtResource("9_3e1ba")]
 visible = false
 
-[node name="for_the_player" type="Control" parent="."]
+[node name="for_the_player" type="Control" parent="." node_paths=PackedStringArray("interface_info", "interface_label", "shop_info")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,6 +123,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("10_7t1yj")
+interface_info = NodePath("interface_info")
+interface_label = NodePath("interface_info/MarginContainer/Label")
+shop_info = NodePath("shop_info")
 
 [node name="coin" type="Panel" parent="for_the_player" groups=["highlights_and_arrows"]]
 self_modulate = Color(1, 1, 1, 0.6)
@@ -137,7 +155,7 @@ offset_right = 129.0
 offset_bottom = -170.0
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("13_1vmb6")
+texture = ExtResource("16_vl3aw")
 expand_mode = 1
 stretch_mode = 4
 
@@ -148,7 +166,7 @@ offset_top = 121.0
 offset_right = 129.0
 offset_bottom = 254.0
 mouse_filter = 2
-texture = ExtResource("13_1vmb6")
+texture = ExtResource("16_vl3aw")
 expand_mode = 1
 stretch_mode = 4
 flip_v = true
@@ -164,9 +182,90 @@ offset_right = 536.0
 offset_bottom = -178.0
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("13_1vmb6")
+texture = ExtResource("16_vl3aw")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="interface_info" type="Panel" parent="for_the_player" groups=["highlights_and_arrows"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -99.0
+offset_right = 142.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_if86e")
+
+[node name="MarginContainer" type="MarginContainer" parent="for_the_player/interface_info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="for_the_player/interface_info/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("17_xu0xm")
+theme_override_font_sizes/font_size = 23
+text = "Wskaż gdzie można umieścić kolejną, codzienną, darmową nagrodę."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="shop_info" type="Panel" parent="for_the_player" groups=["highlights_and_arrows"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -301.0
+offset_right = 142.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_if86e")
+
+[node name="MarginContainer" type="MarginContainer" parent="for_the_player/shop_info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="for_the_player/shop_info/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("17_xu0xm")
+theme_override_font_sizes/font_size = 23
+text = "Wskaż element, który będzie użyty jako waluta cen w sklepie."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="speechBubble" parent="." instance=ExtResource("6_4dh3q")]
+visible = false
 
 [node name="just_number_showing_labels" parent="." instance=ExtResource("17_sj4m1")]
 visible = false
@@ -174,7 +273,7 @@ visible = false
 [node name="badges" parent="." instance=ExtResource("18_da3l7")]
 visible = false
 
-[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop", "menu", "quest_alert", "for_the_player", "windows", "show_numbers", "badges")]
+[node name="Chapter1_controller" type="Node" parent="." node_paths=PackedStringArray("dialogue_player", "speech_bubble", "item_box", "interface", "answers", "shop", "menu", "quest_alert", "for_the_player", "windows", "show_numbers", "badges", "gatcha")]
 script = ExtResource("7_7eaxb")
 dialogue_player = NodePath("../dialogue_player")
 speech_bubble = NodePath("../speechBubble")
@@ -188,3 +287,4 @@ for_the_player = NodePath("../for_the_player")
 windows = NodePath("../windows")
 show_numbers = NodePath("../just_number_showing_labels")
 badges = NodePath("../badges")
+gatcha = NodePath("../gatcha")

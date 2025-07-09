@@ -14,6 +14,9 @@ var coin_price = []
 
 @export var interface: Control
 
+@export var specialOffer: Panel
+@export var freeOffer: Panel
+
 func _ready():
 	shop_elements = get_tree().get_nodes_in_group("shop_elements")
 	shop_buttons = get_tree().get_nodes_in_group("shop_button")
@@ -32,6 +35,9 @@ func _ready():
 			panel.visible = false
 	for button in shop_buttons:
 			button.clicked.connect(button_clicked)
+	freeOffer.visible = false
+	animate_panel(freeOffer)
+	specialOffer.visible = false
 
 func _process(delta):
 	pass
@@ -62,6 +68,35 @@ func make_panel_visible(panel_name):
 func button_clicked(button):
 	button_has_been_clicked.emit(button)
 
+func make_skins_disappear():
+	for element in shop_elements:
+		if element.name == "skinCollection":
+			element.visible = false
+
 func _on_close_shop_pressed():
 	self.visible = false
 	shop_closed.emit()
+
+func special_offer_appear():
+	specialOffer.visible = true
+	bounce_window(specialOffer)
+
+func free_offer_appear():
+	freeOffer.visible = true
+	bounce_window(freeOffer)
+
+func bounce_window(window):
+	
+	var tween = get_tree().create_tween()
+	var start_pos = window.position
+	var bounce_up = start_pos - Vector2(0, 20)
+
+	tween.tween_property(window, "position", bounce_up, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(window, "position", start_pos, 0.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+
+func animate_panel(badge):
+	var tween = create_tween()
+	tween.set_loops()
+
+	tween.tween_property(badge, "scale", Vector2(1.1, 1.1), 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(badge, "scale", Vector2(1, 1), 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

@@ -14,6 +14,13 @@ var changed_currency
 @export var cat_skin: TextureRect
 @export var cat_skin2: TextureRect
 
+@export var gatcha_currency : TextureRect
+@export var losowanie: Panel
+
+@export var windows: Control
+@export var dialogue_player : Control
+
+signal gatcha_closed
 
 signal gatcha_active
 
@@ -26,7 +33,10 @@ func _ready():
 	for panel in gatcha_panels:
 		panel.visible = false
 	#background.visible = false
+	gatcha_currency.visible = false
 	_hide_all()
+	losowanie.visible = false
+	gatcha_currency.visible = false
 
 func make_panel_visible(panel_name):
 	for panel in gatcha_panels:
@@ -48,6 +58,7 @@ func get_panels():
 
 func _on_close_item_box_pressed():
 	self.visible = false
+	gatcha_closed.emit()
 
 func _hide_all():
 	bg_basic.visible = false
@@ -79,6 +90,27 @@ func _on_basic_button_pressed():
 	fade_in_node(cat_basic)
 	fade_in_node(cat_basic2)
 
+func make_currency_appear():
+	gatcha_currency.visible = true
+	bounce_window(gatcha_currency)
+
+func make_losowanie_appear():
+	losowanie.visible = true
+
+func screen_after_gatcha_finish():
+	make_currency_appear()
+	make_losowanie_appear()
+	bg_basic.visible = true
+
+func bounce_window(window):
+	
+	var tween = get_tree().create_tween()
+	var start_pos = window.position
+	var bounce_up = start_pos - Vector2(0, 20)
+
+	tween.tween_property(window, "position", bounce_up, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(window, "position", start_pos, 0.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+
 func fade_in_node(node: TextureRect, duration := 0.3):
 	node.modulate.a = 0.0  # Make fully transparent
 	node.visible = true
@@ -86,3 +118,12 @@ func fade_in_node(node: TextureRect, duration := 0.3):
 	var tween = create_tween()
 	tween.tween_property(node, "modulate:a", 1.0, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
+
+func _on_losowanie_pressed():
+	windows.open_window("specialgatcha")
+	if !Flags.get_flag("gatcha_tried_pulling"):
+		dialogue_player.play_dialogue("gatcha_ad")
+		await dialogue_player.dialogue_finished
+		Flags.change_flag("gatcha_tried_pulling",true)
+	
+	

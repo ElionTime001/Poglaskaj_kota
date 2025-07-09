@@ -6,16 +6,18 @@ var flag_names = [
 		#first quest flags
 	"dailies_added", "login_added",
 	#second chapter flags
-	"shop_to_complete", "outfits_added", "energy_added", "currency_added", "shop_completed",
+	"shop_to_complete", "outfits_added", "energy_added", "currency_added", "shop_completed", "outfits_lost", "outfits_lost_cutscene_done", "gatcha_added_to_shop",
 	#For gatcha
-	"gatcha_quest_in_progress", "gatcha_quest_finished", "skins_gatcha", "characters_gatcha", "gatcha_first_entered",
-	"sunk_cost_fallacy_explained"]
+	"gatcha_quest_in_progress", "gatcha_quest_finished", "skins_gatcha", "characters_gatcha", "gatcha_first_entered", "gatcha_tried_pulling",
+	"sunk_cost_fallacy_explained", "sunk_cost_fallacy_explained_here", "shop_quest_completed"]
 
 var states = ["intro", "tutorial_interface", "first_quest", "second_quest", "open_world"]
 
 var is_shop_active : bool
 var is_gatcha_active : bool
 var is_choosing_answer : bool
+
+var was_energy_cutscene_done : bool
 
 var flags = {}
 
@@ -29,6 +31,7 @@ func _ready():
 	is_shop_active = false
 	is_gatcha_active = false
 	is_choosing_answer = false
+	was_energy_cutscene_done = false
 	
 	for name in flag_names:
 		flags[name] = false

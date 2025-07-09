@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cw0bkrdg58w0h" path="res://assets/test/buttons/Dailies.PNG" id="11_nl7io"]
 [ext_resource type="Texture2D" uid="uid://f0a4rjw1qeg7" path="res://assets/test/buttons/menu.png" id="17_1om6d"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="17_iil4f"]
-[ext_resource type="Texture2D" uid="uid://bhn4imroywr1u" path="res://assets/test/340.png" id="20_e4uf6"]
+[ext_resource type="Texture2D" uid="uid://dvwimklg65i4d" path="res://assets/test/buttons/arrow_back.PNG" id="21_thcuw"]
 
 [node name="interface" type="Control" node_paths=PackedStringArray("paid_currency_label", "free_currency_label", "energy_label")]
 layout_mode = 3
@@ -358,14 +358,13 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 6.0
-offset_top = -162.0
-offset_right = 123.0
-offset_bottom = -31.0
+offset_top = -150.0
+offset_right = 132.0
+offset_bottom = 4.0
 grow_vertical = 0
-texture_normal = ExtResource("20_e4uf6")
+texture_normal = ExtResource("21_thcuw")
 ignore_texture_size = true
 stretch_mode = 4
-flip_h = true
 script = ExtResource("3_l4i5o")
 
 [connection signal="pressed" from="petButton" to="." method="_on_pet_button_pressed"]

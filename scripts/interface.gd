@@ -2,6 +2,8 @@ extends Control
 
 @export var windows: Control
 @export var energy_bar: Control
+@export var gatcha : Control
+@export var dialogue_player : Control
 
 @export var paid_currency_label: Label
 @export var free_currency_label: Label
@@ -55,8 +57,9 @@ func make_button_visible(button, is_drag_preview_there:=true):
 	if is_drag_preview_there:
 		button_dropped.emit(button)
 	if button.name == "energy":
-		energy_bar.visible = true
-		energy_dropped.emit()
+		if Flags.get_state_name() == "second_quest":
+			energy_bar.visible = true
+			energy_dropped.emit()
 
 func return_button(button):
 	var button_name = button.name
@@ -95,7 +98,14 @@ func interface_button_pressed(button):
 	print(button.name + " pressed")
 	interface_button_clicked.emit(button)
 	if !Flags.is_shop_active and !Flags.is_gatcha_active and !Flags.is_choosing_answer:
-		windows.open_window(button.name)
+		if button.name == "gatchaAd":
+			gatcha.visible = true
+		else:
+			windows.open_window(button.name)
+			if button.name == "shop" and Flags.get_flag("outfits_lost") and Flags.get_flag("outfits_added") and !Flags.get_flag("outfits_lost_cutscene_done"):
+				dialogue_player.play_dialogue("shop_after_disappear")
+				Flags.change_flag("outfits_lost_cutscene_done", true)
+				await dialogue_player.dialogue_finished
 
 func get_currency(currency_name: String):
 	match currency_name:
