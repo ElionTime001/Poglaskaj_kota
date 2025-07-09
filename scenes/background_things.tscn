@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://o6oh0ffkpi2x"]
 
-[ext_resource type="Texture2D" uid="uid://c1pjaqdsoejtm" path="res://assets/bg.PNG" id="1_47hlh"]
 [ext_resource type="Script" path="res://scripts/background_things.gd" id="1_drs35"]
 [ext_resource type="PackedScene" uid="uid://b4doai0buhwl4" path="res://scenes/cat.tscn" id="2_7d8by"]
+[ext_resource type="Texture2D" uid="uid://bs3jvgl5vdvta" path="res://assets/test/final_bg.png.PNG" id="2_wme27"]
 [ext_resource type="Texture2D" uid="uid://5y2qxa75jiot" path="res://assets/test/buttons/energy_not_filled.PNG" id="4_i3inm"]
 [ext_resource type="Texture2D" uid="uid://xuyefy5llhmm" path="res://assets/test/buttons/energy_filled.PNG" id="5_ucj6l"]
 
@@ -24,13 +24,13 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -323.0
-offset_top = -186.0
-offset_right = 323.0
-offset_bottom = 186.0
+offset_left = -501.0
+offset_top = -619.0
+offset_right = 501.0
+offset_bottom = 487.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_47hlh")
+texture = ExtResource("2_wme27")
 expand_mode = 1
 stretch_mode = 5
 

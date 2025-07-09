@@ -195,10 +195,10 @@ func gatcha_active_function():
 				match button.name:
 					"skinCollection":
 						if !skins_gatcha:
-							await add_statistics("gatcha_skin")
 							Flags.change_flag("skins_gatcha", true)
 							if Flags.get_flag("outfits_added"):
 								menu.erase_the_cat_traces()
+							await add_statistics("gatcha_skin")
 							shop.make_skins_disappear()
 							Flags.change_flag("outfits_lost", true)
 							menu.make_quest_change(chapter1_controller.increment_quest_progress(menu.get_quest_text(false)), false, true)

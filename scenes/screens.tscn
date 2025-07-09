@@ -96,9 +96,6 @@ dialogue_player = NodePath("../dialogue_player")
 visible = false
 interface = NodePath("../interface")
 
-[node name="dialogue_player" parent="." instance=ExtResource("1_uhk0v")]
-visible = false
-
 [node name="item_box" parent="." node_paths=PackedStringArray("interface") instance=ExtResource("4_jski3")]
 visible = false
 interface = NodePath("../interface")
@@ -107,6 +104,9 @@ interface = NodePath("../interface")
 visible = false
 badges_interface = NodePath("../badges")
 controller = NodePath("../Chapter1_controller")
+
+[node name="dialogue_player" parent="." instance=ExtResource("1_uhk0v")]
+visible = false
 
 [node name="answers" parent="." instance=ExtResource("7_aaxm4")]
 visible = false

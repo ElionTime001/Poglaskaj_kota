@@ -471,6 +471,7 @@ func check_if_proceed(button):
 					if !sunk_cost_here:
 						dialogue_player.play_dialogue("fomo_which_else")
 						await dialogue_player.dialogue_finished
+						for_the_player.appear_info("sunk_cost")
 						Flags.is_choosing_answer = true
 						while true:
 							var clicked_button = await interface.interface_button_clicked
@@ -489,6 +490,7 @@ func check_if_proceed(button):
 									await speech_bubble.dialogue_finished
 									continue
 						Flags.is_choosing_answer = false
+						for_the_player.hide_info()
 					Flags.change_flag("sunk_cost_fallacy_explained_here", false)
 					menu.check_if_game_finished()
 				"achievements":
@@ -526,6 +528,7 @@ func check_if_proceed(button):
 							print(button.name)
 							match clicked_button.name:
 								"shop":
+									for_the_player.hide_info()
 									shop.visible = true
 									await get_tree().create_timer(0.5).timeout
 									shop.free_offer_appear()
@@ -544,7 +547,6 @@ func check_if_proceed(button):
 									await dialogue_player.dialogue_finished
 									continue
 						Flags.is_choosing_answer = false
-						for_the_player.hide_info()
 					else:
 						dialogue_player.play_dialogue("special_offer_no")
 						await dialogue_player.dialogue_finished
@@ -704,30 +706,34 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 			Flags.change_flag("sunk_cost_fallacy_explained_here", false)
 			for_the_player.hide_info()
 	else:
-		await get_tree().create_timer(0.2).timeout
-		dialogue_player.play_dialogue("gatcha_finished", false)
-		await dialogue_player.dialogue_finished
-		answers.change_visible("answer_3", false)
-		answers.change_label("answer_1", "Tak")
-		answers.change_label("answer_2", "Nie")
-		answers.visible = true
-		var answer = await answers.answer_chosen
-		answers.visible =  false
-		match answer:
-			"1":
-				dialogue_player.play_dialogue("gatcha_finished_yes", false)
-			"2":
-				dialogue_player.play_dialogue("gatcha_finished_no", false)
-		await dialogue_player.dialogue_finished
-		await get_tree().create_timer(0.2).timeout
-		dialogue_player.play_dialogue("gatcha_finished_explanation", true)
-		Flags.change_flag("gatcha_quest_finished", true)
-		menu.make_quest_finished("gatcha",false)
-		await dialogue_player.dialogue_finished
-		gatcha.screen_after_gatcha_finish()
-		await get_tree().create_timer(0.6).timeout
-		await appear_badge("random")
-		menu.check_if_game_finished()
+		var is_gatcha_finished = Flags.get_flag("gatcha_quest_finished")
+		if !is_gatcha_finished:
+			await get_tree().create_timer(0.2).timeout
+			dialogue_player.play_dialogue("gatcha_finished", false)
+			await dialogue_player.dialogue_finished
+			answers.change_visible("answer_3", false)
+			answers.change_label("answer_1", "Tak")
+			answers.change_label("answer_2", "Nie")
+			answers.visible = true
+			var answer = await answers.answer_chosen
+			answers.visible =  false
+			match answer:
+				"1":
+					dialogue_player.play_dialogue("gatcha_finished_yes", false)
+				"2":
+					dialogue_player.play_dialogue("gatcha_finished_no", false)
+			await dialogue_player.dialogue_finished
+			await get_tree().create_timer(0.2).timeout
+			dialogue_player.play_dialogue("gatcha_finished_explanation", true)
+			Flags.change_flag("gatcha_quest_finished", true)
+			menu.make_quest_finished("gatcha",false)
+			await dialogue_player.dialogue_finished
+			gatcha.screen_after_gatcha_finish()
+			await get_tree().create_timer(0.6).timeout
+			await appear_badge("random")
+			menu.check_if_game_finished()
+		else:
+			pass
 	
 func display_quest_change(new_line: String, is_current:= true):
 	menu.make_quest_change(new_line, is_current)

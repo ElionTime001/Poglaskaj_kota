@@ -40,11 +40,11 @@ script = ExtResource("1_4dtlp")
 bg_basic = NodePath("ColorRect/Panel/bg_basic")
 bg_featured = NodePath("ColorRect/Panel/bg_featured")
 bg_skin = NodePath("ColorRect/Panel/bg_skin")
-cat_basic = NodePath("ColorRect/Panel/cat_basic2")
-cat_basic2 = NodePath("ColorRect/Panel/cat_basic")
-cat_featured = NodePath("ColorRect/Panel/cat_featured")
-cat_skin = NodePath("ColorRect/Panel/cat_skin")
-cat_skin2 = NodePath("ColorRect/Panel/cat_skin2")
+cat_basic = NodePath("cat_basic2")
+cat_basic2 = NodePath("cat_basic")
+cat_featured = NodePath("cat_featured")
+cat_skin = NodePath("cat_skin")
+cat_skin2 = NodePath("cat_skin2")
 gatcha_currency = NodePath("changed_currency")
 losowanie = NodePath("losowanie")
 
@@ -67,9 +67,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -234.0
-offset_top = -248.0
+offset_top = -230.0
 offset_right = 249.0
-offset_bottom = 379.0
+offset_bottom = 397.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -124,91 +124,6 @@ texture = ExtResource("2_j2ob8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="cat_basic2" type="TextureRect" parent="ColorRect/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -94.5
-offset_top = -306.0
-offset_right = 162.5
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("9_elmrv")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="cat_basic" type="TextureRect" parent="ColorRect/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -223.5
-offset_top = -310.0
-offset_right = 33.5
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("8_7orhg")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="cat_featured" type="TextureRect" parent="ColorRect/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -223.5
-offset_top = -310.0
-offset_right = 33.5
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("6_gnlll")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="cat_skin" type="TextureRect" parent="ColorRect/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -223.5
-offset_top = -310.0
-offset_right = 33.5
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("3_a1ywb")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="cat_skin2" type="TextureRect" parent="ColorRect/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -114.5
-offset_top = -308.0
-offset_right = 142.5
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("4_1n3gs")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="skinCollection" type="Panel" parent="." groups=["gatcha_panels"]]
 clip_contents = true
 layout_mode = 1
@@ -218,9 +133,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = -1.0
+offset_top = -39.0
 offset_right = 296.0
-offset_bottom = 157.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
@@ -304,9 +219,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = -169.0
+offset_top = -207.0
 offset_right = 296.0
-offset_bottom = -18.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
@@ -376,9 +291,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = -334.0
+offset_top = -372.0
 offset_right = 296.0
-offset_bottom = -183.0
+offset_bottom = -221.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lf2ic")
@@ -487,20 +402,6 @@ theme_override_fonts/font = ExtResource("11_ckij8")
 theme_override_font_sizes/font_size = 36
 text = "0"
 
-[node name="AddElementButton" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 35.0
-offset_top = -167.0
-offset_right = 154.0
-offset_bottom = -47.0
-grow_vertical = 0
-texture_normal = ExtResource("5_flo1h")
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="CloseItemBox" type="TextureButton" parent="."]
 modulate = Color(1, 0.189276, 0.947632, 1)
 layout_mode = 1
@@ -550,8 +451,92 @@ theme_override_fonts/font = ExtResource("11_ckij8")
 theme_override_font_sizes/font_size = 36
 text = "10"
 
+[node name="cat_basic2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -389.0
+offset_right = 170.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_elmrv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_basic" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -393.0
+offset_right = 41.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_7orhg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_featured" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -393.0
+offset_right = 41.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_gnlll")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_skin" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -393.0
+offset_right = 41.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_a1ywb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="cat_skin2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -391.0
+offset_right = 150.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_1n3gs")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="losowanie" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -600,9 +585,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="AddElementButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -167.0
+offset_right = 154.0
+offset_bottom = -47.0
+grow_vertical = 0
+texture_normal = ExtResource("5_flo1h")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="skinCollection/skin_button" to="." method="_on_skin_button_pressed"]
 [connection signal="pressed" from="catCollection/featured_button" to="." method="_on_featured_button_pressed"]
 [connection signal="pressed" from="gatcha_character_rate/basic_button" to="." method="_on_basic_button_pressed"]
-[connection signal="pressed" from="AddElementButton" to="." method="_on_add_element_button_pressed"]
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]
 [connection signal="pressed" from="losowanie/losowanie" to="." method="_on_losowanie_pressed"]
+[connection signal="pressed" from="AddElementButton" to="." method="_on_add_element_button_pressed"]
