@@ -477,6 +477,7 @@ offset_bottom = 49.0
 color = Color(0.964706, 0.819608, 0.815686, 1)
 
 [node name="free" type="Label" parent="changed_currency"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 19.0
 offset_right = 69.0
@@ -520,6 +521,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="freeCurrency" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 200.0
 offset_top = 10.0
 offset_right = 301.0

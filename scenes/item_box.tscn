@@ -29,7 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pxvih")
-shop_button = NodePath("MarginContainer/Control/shop")
+shop_button = NodePath("Control/shop")
 description_label = NodePath("description_box/MarginContainer2/ScrollContainer/MarginContainer/description")
 name_label = NodePath("description_box/MarginContainer/name")
 
@@ -61,189 +61,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.84375, 0.631385, 0.702994, 1)
 
-[node name="Control" type="Control" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="paidCurrency" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -117.0
-offset_top = -250.0
-offset_right = 20.0
-offset_bottom = -165.0
-texture_normal = ExtResource("2_of8g8")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="freeCurrency" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -114.0
-offset_top = -307.0
-offset_right = -6.0
-offset_bottom = -250.0
-texture_normal = ExtResource("4_6d1mv")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="energy" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -114.0
-offset_top = -180.0
-offset_right = 27.0
-offset_bottom = -114.0
-texture_normal = ExtResource("5_3pq62")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="gatcha" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -143.0
-offset_top = -94.0
-offset_right = 58.0
-offset_bottom = 17.0
-texture_normal = ExtResource("6_p1oon")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="shop" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 25.0
-offset_right = 241.0
-offset_bottom = 170.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("7_xayex")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="gatchaAd" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = 66.0
-offset_top = -124.0
-offset_right = 232.0
-offset_bottom = 21.0
-texture_normal = ExtResource("8_aw6n7")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="pig" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = 135.0
-offset_top = -235.0
-offset_right = 237.0
-offset_bottom = -129.0
-texture_normal = ExtResource("9_lr4a2")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="achievements" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = 36.0
-offset_top = -225.0
-offset_right = 124.0
-offset_bottom = -130.0
-texture_normal = ExtResource("10_wv25x")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="login" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = 129.0
-offset_top = -337.0
-offset_right = 232.0
-offset_bottom = -244.0
-texture_normal = ExtResource("11_juv87")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="dailies" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -137.0
-offset_top = 32.0
-offset_right = 15.0
-offset_bottom = 168.0
-texture_normal = ExtResource("12_0r8mq")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="battlePass" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -253.0
-offset_top = -230.0
-offset_right = -123.0
-offset_bottom = -101.0
-texture_normal = ExtResource("13_b4ki5")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="onlineLeaderboard" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -253.0
-offset_top = -348.0
-offset_right = -134.0
-offset_bottom = -236.0
-texture_normal = ExtResource("14_as16n")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="specialOffer" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = 19.0
-offset_top = -337.0
-offset_right = 131.0
-offset_bottom = -216.0
-texture_normal = ExtResource("15_0q0v7")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="skinCollection" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -246.0
-offset_top = 22.0
-offset_right = -145.0
-offset_bottom = 164.0
-texture_normal = ExtResource("16_6se6l")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
-[node name="catCollection" type="TextureButton" parent="MarginContainer/Control" groups=["itemboxbutton"]]
-layout_mode = 0
-offset_left = -238.0
-offset_top = -68.0
-offset_right = -155.0
-offset_bottom = 21.0
-texture_normal = ExtResource("17_uv5at")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_qhesl")
-
 [node name="description_box" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchor_top = 0.786
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 755.0
+offset_top = 0.440002
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -343,49 +166,235 @@ offset_bottom = 135.0
 grow_horizontal = 2
 color = Color(0.674283, 0.435775, 0.521938, 1)
 
-[connection signal="button_down" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/paidCurrency" to="MarginContainer/Control/paidCurrency" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/freeCurrency" to="MarginContainer/Control/freeCurrency" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/freeCurrency" to="MarginContainer/Control/freeCurrency" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/freeCurrency" to="MarginContainer/Control/freeCurrency" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/energy" to="MarginContainer/Control/energy" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/energy" to="MarginContainer/Control/energy" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/energy" to="MarginContainer/Control/energy" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/gatcha" to="MarginContainer/Control/gatcha" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/gatcha" to="MarginContainer/Control/gatcha" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/gatcha" to="MarginContainer/Control/gatcha" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/shop" to="MarginContainer/Control/shop" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/shop" to="MarginContainer/Control/shop" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/shop" to="MarginContainer/Control/shop" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/gatchaAd" to="MarginContainer/Control/gatchaAd" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/gatchaAd" to="MarginContainer/Control/gatchaAd" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/gatchaAd" to="MarginContainer/Control/gatchaAd" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/pig" to="MarginContainer/Control/pig" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/pig" to="MarginContainer/Control/pig" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/pig" to="MarginContainer/Control/pig" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/achievements" to="MarginContainer/Control/achievements" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/achievements" to="MarginContainer/Control/achievements" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/achievements" to="MarginContainer/Control/achievements" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/login" to="MarginContainer/Control/login" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/login" to="MarginContainer/Control/login" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/login" to="MarginContainer/Control/login" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/dailies" to="MarginContainer/Control/dailies" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/dailies" to="MarginContainer/Control/dailies" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/dailies" to="MarginContainer/Control/dailies" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/battlePass" to="MarginContainer/Control/battlePass" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/battlePass" to="MarginContainer/Control/battlePass" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/battlePass" to="MarginContainer/Control/battlePass" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/onlineLeaderboard" to="MarginContainer/Control/onlineLeaderboard" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/onlineLeaderboard" to="MarginContainer/Control/onlineLeaderboard" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/onlineLeaderboard" to="MarginContainer/Control/onlineLeaderboard" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/specialOffer" to="MarginContainer/Control/specialOffer" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/specialOffer" to="MarginContainer/Control/specialOffer" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/specialOffer" to="MarginContainer/Control/specialOffer" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/skinCollection" to="MarginContainer/Control/skinCollection" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/skinCollection" to="MarginContainer/Control/skinCollection" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/skinCollection" to="MarginContainer/Control/skinCollection" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/Control/catCollection" to="MarginContainer/Control/catCollection" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/catCollection" to="MarginContainer/Control/catCollection" method="_on_button_up"]
-[connection signal="pressed" from="MarginContainer/Control/catCollection" to="MarginContainer/Control/catCollection" method="_on_pressed"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 59.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="paidCurrency" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -117.0
+offset_top = -250.0
+offset_right = 20.0
+offset_bottom = -165.0
+texture_normal = ExtResource("2_of8g8")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="freeCurrency" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -114.0
+offset_top = -307.0
+offset_right = -6.0
+offset_bottom = -250.0
+texture_normal = ExtResource("4_6d1mv")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="energy" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -114.0
+offset_top = -180.0
+offset_right = 27.0
+offset_bottom = -114.0
+texture_normal = ExtResource("5_3pq62")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="gatcha" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -143.0
+offset_top = -94.0
+offset_right = 58.0
+offset_bottom = 17.0
+texture_normal = ExtResource("6_p1oon")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="shop" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 36.0
+offset_right = 241.0
+offset_bottom = 170.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("7_xayex")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="gatchaAd" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = 66.0
+offset_top = -124.0
+offset_right = 232.0
+offset_bottom = 15.0
+texture_normal = ExtResource("8_aw6n7")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="pig" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = 135.0
+offset_top = -235.0
+offset_right = 237.0
+offset_bottom = -129.0
+texture_normal = ExtResource("9_lr4a2")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="achievements" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = 36.0
+offset_top = -225.0
+offset_right = 124.0
+offset_bottom = -130.0
+texture_normal = ExtResource("10_wv25x")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="login" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = 129.0
+offset_top = -337.0
+offset_right = 232.0
+offset_bottom = -244.0
+texture_normal = ExtResource("11_juv87")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="dailies" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -137.0
+offset_top = 43.0
+offset_right = 15.0
+offset_bottom = 168.0
+texture_normal = ExtResource("12_0r8mq")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="battlePass" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -253.0
+offset_top = -230.0
+offset_right = -123.0
+offset_bottom = -104.0
+texture_normal = ExtResource("13_b4ki5")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="onlineLeaderboard" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -253.0
+offset_top = -348.0
+offset_right = -134.0
+offset_bottom = -236.0
+texture_normal = ExtResource("14_as16n")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="specialOffer" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -337.0
+offset_right = 131.0
+offset_bottom = -216.0
+texture_normal = ExtResource("15_0q0v7")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="skinCollection" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -246.0
+offset_top = 29.0
+offset_right = -145.0
+offset_bottom = 164.0
+texture_normal = ExtResource("16_6se6l")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
+[node name="catCollection" type="TextureButton" parent="Control" groups=["itemboxbutton"]]
+layout_mode = 0
+offset_left = -238.0
+offset_top = -68.0
+offset_right = -155.0
+offset_bottom = 12.0
+texture_normal = ExtResource("17_uv5at")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_qhesl")
+
 [connection signal="pressed" from="CloseItemBox" to="." method="_on_close_item_box_pressed"]
+[connection signal="button_down" from="Control/paidCurrency" to="Control/paidCurrency" method="_on_button_down"]
+[connection signal="button_up" from="Control/paidCurrency" to="Control/paidCurrency" method="_on_button_up"]
+[connection signal="pressed" from="Control/paidCurrency" to="Control/paidCurrency" method="_on_pressed"]
+[connection signal="button_down" from="Control/freeCurrency" to="Control/freeCurrency" method="_on_button_down"]
+[connection signal="button_up" from="Control/freeCurrency" to="Control/freeCurrency" method="_on_button_up"]
+[connection signal="pressed" from="Control/freeCurrency" to="Control/freeCurrency" method="_on_pressed"]
+[connection signal="button_down" from="Control/energy" to="Control/energy" method="_on_button_down"]
+[connection signal="button_up" from="Control/energy" to="Control/energy" method="_on_button_up"]
+[connection signal="pressed" from="Control/energy" to="Control/energy" method="_on_pressed"]
+[connection signal="button_down" from="Control/gatcha" to="Control/gatcha" method="_on_button_down"]
+[connection signal="button_up" from="Control/gatcha" to="Control/gatcha" method="_on_button_up"]
+[connection signal="pressed" from="Control/gatcha" to="Control/gatcha" method="_on_pressed"]
+[connection signal="button_down" from="Control/shop" to="Control/shop" method="_on_button_down"]
+[connection signal="button_up" from="Control/shop" to="Control/shop" method="_on_button_up"]
+[connection signal="pressed" from="Control/shop" to="Control/shop" method="_on_pressed"]
+[connection signal="button_down" from="Control/gatchaAd" to="Control/gatchaAd" method="_on_button_down"]
+[connection signal="button_up" from="Control/gatchaAd" to="Control/gatchaAd" method="_on_button_up"]
+[connection signal="pressed" from="Control/gatchaAd" to="Control/gatchaAd" method="_on_pressed"]
+[connection signal="button_down" from="Control/pig" to="Control/pig" method="_on_button_down"]
+[connection signal="button_up" from="Control/pig" to="Control/pig" method="_on_button_up"]
+[connection signal="pressed" from="Control/pig" to="Control/pig" method="_on_pressed"]
+[connection signal="button_down" from="Control/achievements" to="Control/achievements" method="_on_button_down"]
+[connection signal="button_up" from="Control/achievements" to="Control/achievements" method="_on_button_up"]
+[connection signal="pressed" from="Control/achievements" to="Control/achievements" method="_on_pressed"]
+[connection signal="button_down" from="Control/login" to="Control/login" method="_on_button_down"]
+[connection signal="button_up" from="Control/login" to="Control/login" method="_on_button_up"]
+[connection signal="pressed" from="Control/login" to="Control/login" method="_on_pressed"]
+[connection signal="button_down" from="Control/dailies" to="Control/dailies" method="_on_button_down"]
+[connection signal="button_up" from="Control/dailies" to="Control/dailies" method="_on_button_up"]
+[connection signal="pressed" from="Control/dailies" to="Control/dailies" method="_on_pressed"]
+[connection signal="button_down" from="Control/battlePass" to="Control/battlePass" method="_on_button_down"]
+[connection signal="button_up" from="Control/battlePass" to="Control/battlePass" method="_on_button_up"]
+[connection signal="pressed" from="Control/battlePass" to="Control/battlePass" method="_on_pressed"]
+[connection signal="button_down" from="Control/onlineLeaderboard" to="Control/onlineLeaderboard" method="_on_button_down"]
+[connection signal="button_up" from="Control/onlineLeaderboard" to="Control/onlineLeaderboard" method="_on_button_up"]
+[connection signal="pressed" from="Control/onlineLeaderboard" to="Control/onlineLeaderboard" method="_on_pressed"]
+[connection signal="button_down" from="Control/specialOffer" to="Control/specialOffer" method="_on_button_down"]
+[connection signal="button_up" from="Control/specialOffer" to="Control/specialOffer" method="_on_button_up"]
+[connection signal="pressed" from="Control/specialOffer" to="Control/specialOffer" method="_on_pressed"]
+[connection signal="button_down" from="Control/skinCollection" to="Control/skinCollection" method="_on_button_down"]
+[connection signal="button_up" from="Control/skinCollection" to="Control/skinCollection" method="_on_button_up"]
+[connection signal="pressed" from="Control/skinCollection" to="Control/skinCollection" method="_on_pressed"]
+[connection signal="button_down" from="Control/catCollection" to="Control/catCollection" method="_on_button_down"]
+[connection signal="button_up" from="Control/catCollection" to="Control/catCollection" method="_on_button_up"]
+[connection signal="pressed" from="Control/catCollection" to="Control/catCollection" method="_on_pressed"]

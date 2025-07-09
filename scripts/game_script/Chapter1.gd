@@ -398,9 +398,10 @@ func check_if_proceed(button):
 					await dialogue_player.dialogue_finished
 					menu.check_if_game_finished()
 				"gatchaAd":
-					buttons_recquired_for_loss_aversion[button.name] = false
+	
 					var is_gatcha_finished = Flags.get_flag("gatcha_quest_finished")
 					if is_gatcha_finished:
+						buttons_recquired_for_loss_aversion[button.name] = false
 						await add_statistics(button.name)
 						windows.open_window(button.name)
 						dialogue_player.play_dialogue("gatcha_ad_yes")
@@ -766,6 +767,7 @@ func increment_quest_progress(quest_text: String) -> String:
 func all_clicked(flags):
 	for key in flags.keys():
 		if !flags[key]:
+			print(key)
 			return false
 	return true
 

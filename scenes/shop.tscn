@@ -798,6 +798,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0adhq")
 
 [node name="price_2" type="Panel" parent="specialOffer"]
+layout_mode = 0
 offset_left = 176.0
 offset_top = 115.0
 offset_right = 278.0
@@ -859,6 +860,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0adhq")
 
 [node name="price_2" type="Panel" parent="freeOffer"]
+layout_mode = 0
 offset_left = 98.0
 offset_top = 115.0
 offset_right = 176.0

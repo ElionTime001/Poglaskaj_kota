@@ -13,8 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kd0fx")
 answer_1 = NodePath("answer_1")
-answer_2 = NodePath("")
-answer_3 = NodePath("")
+answer_2 = NodePath("answer_2")
+answer_3 = NodePath("answer_3")
 
 [node name="answer_1" type="Button" parent="."]
 layout_mode = 1
@@ -92,5 +92,5 @@ theme_override_styles/focus = ExtResource("3_p1bsu")
 text = "TAK"
 
 [connection signal="pressed" from="answer_1" to="." method="_on_answer_1_pressed"]
-[connection signal="pressed" from="answer_2" to="." method="_on_answer_1_pressed"]
-[connection signal="pressed" from="answer_3" to="." method="_on_answer_1_pressed"]
+[connection signal="pressed" from="answer_2" to="." method="_on_answer_2_pressed"]
+[connection signal="pressed" from="answer_3" to="." method="_on_answer_3_pressed"]
