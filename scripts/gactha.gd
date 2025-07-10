@@ -101,6 +101,8 @@ func screen_after_gatcha_finish():
 	make_currency_appear()
 	make_losowanie_appear()
 	bg_basic.visible = true
+	cat_basic.visible = true
+	cat_basic2.visible = true
 
 func bounce_window(window):
 	

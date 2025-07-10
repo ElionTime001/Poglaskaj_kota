@@ -576,7 +576,6 @@ theme_override_font_sizes/font_size = 25
 text = "mroźny kot"
 
 [node name="achievements" type="TextureRect" parent="." groups=["windows"]]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -622,7 +621,7 @@ offset_bottom = 252.0
 theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
 theme_override_fonts/font = ExtResource("16_rktor")
 theme_override_font_sizes/font_size = 25
-text = "zdobąć dwa koty."
+text = "zdobądź dwa koty."
 
 [node name="Label2" type="Label" parent="achievements"]
 layout_mode = 0
@@ -645,7 +644,7 @@ offset_bottom = 611.0
 theme_override_colors/font_color = Color(0.862745, 0.658824, 0.654902, 1)
 theme_override_fonts/font = ExtResource("16_rktor")
 theme_override_font_sizes/font_size = 25
-text = "zdobąć jden strój."
+text = "zdobądź jeden strój."
 
 [node name="catCollection" type="TextureRect" parent="." groups=["windows"]]
 visible = false
