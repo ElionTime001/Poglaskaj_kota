@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://i026iq3wh6gh"]
+[gd_scene load_steps=6 format=3 uid="uid://i026iq3wh6gh"]
 
 [ext_resource type="Script" path="res://scripts/loading.gd" id="1_7nq7k"]
 [ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="1_8sp0b"]
 [ext_resource type="Script" path="res://scripts/Label_load.gd" id="2_fsfu7"]
+[ext_resource type="Texture2D" uid="uid://dbdkbcgndgvv3" path="res://assets/test/progress_not_full.PNG" id="4_hmgnk"]
+[ext_resource type="Texture2D" uid="uid://0hcbf86choro" path="res://assets/test/buttons/progress_full.PNG" id="5_xe1b6"]
 
-[node name="loading" type="Control"]
+[node name="loading" type="Control" node_paths=PackedStringArray("progress_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7nq7k")
 next_scene_path = "res://scenes/game.tscn"
+progress_bar = NodePath("annoyance")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -41,3 +44,20 @@ theme_override_fonts/font = ExtResource("1_8sp0b")
 theme_override_font_sizes/font_size = 51
 text = "WCZYTYWANIE..."
 script = ExtResource("2_fsfu7")
+
+[node name="annoyance" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = 44.0
+offset_right = 213.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = ExtResource("4_hmgnk")
+texture_progress = ExtResource("5_xe1b6")
