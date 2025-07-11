@@ -100,8 +100,8 @@ theme_override_constants/margin_bottom = 10
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1u4eu")
-theme_override_font_sizes/font_size = 24
-text = "Quest tutaj będzie jakatam kolwiek nazwa (1/2)"
+theme_override_font_sizes/font_size = 27
+text = "Pamiętaj, o dosłanej ankiecie, która jest do wypełnienia przed i po zagraiu w grę!"
 horizontal_alignment = 1
 autowrap_mode = 2
 

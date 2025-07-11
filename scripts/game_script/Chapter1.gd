@@ -47,6 +47,10 @@ func story_proceed(button_name:=""):
 				interface.show_menu()
 				for_the_player.node_appear_ingame("arrow_add", false)
 			else: #sam początek
+				quest_alert._set_label("Pamiętaj, o dwóch dosłanych ankietach! Jedna jest do wypełnienia przed a druga po zagraiu w grę!")
+				quest_alert.appear()
+				await quest_alert.quest_closed
+				quest_alert.label_at_the_top_appear()
 				speech_bubble.play_dialogue("intro")
 				Flags.change_flag("cat_clickable", true)
 				Flags.change_flag("intro_dialogue_completed", true)

@@ -1,14 +1,20 @@
 extends Control
 
 var quest_label: Label
+var label_at_the_top: Label
 signal quest_closed
 
 
 func _ready():
 	quest_label = $QuestPlace/MarginContainer2/Label
+	label_at_the_top = $NewQuest
+	label_at_the_top.visible = false
 
 func _process(delta):
 	pass
+
+func label_at_the_top_appear():
+	label_at_the_top.visible = true
 
 func _set_label(new_text: String):
 	quest_label.text = new_text
