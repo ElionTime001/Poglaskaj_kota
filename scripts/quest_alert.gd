@@ -2,16 +2,25 @@ extends Control
 
 var quest_label: Label
 var label_at_the_top: Label
+var label_with_link: RichTextLabel
 signal quest_closed
 
 
 func _ready():
 	quest_label = $QuestPlace/MarginContainer2/Label
 	label_at_the_top = $NewQuest
+	label_with_link = $QuestPlace/MarginContainer2/Label2
 	label_at_the_top.visible = false
 
 func _process(delta):
 	pass
+
+func label_at_the_top_disappear():
+	label_at_the_top.visible = false
+
+func lable_with_link_at_the_end():
+	quest_label.visible = false
+	label_with_link.visible = true
 
 func label_at_the_top_appear():
 	label_at_the_top.visible = true

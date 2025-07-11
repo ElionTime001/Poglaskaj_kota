@@ -12,8 +12,8 @@ var descriptions = {
 	"time" : "Typ monetyzacji polegający na ograniczaniu czasu, który gracz może spędzić w grze i nakłanianiu do regularnego powracania przez nakładanie wydarzeń bazowanych na czasie rzeczywistym.",
 	"ease" : "Typ monetyzacji polegający na nakładaniu ograniczeń na postęp w grze i sprzedawaniu przedmiotów, które te ograniczenia niwelują albo skracając czas zadań.",
 	"random" : "Typ monetyzacji polegający na wprowadzaniu do gry elementów losowych.",
-	"online" : "Typ monetyzacji polegający na wprowadzaniu do gry mechanik pozwalających na porównywanie się z innymi graczami, co napędza rywalizację i osoby podatne na to.",
-	"final" : "Gratulację. Gra została uczyniona dużo lepszą dzięki tobie!"
+	"online" : "Typ monetyzacji polegający na wprowadzaniu do gry mechanik pozwalających na porównywanie się z innymi graczami, co napędza rywalizację u podatnych na to osób.",
+	"final" : "Gratulację. Gra stała się dużo lepsza dzięki tobie!"
 }
 
 var names = {

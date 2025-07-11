@@ -137,7 +137,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
 theme_override_fonts/font = ExtResource("17_xu0xm")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 26
 text = "Wskaż gdzie można umieścić kolejną, codzienną, darmową nagrodę."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -175,8 +175,46 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
 theme_override_fonts/font = ExtResource("17_xu0xm")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 26
 text = "Wskaż element, który będzie użyty jako waluta cen w sklepie."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="tutorial_info" type="Panel" parent="." groups=["highlights_and_arrows"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -434.0
+offset_right = 142.0
+offset_bottom = -319.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_if86e")
+
+[node name="MarginContainer" type="MarginContainer" parent="tutorial_info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="tutorial_info/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("17_xu0xm")
+theme_override_font_sizes/font_size = 26
+text = "Przeciągnij i upuść element, aby dodać go do interfejsu."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -190,7 +228,7 @@ visible = false
 [node name="quest_alert" parent="." instance=ExtResource("9_3e1ba")]
 visible = false
 
-[node name="for_the_player" type="Control" parent="." node_paths=PackedStringArray("interface_info", "interface_label", "shop_info")]
+[node name="for_the_player" type="Control" parent="." node_paths=PackedStringArray("interface_info", "interface_label", "shop_info", "tutorial_info")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,6 +240,7 @@ script = ExtResource("10_7t1yj")
 interface_info = NodePath("../interface_info")
 interface_label = NodePath("../interface_info/MarginContainer/Label")
 shop_info = NodePath("../shop_info")
+tutorial_info = NodePath("../tutorial_info")
 
 [node name="coin" type="Panel" parent="for_the_player" groups=["highlights_and_arrows"]]
 self_modulate = Color(1, 1, 1, 0.6)

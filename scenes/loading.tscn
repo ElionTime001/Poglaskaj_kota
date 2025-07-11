@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dbdkbcgndgvv3" path="res://assets/test/progress_not_full.PNG" id="4_hmgnk"]
 [ext_resource type="Texture2D" uid="uid://0hcbf86choro" path="res://assets/test/buttons/progress_full.PNG" id="5_xe1b6"]
 
-[node name="loading" type="Control" node_paths=PackedStringArray("progress_bar")]
+[node name="loading" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7nq7k")
 next_scene_path = "res://scenes/game.tscn"
-progress_bar = NodePath("annoyance")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -46,6 +45,7 @@ text = "WCZYTYWANIE..."
 script = ExtResource("2_fsfu7")
 
 [node name="annoyance" type="TextureProgressBar" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

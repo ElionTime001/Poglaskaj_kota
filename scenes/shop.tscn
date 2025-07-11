@@ -5,22 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dfxflj5hy8geo" path="res://assets/test/interface/shop_paid_currency.PNG" id="2_fafje"]
 [ext_resource type="Texture2D" uid="uid://c10cghxj3uynl" path="res://assets/test/buttons/plus.png" id="2_k6v10"]
 [ext_resource type="Texture2D" uid="uid://cismabfqehtlc" path="res://assets/test/interface/shop_energy.PNG" id="4_anfg8"]
+[ext_resource type="StyleBox" uid="uid://bqhc18tnq7x7s" path="res://shop_label.tres" id="4_ni0en"]
 [ext_resource type="Texture2D" uid="uid://pse8fckqgg6p" path="res://assets/test/buttons/paid_money_one.PNG" id="5_4t2t7"]
 [ext_resource type="Texture2D" uid="uid://c7p5crum1mb80" path="res://assets/test/interface/shop_cat_skins.PNG" id="5_nyyo0"]
 [ext_resource type="Texture2D" uid="uid://bvoy00qe4uvdf" path="res://assets/test/interface/shop_gatcha.PNG" id="6_wtkra"]
 [ext_resource type="Texture2D" uid="uid://c83ga6lrlnkj5" path="res://assets/test/interface/shop_logo.PNG" id="8_h4dph"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jg6c"]
-bg_color = Color(0.682353, 0.443137, 0.529412, 1)
-border_width_left = 3
-border_width_top = 6
-border_width_right = 7
-border_width_bottom = 3
-border_color = Color(0.466667, 0.317647, 0.317647, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0adhq"]
 bg_color = Color(0.678431, 0.52549, 0.52549, 1)
@@ -106,7 +95,7 @@ offset_top = 96.0
 offset_right = 116.0
 offset_bottom = 136.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="paidCurrency/price_1"]
 layout_mode = 0
@@ -133,7 +122,7 @@ offset_top = 96.0
 offset_right = 265.0
 offset_bottom = 136.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="paidCurrency/price_2"]
 layout_mode = 0
@@ -160,7 +149,7 @@ offset_top = 95.0
 offset_right = 389.0
 offset_bottom = 135.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="paidCurrency/price_3"]
 layout_mode = 0
@@ -187,7 +176,7 @@ offset_top = 96.0
 offset_right = 518.0
 offset_bottom = 136.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="paidCurrency/price_4"]
 layout_mode = 0
@@ -253,7 +242,7 @@ offset_left = 34.0
 offset_top = 100.0
 offset_right = 112.0
 offset_bottom = 140.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="energy/price_1" groups=["pln_price"]]
 layout_mode = 0
@@ -298,7 +287,7 @@ offset_left = 169.0
 offset_top = 104.0
 offset_right = 265.0
 offset_bottom = 144.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="energy/price_2" groups=["pln_price"]]
 layout_mode = 0
@@ -343,7 +332,7 @@ offset_left = 287.0
 offset_top = 103.0
 offset_right = 389.0
 offset_bottom = 143.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="energy/price_3" groups=["pln_price"]]
 layout_mode = 0
@@ -388,7 +377,7 @@ offset_left = 408.0
 offset_top = 104.0
 offset_right = 518.0
 offset_bottom = 144.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="energy/price_4" groups=["pln_price"]]
 layout_mode = 0
@@ -473,7 +462,7 @@ offset_left = 221.0
 offset_top = 115.0
 offset_right = 317.0
 offset_bottom = 155.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="skinCollection/price_2" groups=["pln_price"]]
 layout_mode = 0
@@ -518,7 +507,7 @@ offset_left = 420.0
 offset_top = 114.0
 offset_right = 522.0
 offset_bottom = 154.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="skinCollection/price_3" groups=["pln_price"]]
 layout_mode = 0
@@ -606,7 +595,7 @@ offset_left = 122.0
 offset_top = 103.0
 offset_right = 218.0
 offset_bottom = 143.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="gatcha/price_2" groups=["pln_price"]]
 layout_mode = 0
@@ -651,7 +640,7 @@ offset_left = 240.0
 offset_top = 102.0
 offset_right = 342.0
 offset_bottom = 142.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="gatcha/price_3" groups=["pln_price"]]
 layout_mode = 0
@@ -696,7 +685,7 @@ offset_left = 361.0
 offset_top = 103.0
 offset_right = 471.0
 offset_bottom = 143.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="gatcha/price_4" groups=["pln_price"]]
 layout_mode = 0
@@ -803,7 +792,7 @@ offset_left = 176.0
 offset_top = 115.0
 offset_right = 278.0
 offset_bottom = 155.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="specialOffer/price_2"]
 layout_mode = 0
@@ -865,7 +854,7 @@ offset_left = 98.0
 offset_top = 115.0
 offset_right = 176.0
 offset_bottom = 155.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jg6c")
+theme_override_styles/panel = ExtResource("4_ni0en")
 
 [node name="Label" type="Label" parent="freeOffer/price_2"]
 layout_mode = 0

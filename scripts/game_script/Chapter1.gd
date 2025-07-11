@@ -78,10 +78,12 @@ func story_proceed(button_name:=""):
 				await speech_bubble.dialogue_finished
 				await get_tree().create_timer(0.2).timeout
 				display_quest_change("Dodaj do interfejsu darmową walutę (0/1)")
+				for_the_player.appear_info("nothing", false, true)
 				
 				#czekanie na drop
 				
 				await wait_for_specific_button_dropped("freeCurrency")
+				for_the_player.hide_info()
 				#for_the_player.node_disappear_ingame("coin")
 				await add_statistics("freeCurrency")
 				#await get_tree().create_timer(0.5).timeout
@@ -349,6 +351,7 @@ func check_if_proceed(button):
 					await dialogue_player.dialogue_finished
 					Flags.is_choosing_answer = true
 					for_the_player.appear_info("habit")
+					interface.make_names_visible()
 					while !all_clicked(buttons_recquired_for_habit):
 							var clicked_button = await interface.interface_button_clicked
 							print(button.name)
@@ -381,6 +384,7 @@ func check_if_proceed(button):
 								await speech_bubble.dialogue_finished
 					Flags.is_choosing_answer = false
 					for_the_player.hide_info()
+					interface.make_names_invisible()
 					await get_tree().create_timer(0.5).timeout
 					dialogue_player.play_dialogue("habit_question_right")
 					await dialogue_player.dialogue_finished
@@ -476,6 +480,7 @@ func check_if_proceed(button):
 						dialogue_player.play_dialogue("fomo_which_else")
 						await dialogue_player.dialogue_finished
 						for_the_player.appear_info("sunk_cost")
+						interface.make_names_visible()
 						Flags.is_choosing_answer = true
 						while true:
 							var clicked_button = await interface.interface_button_clicked
@@ -495,6 +500,7 @@ func check_if_proceed(button):
 									continue
 						Flags.is_choosing_answer = false
 						for_the_player.hide_info()
+						interface.make_names_invisible()
 					Flags.change_flag("sunk_cost_fallacy_explained_here", false)
 					menu.check_if_game_finished()
 				"achievements":
@@ -527,12 +533,14 @@ func check_if_proceed(button):
 						#should have a flag for not activating buttons??!!!
 						Flags.is_choosing_answer = true
 						for_the_player.appear_info("free_reward")
+						interface.make_names_visible()
 						while true:
 							var clicked_button = await interface.interface_button_clicked
 							print(button.name)
 							match clicked_button.name:
 								"shop":
 									for_the_player.hide_info()
+									interface.make_names_invisible()
 									shop.visible = true
 									await get_tree().create_timer(0.5).timeout
 									shop.free_offer_appear()
@@ -573,6 +581,7 @@ func check_if_proceed(button):
 					#choosing
 					Flags.is_choosing_answer = true
 					for_the_player.appear_info("loss_aversion")
+					interface.make_names_visible()
 					while !all_clicked(buttons_recquired_for_loss_aversion):
 							var clicked_button = await interface.interface_button_clicked
 							print(button.name)
@@ -626,6 +635,7 @@ func check_if_proceed(button):
 								await speech_bubble.dialogue_finished
 					Flags.is_choosing_answer = false
 					for_the_player.hide_info()
+					interface.make_names_invisible()
 					await get_tree().create_timer(0.2).timeout
 					dialogue_player.play_dialogue("loss_eversion_end")
 					await dialogue_player.dialogue_finished
@@ -689,6 +699,7 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 				await dialogue_player.dialogue_finished
 				Flags.is_choosing_answer = true
 				for_the_player.appear_info("sunk_cost")
+				interface.make_names_visible()
 				while true:
 					var clicked_button = await interface.interface_button_clicked
 					print(clicked_button.name)
@@ -709,6 +720,7 @@ func gatcha_sidequest_proceed(gatcha_node = null):
 				Flags.is_choosing_answer = false
 			Flags.change_flag("sunk_cost_fallacy_explained_here", false)
 			for_the_player.hide_info()
+			interface.make_names_invisible()
 	else:
 		var is_gatcha_finished = Flags.get_flag("gatcha_quest_finished")
 		if !is_gatcha_finished:
@@ -801,4 +813,8 @@ func story_end():
 	await get_tree().create_timer(0.3).timeout
 	badges.appear("final")
 	await badges.badge_window_closed
+	quest_alert.lable_with_link_at_the_end()
+	quest_alert.label_at_the_top_disappear()
+	quest_alert.appear()
+	await quest_alert.quest_closed
 	menu.make_quest_finished("final")

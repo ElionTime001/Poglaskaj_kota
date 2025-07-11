@@ -14,6 +14,7 @@ signal button_dropped(button)
 signal energy_dropped
 
 var buttons := []
+var nazwy := []
 
 var main_menu_button: TextureButton
 var add_element_button: TextureButton
@@ -33,6 +34,7 @@ func _ready():
 	back_to_shop_button = $BackToShopButton
 	
 	buttons = get_tree().get_nodes_in_group("mainscreenbutton")
+	nazwy = get_tree().get_nodes_in_group("interface_name")
 	
 	for button in buttons:
 		button.visible = false
@@ -40,6 +42,7 @@ func _ready():
 		button.clicked.connect(interface_button_pressed)
 	
 	hide_back_to_shop()
+	make_names_invisible()
 		
 	main_menu_button.visible = false
 	add_element_button.visible = false
@@ -48,6 +51,14 @@ func _ready():
 func _process(delta):
 	pass
 	
+func make_names_visible():
+	for name in nazwy:
+		name.visible = true
+
+func make_names_invisible():
+	for name in nazwy:
+		name.visible = false
+
 func make_button_visible(button, is_drag_preview_there:=true):
 	var button_name = button.name
 	for right_button in buttons:

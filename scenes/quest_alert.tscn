@@ -96,12 +96,25 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
+[node name="Label2" type="RichTextLabel" parent="QuestPlace/MarginContainer2"]
+visible = false
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_1u4eu")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]
+Pamiętaj, o wypełnieniu ankiety po zakończeniu gry.
+
+[url=https://forms.gle/uc8KzLwhUfZLsi7r8] KLIKNIJ TUTAJ ABY OD RAZU DO NIEJ PRZEJŚĆ[/url][/center]"
+autowrap_mode = 2
+
 [node name="Label" type="Label" parent="QuestPlace/MarginContainer2"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1u4eu")
 theme_override_font_sizes/font_size = 27
-text = "Pamiętaj, o dosłanej ankiecie, która jest do wypełnienia przed i po zagraiu w grę!"
+text = "Pamiętaj, o dosłanej ankiecie, która jest do wypełnienia przed i po zagraniu w grę!"
 horizontal_alignment = 1
 autowrap_mode = 2
 

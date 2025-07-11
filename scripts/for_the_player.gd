@@ -10,6 +10,7 @@ var float_tween: Tween
 @export var interface_info: Panel
 @export var interface_label : Label
 @export var shop_info : Panel
+@export var tutorial_info: Panel
 
 var label_texts = {
 	"loss_aversion" : "Wskaż elementy interfejsu, które mogą mieć związek z Loss Aversion.",
@@ -25,10 +26,13 @@ func _ready():
 		node.visible = false
 		
 		
-func appear_info(key: String, is_shop := false):
+func appear_info(key: String, is_shop := false, is_tutorial := false):
 	if is_shop:
 		shop_info.visible = true
 		bounce_window(shop_info)
+	elif is_tutorial:
+		tutorial_info.visible = true
+		bounce_window(tutorial_info)
 	else:
 		interface_label.text = label_texts[key]
 		interface_info.visible = true
@@ -37,6 +41,7 @@ func appear_info(key: String, is_shop := false):
 func hide_info():
 	interface_info.visible = false
 	shop_info.visible = false
+	tutorial_info.visible = false
 
 func find_node(target_node_name: String):
 	for node in highlightsandarrows:
