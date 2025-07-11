@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/background_things.gd" id="1_drs35"]
 [ext_resource type="PackedScene" uid="uid://b4doai0buhwl4" path="res://scenes/cat.tscn" id="2_7d8by"]
-[ext_resource type="Texture2D" uid="uid://bs3jvgl5vdvta" path="res://assets/test/final_bg.png.PNG" id="2_wme27"]
+[ext_resource type="Texture2D" uid="uid://bs3jvgl5vdvta" path="res://assets/test/final_bg.png" id="2_l676l"]
 [ext_resource type="Texture2D" uid="uid://5y2qxa75jiot" path="res://assets/test/buttons/energy_not_filled.PNG" id="4_i3inm"]
 [ext_resource type="Texture2D" uid="uid://xuyefy5llhmm" path="res://assets/test/buttons/energy_filled.PNG" id="5_ucj6l"]
 
-[node name="background_things" type="Control" node_paths=PackedStringArray("energy_bar", "energy_value", "cat")]
+[node name="background_things" type="Control" node_paths=PackedStringArray("energy_bar", "energy_value", "backgroud", "cat")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,9 +16,10 @@ grow_vertical = 2
 script = ExtResource("1_drs35")
 energy_bar = NodePath("energy_bar")
 energy_value = NodePath("energy_bar/TextureProgressBar")
+backgroud = NodePath("background")
 cat = NodePath("pattable_cat/cat")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -30,7 +31,7 @@ offset_right = 501.0
 offset_bottom = 487.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_wme27")
+texture = ExtResource("2_l676l")
 expand_mode = 1
 stretch_mode = 5
 

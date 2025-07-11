@@ -32,7 +32,8 @@ func play_dialogue(key: String):
 	array_size = dialogue_array.size()
 	#label.text = dialogue_array[index]
 	print(array_size)
-	change_label_with_bounce(dialogue_array[index])
+	var pure_dialogue = extract_sprite_tag(dialogue_array[index])
+	change_label_with_bounce(pure_dialogue["text"])
 	appear()
 	bounce_container_once(random_dialogue)
 
@@ -40,7 +41,8 @@ func _on_proceed_pressed():
 		if index+1 < array_size:
 			index += 1
 			#label.text = dialogue_array[index]
-			change_label_with_bounce(dialogue_array[index])
+			var pure_dialogue = extract_sprite_tag(dialogue_array[index])
+			change_label_with_bounce(pure_dialogue["text"])
 			bounce_container_once(random_dialogue)
 		else:
 			print("Dialogue finished")
@@ -76,6 +78,25 @@ func change_label_with_bounce(new_text: String):
 
 	# 4. Bounce effect (optional)
 	#bounce_container_once(random_dialogue)
+
+func extract_sprite_tag(line: String) -> Dictionary:
+	var pattern = r"\((.*?)\)$"  # Matches text in () at the end
+	var regex = RegEx.new()
+	regex.compile(pattern)
+	var result = regex.search(line)
+	
+	var sprite_name = ""
+	if result:
+		sprite_name = result.get_string(1)
+		# Remove the (tag) from the original line
+		line = line.substr(0, result.get_start()).strip_edges()
+	
+	return {
+		"text": line,
+		"sprite": sprite_name
+	}
+
+
 
 
 

@@ -4,6 +4,7 @@ extends Control
 
 @export var energy_bar: Control
 @export var energy_value: TextureProgressBar
+@export var backgroud: TextureRect
 
 @export var cat: Node2D
 

@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/dialogue_player.gd" id="1_gc8xu"]
 [ext_resource type="Texture2D" uid="uid://bgep0nx6lk7qm" path="res://assets/annoyed.PNG" id="2_1ssei"]
 [ext_resource type="PackedScene" uid="uid://d2wfcuapvsfy" path="res://scenes/dialogue_window.tscn" id="2_dpqs6"]
-[ext_resource type="Texture2D" uid="uid://cy5tcybv15doq" path="res://assets/excited.PNG" id="3_xnhn8"]
-[ext_resource type="Texture2D" uid="uid://cgjblws02p1f5" path="res://assets/happy.PNG" id="4_yxc0m"]
-[ext_resource type="Texture2D" uid="uid://k46d567a2ccr" path="res://assets/angry.PNG" id="5_1eknw"]
+[ext_resource type="Texture2D" uid="uid://c5f4f2qvekms2" path="res://assets/test/cats/happy_sprite.png" id="3_nl637"]
+[ext_resource type="Texture2D" uid="uid://b1vn35oatgh7t" path="res://assets/test/cats/angry_sprite.png" id="4_2uai2"]
+[ext_resource type="Texture2D" uid="uid://b4x7ia0ge105a" path="res://assets/test/cats/excited_sprite.png" id="5_sbn0m"]
 
-[node name="dialogue_player" type="Control"]
+[node name="dialogue_player" type="Control" node_paths=PackedStringArray("annoyed_sprite", "happy_sprite", "excited_sprite", "angry_sprite")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gc8xu")
+annoyed_sprite = NodePath("sprite/annoyed")
+happy_sprite = NodePath("sprite/happy")
+excited_sprite = NodePath("sprite/excited")
+angry_sprite = NodePath("sprite/angry")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.243137)
@@ -47,29 +51,29 @@ texture = ExtResource("2_1ssei")
 region_enabled = true
 region_rect = Rect2(2.27258, 856.02, 1435.75, 1073.35)
 
-[node name="proud" type="Sprite2D" parent="sprite"]
+[node name="happy" type="Sprite2D" parent="sprite"]
 visible = false
-position = Vector2(19, 275)
+position = Vector2(15, 296)
 scale = Vector2(0.421429, 0.416002)
-texture = ExtResource("3_xnhn8")
+texture = ExtResource("3_nl637")
 region_enabled = true
-region_rect = Rect2(2.27258, 784.415, 1435.75, 1144.95)
-
-[node name="excited" type="Sprite2D" parent="sprite"]
-visible = false
-position = Vector2(16, 251)
-scale = Vector2(0.421429, 0.416002)
-texture = ExtResource("4_yxc0m")
-region_enabled = true
-region_rect = Rect2(2.27258, 636.622, 1435.75, 1292.75)
+region_rect = Rect2(2.27258, 856.02, 1435.75, 1073.35)
 
 [node name="angry" type="Sprite2D" parent="sprite"]
 visible = false
-position = Vector2(15, 275)
+position = Vector2(15, 296)
 scale = Vector2(0.421429, 0.416002)
-texture = ExtResource("5_1eknw")
+texture = ExtResource("4_2uai2")
 region_enabled = true
-region_rect = Rect2(2.27258, 774.713, 1435.75, 1154.66)
+region_rect = Rect2(2.27258, 856.02, 1435.75, 1073.35)
+
+[node name="excited" type="Sprite2D" parent="sprite"]
+visible = false
+position = Vector2(15, 296)
+scale = Vector2(0.421429, 0.416002)
+texture = ExtResource("5_sbn0m")
+region_enabled = true
+region_rect = Rect2(2.27258, 856.02, 1435.75, 1073.35)
 
 [node name="dialogue_window" parent="." instance=ExtResource("2_dpqs6")]
 layout_mode = 1

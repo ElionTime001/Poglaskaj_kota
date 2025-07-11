@@ -21,13 +21,6 @@
 [ext_resource type="FontFile" uid="uid://csnel2va15hg" path="res://assets/Chunkfive Ex.ttf" id="17_xu0xm"]
 [ext_resource type="PackedScene" uid="uid://crwr8058lbni0" path="res://scenes/badges.tscn" id="18_da3l7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ukbv"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if86e"]
 bg_color = Color(0.941176, 0.784314, 0.811765, 1)
 border_width_left = 4
@@ -39,6 +32,13 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ukbv"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="SCREENS" type="CanvasLayer"]
 script = ExtResource("1_qe71l")
@@ -105,6 +105,82 @@ visible = false
 badges_interface = NodePath("../badges")
 controller = NodePath("../Chapter1_controller")
 
+[node name="interface_info" type="Panel" parent="." groups=["highlights_and_arrows"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -99.0
+offset_right = 142.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_if86e")
+
+[node name="MarginContainer" type="MarginContainer" parent="interface_info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="interface_info/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("17_xu0xm")
+theme_override_font_sizes/font_size = 23
+text = "Wskaż gdzie można umieścić kolejną, codzienną, darmową nagrodę."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="shop_info" type="Panel" parent="." groups=["highlights_and_arrows"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -301.0
+offset_right = 142.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_if86e")
+
+[node name="MarginContainer" type="MarginContainer" parent="shop_info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="shop_info/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
+theme_override_fonts/font = ExtResource("17_xu0xm")
+theme_override_font_sizes/font_size = 23
+text = "Wskaż element, który będzie użyty jako waluta cen w sklepie."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="dialogue_player" parent="." instance=ExtResource("1_uhk0v")]
 visible = false
 
@@ -123,9 +199,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("10_7t1yj")
-interface_info = NodePath("interface_info")
-interface_label = NodePath("interface_info/MarginContainer/Label")
-shop_info = NodePath("shop_info")
+interface_info = NodePath("../interface_info")
+interface_label = NodePath("../interface_info/MarginContainer/Label")
+shop_info = NodePath("../shop_info")
 
 [node name="coin" type="Panel" parent="for_the_player" groups=["highlights_and_arrows"]]
 self_modulate = Color(1, 1, 1, 0.6)
@@ -185,84 +261,6 @@ mouse_filter = 2
 texture = ExtResource("16_vl3aw")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="interface_info" type="Panel" parent="for_the_player" groups=["highlights_and_arrows"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -99.0
-offset_right = 142.0
-offset_bottom = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_if86e")
-
-[node name="MarginContainer" type="MarginContainer" parent="for_the_player/interface_info"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="for_the_player/interface_info/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
-theme_override_fonts/font = ExtResource("17_xu0xm")
-theme_override_font_sizes/font_size = 23
-text = "Wskaż gdzie można umieścić kolejną, codzienną, darmową nagrodę."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="shop_info" type="Panel" parent="for_the_player" groups=["highlights_and_arrows"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -301.0
-offset_right = 142.0
-offset_bottom = -148.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_if86e")
-
-[node name="MarginContainer" type="MarginContainer" parent="for_the_player/shop_info"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="for_the_player/shop_info/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.682353, 0.443137, 0.529412, 1)
-theme_override_fonts/font = ExtResource("17_xu0xm")
-theme_override_font_sizes/font_size = 23
-text = "Wskaż element, który będzie użyty jako waluta cen w sklepie."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="speechBubble" parent="." instance=ExtResource("6_4dh3q")]
 visible = false

@@ -1,7 +1,7 @@
 extends Node
 
 var language = "eng"
-var gameDataFileFath = "res://jasons/ui_elements_dialogue.json"
+var gameDataFileFath = "res://jasons/dialogue_sprites.json"
 var gameDataFileFath_2 = "res://jasons/ui_elements.json"
 
 #JUST THE LOADED DATA
