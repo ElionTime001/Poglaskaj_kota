@@ -12,4 +12,4 @@ Gra Pogłaskaj Kota została umieszczona na stronie online i można znaleźć j�
 Odtworzyć ją można na każdym urządzeniu, chociaż polecane jest urządzenie mobilne, ponieważ interfejst został do nich przystosowany.
 
 ## Filmik prezentacyjny
-Coming soon
+Pojedyncza rozgrywka gry pogłaskaj kota została nagrana i można ją obejrzeć pod linkiem: https://youtu.be/DbEGBsSDyWk
